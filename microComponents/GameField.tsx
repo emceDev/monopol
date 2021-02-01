@@ -10,7 +10,7 @@ export const GameField = (props) => {
 			<DisplayModal />
 			{}
 			{Object.values(props.data.cards).map((cardData) => {
-				return <FieldCard cardData={cardData} key={cardData.id} />;
+				return <FieldCard cardData={cardData} />;
 			})}
 			{/* {console.log(props.data.cards.map((x) => x))} */}
 		</div>
