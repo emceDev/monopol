@@ -23,13 +23,14 @@ export const GameData = () => {
 			}),
 		});
 		let response = await observer.json();
-
+		console.log(response);
 		setCardsData(response.data.cards);
 		setPlayersData(response.data.players);
 	}
 
 	useEffect(() => {
 		if ((gameData.name !== null) === true) {
+			console.log(gameData);
 			observ(gameData.name);
 		}
 	}, [gameData.players]);

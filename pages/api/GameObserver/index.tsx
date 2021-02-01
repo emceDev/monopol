@@ -11,6 +11,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 		gameData.off();
 		return gameData.once("value").then((snapshot) => {
 			console.log("solved");
+			console.log(snapshot.val());
 			return res.json({ data: snapshot.val() });
 		});
 	});
