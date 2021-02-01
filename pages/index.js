@@ -1,65 +1,52 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import { CreatePlayer } from "../microComponents/CreatePlayer";
+import { Login } from "../microComponents/Login";
+import styles from "../styles/Home.module.css";
+import { SearchBar } from "../components/SearchBar";
+import { PlayerCard } from "../components/PlayerCard";
+import { GameData } from "../components/GameData";
+import { useRecoilState } from "recoil";
+import { mainPlayerData } from "../state/atom";
+import Router, { useRouter } from "next/router";
+import { Children, useEffect } from "react";
 
-export default function Home() {
-  return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+export default function RegLog() {
+	const [mainPlayer, setMainPlayer] = useRecoilState(mainPlayerData);
+	const router = useRouter();
+	useEffect(() => {
+		if (mainPlayer.loggedIn === false) {
+			router.push("/");
+		} else {
+			router.push("/Home");
+		}
+	}, [mainPlayer.loggedIn]);
+	// Json generator
+	// function xd() {
+	// 	console.log("edffe");
+	// 	let x = {};
+	// 	for (let i = 1; i < 41; i++) {
+	// 		let key1 = "city" + [i];
+	// 		x = {
+	// 			...x,
+	// 			[key1]: {
+	// 				id: i,
+	// 				owner: "bank",
+	// 				price: "300",
+	// 				name: "name" + [i],
+	// 				country: "TUnazwa krajuf",
+	// 				color: "rgba()",
+	// 				tax: ["bezdokmu", "zdjednym", "z dwoma", "3domki", "4domki"],
+	// 			},
+	// 		};
+	// 	}
+	// 	console.log(x);
+	// }	// city2: { id: 2, owner: "bank", price: "Cena", name: "nazwa",country:'TUnazwa krajuf',color:'rgba()',tax:['bezdokmu','zdjednym','z dwoma'] },	// "Przechodzisz na pole "Start" i pobierasz $200.'
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+	return (
+		<div className={styles.container}>
+			{/* <button onClick={() => xd()}>asd</button> */}
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+			<CreatePlayer />
+			<Login />
+		</div>
+	);
 }
