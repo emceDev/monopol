@@ -1,9 +1,9 @@
 // import { FieldCard } from "../microComponents/FieldCard";
 import { useEffect } from "react";
 import { mainGameData, playersAtom, focusedCardData } from "../state/atom";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 export const FieldCard = (props) => {
-	const [gameData, setGameData] = useRecoilState(mainGameData);
+	const gameData = useRecoilValue(mainGameData);
 	const [cardData, setCardData] = useRecoilState(focusedCardData);
 
 	useEffect(() => {
