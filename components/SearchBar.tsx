@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { mainPlayerData } from "../state/atom";
 import {
 	mainGameData,
@@ -11,7 +11,7 @@ import {
 export const SearchBar = () => {
 	const [name, setName] = useState("");
 	const [error, setError] = useState(null);
-	const [gameData, setGameData] = useRecoilState(mainGameData);
+	const gameData = useRecoilValue(mainGameData);
 	const [playerData, setPlayerData] = useRecoilState(mainPlayerData);
 	const [gameName, setGameName] = useRecoilState(gameNameAtom);
 	const [players, setPlayers] = useRecoilState(playersAtom);

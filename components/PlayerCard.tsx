@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { mainPlayerData } from "../state/atom";
 import { mainGameData, playersAtom, focusedCardData } from "../state/atom";
 import { DisplayModal } from "../microComponents/DisplayModal";
 
 export const PlayerCard = () => {
 	const [playerData, setPlayerData] = useRecoilState(mainPlayerData);
-	const [gameData, setGameData] = useRecoilState(mainGameData);
+	const gameData = useRecoilValue(mainGameData);
 	const [playersData, setPlayersData] = useRecoilState(playersAtom);
 	const [err, setErr] = useState(null);
 	const [cardData, setCardData] = useRecoilState(focusedCardData);

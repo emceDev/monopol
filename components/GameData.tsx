@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { PlayersList } from "../microComponents/PlayersList";
 import {
 	mainGameData,
@@ -10,7 +10,7 @@ import {
 import { GameField } from "../microComponents/GameField";
 import swr from "swr";
 export const GameData = () => {
-	const [gameData, setGameData] = useRecoilState(mainGameData);
+	const gameData = useRecoilValue(mainGameData);
 	const [cardsData, setCardsData] = useRecoilState(cardsAtom);
 	const [playersData, setPlayersData] = useRecoilState(playersAtom);
 	const [gameName, setGameName] = useRecoilState(gameNameAtom);
