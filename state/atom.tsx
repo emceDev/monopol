@@ -11,8 +11,6 @@ export const mainPlayerData = atom({
 		loggedIn: false,
 		key: null,
 		name: null,
-
-		color: "white",
 	},
 });
 
