@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card } from "../microComponents/Card";
 export const Player = (props) => {
 	return (
@@ -7,7 +7,7 @@ export const Player = (props) => {
 			<div>balance: {props.player.balance}</div>
 			{props.cards !== undefined ? (
 				<div style={{ maxHeight: "20vh", overflow: "overlay" }}>
-					{Object.values(props.cards).map((card) => {
+					{Object.values(props.cards).map((card: any) => {
 						if ((card.owner === props.player.name) === true) {
 							return <Card card={card} key={card.id} />;
 						} else return;

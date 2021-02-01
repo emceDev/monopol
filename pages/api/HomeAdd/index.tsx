@@ -31,7 +31,9 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 	const data = JSON.parse(req.body);
 	getCities(data).then((x) => {
 		let cards = Object.values(x);
-		let filteredCards = cards.filter((card) => card.owner === data.playerName);
+		let filteredCards = cards.filter(
+			(card: any) => card.owner === data.playerName
+		);
 		let isOwner = filteredCards.length === cards.length;
 		isOwner
 			? addHome(data).then((x) => res.json({ code: x }))

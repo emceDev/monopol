@@ -14,7 +14,7 @@ async function checkForDuplicate(ref, data) {
 			let x = snap.val();
 			let players = Object.values(x);
 			return Array.isArray(players)
-				? players.map((x) => {
+				? players.map((x: any) => {
 						return x.name === data;
 				  })
 				: console.log("it is not an array");
@@ -27,11 +27,11 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 
 	let response = checkForDuplicate(reference, data.name);
 
-	response.then((x) => {
+	response.then((x: any) => {
 		if (x.includes(true)) {
 			res.json({ response: "user exists" });
 		} else {
-			getKey(reference).then((key) =>
+			getKey(reference).then((key: any) =>
 				key
 					.set({
 						...data,

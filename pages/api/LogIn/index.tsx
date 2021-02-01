@@ -10,7 +10,7 @@ async function checkForEntry(ref, data) {
 			let x = snap.val();
 			let players = Object.values(x);
 			return players.find(
-				(x) => x.name === data.name && x.password === data.password
+				(x: any) => x.name === data.name && x.password === data.password
 			);
 		});
 	return await res;
