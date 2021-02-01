@@ -24,14 +24,14 @@ async function getGame(ref) {
 async function setPlayers(data) {
 	const ref = "Games/" + data.game;
 	let err;
-		return await app
+	return await app
 		.database()
 		.ref(ref + "/players/" + data.player + "/")
 		.set(
 			{
 				name: data.player,
 				key: data.key,
-				color:data.color,
+				color: data.color,
 				currentField: data.currentField,
 				balance: 3000,
 			},
@@ -39,34 +39,36 @@ async function setPlayers(data) {
 				if (error) {
 					return (err = error);
 				} else {
-					return err = getGame(ref).then(x=>x)
+					return (err = getGame(ref).then((x) => x));
 				}
 			}
 		)
 		.then(() => err);
 }
-async function setCardWhoIsOn(data,newArray) {
-	return await app.database().ref('Games/'+data.game+'/cards/city'+data.currentField+'/whoIsOn').set(newArray)
+async function setCardWhoIsOn(data, newArray) {
+	return await app
+		.database()
+		.ref("Games/" + data.game + "/cards/city" + data.currentField + "/whoIsOn")
+		.set(newArray);
 }
-async function checkCardWhoIsOn(game,data) {
-	let whoIsInArray = game.cards['city'+data.currentField].whoIsOn
-	if(!whoIsInArray===true){
-		console.log("tabela jest null")
-		return setCardWhoIsOn(data,[data.player]).then(x=>setPlayers(data))
-	}else if(whoIsInArray==data.player){
-		console.log('sam w tablicy')
-		return setCardWhoIsOn(data,whoIsInArray).then(x=>setPlayers(data))
-	}else{
-		console.log('dodajemy do tablicy')
-		let newArray=[...whoIsInArray,data.player]
-		return setCardWhoIsOn(data,newArray).then(x=>setPlayers(data))
+async function checkCardWhoIsOn(game, data) {
+	let whoIsInArray = game.cards["city" + data.currentField].whoIsOn;
+	if (!whoIsInArray === true) {
+		console.log("tabela jest null");
+		return setCardWhoIsOn(data, [data.player]).then((x) => setPlayers(data));
+	} else if (whoIsInArray == data.player) {
+		console.log("sam w tablicy");
+		return setCardWhoIsOn(data, whoIsInArray).then((x) => setPlayers(data));
+	} else {
+		console.log("dodajemy do tablicy");
+		let newArray = [...whoIsInArray, data.player];
+		return setCardWhoIsOn(data, newArray).then((x) => setPlayers(data));
 	}
 }
 async function setFields(data) {
 	const ref = "Games/" + data.game;
-	return getGame(ref).then(game=>checkCardWhoIsOn(game,data))
+	return getGame(ref).then((game) => checkCardWhoIsOn(game, data));
 }
-
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
 	const data = JSON.parse(req.body);
@@ -74,8 +76,14 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 
 	let isInDb = checkForEntry(reference, data);
 	return isInDb.then((game) => {
-		if(game.players.[data.player]===undefined){
-			return setFields(data).then(game=>res.json({response:{code:"JoinedGame",game:game}}))
-		}else{
-			return setFields(data).then(game=>res.json({response:{code:'alreadyInGame',game:game}}))
-	}})}
+		if (game.players[data.player] === undefined) {
+			return setFields(data).then((game) =>
+				res.json({ response: { code: "JoinedGame", game: game } })
+			);
+		} else {
+			return setFields(data).then((game) =>
+				res.json({ response: { code: "alreadyInGame", game: game } })
+			);
+		}
+	});
+};
