@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { SearchBar } from "../components/SearchBar";
-import { PlayerCard } from "../components/PlayerCard";
+import { PlayerCard } from "../microComponents/PlayerCard";
 import { GameData } from "../components/GameData";
 import { useRecoilState } from "recoil";
 import { mainPlayerData } from "../state/atom";
@@ -29,7 +29,6 @@ const Home = () => {
 			</Head>
 			<div>
 				<SearchBar />
-				<PlayerCard />
 
 				<GameData />
 			</div>

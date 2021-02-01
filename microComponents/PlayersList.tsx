@@ -21,7 +21,10 @@ export const Player = (props) => {
 };
 export const PlayersList = (props) => {
 	return (
-		<div style={{ display: "flex", flexDirection: "row" }}>
+		<div
+			className="PlayersList"
+			style={{ display: "flex", flexDirection: "row" }}
+		>
 			<div>PlayersList</div>
 			{props.data !== null && props.data !== undefined
 				? Object.values(props.data.players).map((player) => {

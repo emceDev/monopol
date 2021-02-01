@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { mainPlayerData } from "../state/atom";
 import { mainGameData, playersAtom, focusedCardData } from "../state/atom";
-import { DisplayModal } from "../microComponents/DisplayModal";
+import { DisplayModal } from "./DisplayModal";
 
 export const PlayerCard = () => {
 	const [playerData, setPlayerData] = useRecoilState(mainPlayerData);
@@ -39,7 +39,7 @@ export const PlayerCard = () => {
 	}
 
 	return (
-		<div>
+		<div className="PlayerCard">
 			{playerData.loggedIn ? (
 				<div>
 					<div>PlayerName:{playerData.name}</div>

@@ -2,7 +2,6 @@ import { CreatePlayer } from "../microComponents/CreatePlayer";
 import { Login } from "../microComponents/Login";
 import styles from "../styles/Home.module.css";
 import { SearchBar } from "../components/SearchBar";
-import { PlayerCard } from "../components/PlayerCard";
 import { GameData } from "../components/GameData";
 import { useRecoilState } from "recoil";
 import { mainPlayerData } from "../state/atom";

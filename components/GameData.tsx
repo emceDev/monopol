@@ -42,7 +42,6 @@ export const GameData = () => {
 			) : (
 				<div>
 					<p>GameName:{gameData.name}</p>
-					{gameData.players !== null ? <PlayersList data={gameData} /> : null}
 					<div>
 						{gameData.cards !== null ? (
 							<GameField data={gameData} />

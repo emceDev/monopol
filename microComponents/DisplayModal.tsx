@@ -26,7 +26,7 @@ export const DisplayModal = () => {
 		console.log(cardData);
 	}, [cardData]);
 	return (
-		<div style={{}}>
+		<div className="DisplayModal">
 			{cardData !== null ? (
 				<>
 					cardData.title
