@@ -29,15 +29,17 @@ export async function onChangedField(data, cardD) {
 			if (card.price !== 0) {
 				return { code: "chcesz kupić to pole?", data: card };
 			} else if (card.tax.length > 1) {
-				const gameRef = "Games/" + gameName + "/players/";
-				return changeBalance(gameRef, playerName, card.owner, card.tax[0]).then(
-					(x) => {
-						return {
-							code: "paid to" + card.owner,
-							data: card,
-						};
-					}
-				);
+				return changeBalance(
+					gameName,
+					playerName,
+					card.owner,
+					card.tax[0]
+				).then((x) => {
+					return {
+						code: "paid to" + card.owner,
+						data: card,
+					};
+				});
 			}
 		} else {
 			let amount = card.tax[card.tax.homes];
@@ -75,9 +77,7 @@ export async function onChangedField(data, cardD) {
 				data: card,
 			};
 		} else if (card.tax !== undefined) {
-			const gameRef = "Games/" + gameName + "/players/";
-			// gameRef, giverRef, receiverRef, amount
-			return changeBalance(gameRef, playerName, card.owner, card.tax[0]).then(
+			return changeBalance(gameName, playerName, card.owner, card.tax[0]).then(
 				() => {
 					return {
 						code: card.name + card.tax[0],
@@ -85,12 +85,17 @@ export async function onChangedField(data, cardD) {
 					};
 				}
 			);
-		} else if (card.name === "Chance") {
-			let chance = chanceHandler(data);
+		} else if (card.name === "Chance" || "CommunityChest") {
+			let chance = await chanceHandler(data);
+			console.log(chance);
 			return {
 				code: chance,
 				data: card,
 			};
-		} else null;
+		} else
+			return {
+				code: "some wronge",
+				data: card,
+			};
 	}
 }

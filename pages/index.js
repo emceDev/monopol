@@ -41,9 +41,21 @@ export default function RegLog() {
 	// 	console.log(x);
 	// }	// city2: { id: 2, owner: "bank", price: "Cena", name: "nazwa",country:'TUnazwa krajuf',color:'rgba()',tax:['bezdokmu','zdjednym','z dwoma'] },	// "Przechodzisz na pole "Start" i pobierasz $200.'
 
+	const cities = [
+		[2, "Odessa"],
+		[4, "Kijów"],
+		[9, "Xudat"],
+		[15, "Bulkeley"],
+	];
+	const randCity = () => {
+		let min = Math.ceil(0);
+		let max = Math.floor(cities.length - 1);
+		let randNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+		let x = cities[randNumber];
+	};
 	return (
 		<div className={styles.container}>
-			{/* <button onClick={() => xd()}>asd</button> */}
+			<button onClick={() => randCity()}>asd</button>
 
 			<CreatePlayer />
 			<Login />

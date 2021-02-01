@@ -1,11 +1,16 @@
 import { movePlayer } from "../PlayerMove/index";
 import { changeBalance } from "../MoneyTransfer/index";
 const cities = [
-	[3, "Odessa"],
+	[2, "Odessa"],
 	[4, "Kijów"],
+	[9, "Xudat"],
+	[15, "Bulkeley"],
 ];
 const randCity = () => {
-	return cities[0];
+	let min = Math.ceil(0);
+	let max = Math.floor(cities.length);
+	let randNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+	return cities[randNumber];
 };
 const closestCity = (data) => {
 	let currField = data.nextField;
@@ -31,11 +36,8 @@ async function moveTo(data, chance) {
 	return await movePlayer(newData);
 }
 const chances = (data) => [
-	"Przechodzisz na pole: " +
-		randCity()[0] +
-		"." +
-		randCity()[1] +
-		'. Jeśli przechodzisz przez "Start", pobierasz $200.',
+	"Przechodzisz na pole: " + randCity()[0],
+	'. Jeśli przechodzisz przez "Start", pobierasz $200.',
 	"Przechodzisz do najbliższego miasta. Jeśli nie ma właściciela, możesz je kupić od Banku. Jeśli posiada właściciela, rzucasz kostką i płacisz mu dziesięciokrotność wyrzuconej liczby oczek.Przechodzisz na pole: " +
 		closestCity(data),
 	"Spotkałeś/aś dawnych znajomych, idziesz do baru na trzy kolejki. Przechodzisz na pole: 31.Bar",
@@ -76,16 +78,18 @@ async function payTo(data, chance) {
 async function filterChance(data, chance) {
 	if (chance.indexOf("pole: ") !== -1) {
 		moveTo(data, chance);
+		return chance;
 	}
 	if (
 		chance.indexOf("Pobierasz: ") !== -1 ||
 		chance.indexOf("Płacisz: ") !== -1
 	) {
 		payTo(data, chance);
+		return chance;
 	}
 	return chance;
 }
 export const chanceHandler = (data) => {
 	console.log(data);
-	return filterChance(data, randomCardDraw(data)).then((x) => console.log(x));
+	return filterChance(data, randomCardDraw(data)).then((x) => x);
 };
