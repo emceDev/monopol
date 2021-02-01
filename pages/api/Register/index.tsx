@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { app } from "../../../config/firebase";
+import { app } from "../config/firebase";
 
 async function getKey(reference) {
 	return await app.database().ref(reference).push();

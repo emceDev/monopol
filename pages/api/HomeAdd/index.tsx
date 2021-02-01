@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { app } from "../../../config/firebase";
+import { app } from "../config/firebase";
 import { changeBalance } from "../MoneyTransfer/index";
 
 async function getCities(data) {

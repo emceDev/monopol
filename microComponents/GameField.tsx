@@ -9,8 +9,8 @@ export const GameField = (props) => {
 		<div className="Field" onClick={(e) => clicked(e)}>
 			<DisplayModal />
 			{}
-			{Object.values(props.data.cards).map((cardData) => {
-				return <FieldCard cardData={cardData} />;
+			{Object.values(props.data.cards).map((cardData: any) => {
+				return <FieldCard cardData={cardData} key={cardData.id} />;
 			})}
 			{/* {console.log(props.data.cards.map((x) => x))} */}
 		</div>

@@ -1,4 +1,4 @@
-import { app } from "../../../config/firebase";
+import { app } from "../config/firebase";
 import { changeBalance } from "../MoneyTransfer";
 import { chanceHandler } from "../ChanceHandle/";
 // import { movePlayer } from "../PlayerMove/index";

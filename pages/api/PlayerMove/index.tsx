@@ -1,5 +1,5 @@
 import next, { NextApiRequest, NextApiResponse } from "next";
-import { app } from "../../../config/firebase";
+import { app } from "../config/firebase";
 import { onChangedField } from "../OnChangedField";
 async function updateCurrentFieldInPlayers(data) {
 	return await app

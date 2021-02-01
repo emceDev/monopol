@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { app } from "../../../config/firebase";
+import { app } from "../config/firebase";
 
 async function getBalance(gameRef, playerRef) {
 	return await app

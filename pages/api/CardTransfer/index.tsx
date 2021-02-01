@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { app } from "../../../config/firebase";
+import { app } from "../config/firebase";
 
 async function getData(ref) {
 	console.log(ref);

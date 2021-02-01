@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { app } from "../../../config/firebase";
+import { app } from "../config/firebase";
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
 	// console.log("requsets");
