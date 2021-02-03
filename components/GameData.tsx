@@ -15,32 +15,34 @@ export const GameData = () => {
 	const [gameName, setGameName] = useRecoilState(gameNameAtom);
 
 	async function observ(x) {
-		const observer = await fetch("api/GameObserver", {
-			method: "POST",
-			body: JSON.stringify({
-				game: x,
-			}),
-		});
-		let response = await observer.json();
-		console.log("response :>> ");
-		console.log(response);
-		setCardsData(response.data.cards);
-		setPlayersData(response.data.players);
-		console.log("mainGameData");
-		console.log(gameData);
+		setInterval(async () => {
+			const observer = await fetch("api/GameObserver", {
+				method: "POST",
+				body: JSON.stringify({
+					game: x,
+				}),
+			});
+			let response = await observer.json();
+			console.log("response :>> ");
+			console.log(response);
+			setCardsData(response.data.cards);
+			setPlayersData(response.data.players);
+			console.log("mainGameData");
+			console.log(gameData);
+		}, 5000);
 	}
 
 	useEffect(() => {
 		if ((gameData.name !== null) === true) {
 			console.log("mainGameData");
 			console.log(gameData);
-			observ(gameData.name);
 		}
-	}, [gameData.players]);
+		return;
+	}, [gameData]);
 	return (
 		<div>
 			<h1>game</h1>
-			<button onClick={() => console.log(gameData)}>adasd</button>
+			<button onClick={() => observ(gameData.name)}>watch</button>
 			{gameData.name === null ? (
 				<div>xd</div>
 			) : (
