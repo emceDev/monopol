@@ -29,7 +29,7 @@ export const GameData = () => {
 			setPlayersData(response.data.players);
 			console.log("mainGameData");
 			console.log(gameData);
-		}, 5000);
+		}, 2000);
 	}
 
 	useEffect(() => {

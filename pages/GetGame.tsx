@@ -1,25 +1,31 @@
 import { app } from "./api/config/firebase";
 import { useEffect } from "react";
-export default function GetGame(props) {
-	useEffect(() => {
-		console.log(props);
-	}, []);
-	return <div>asd</div>;
-}
+import useSWR from "swr";
 
-export async function getServerSideProps(context) {
-	const data = { game: "123" };
-	const gameData = app.database().ref("Games/" + data.game + "/");
-	console.log("Obserwing on:", data.game);
-	let response = await gameData.on("child_changed", () => {
-		gameData.off();
-		return gameData.once("value").then((snapshot) => {
-			console.log(snapshot.val());
-			return snapshot.val();
-		});
+const fetcher = async () => {
+	let x = await fetch("api/GetGame", {
+		method: "POST",
+		body: JSON.stringify({
+			game: "123",
+		}),
 	});
+	return x;
+};
 
-	return {
-		props: { response }, // will be passed to the page component as props
-	};
+export default function GetGame() {
+	const { data, error } = useSWR("/api/GetGame", fetcher, {
+		refreshInterval: 1000,
+	});
+	useEffect(() => {
+		console.log(data);
+	}, [data]);
+	return (
+		<div
+			onClick={() => {
+				console.log(data);
+			}}
+		>
+			asd
+		</div>
+	);
 }

@@ -6,12 +6,10 @@ export const FieldCard = (props) => {
 	const gameData = useRecoilValue(mainGameData);
 	const [cardData, setCardData] = useRecoilState(focusedCardData);
 
-	useEffect(() => {
-		// console.log(gameData.players.[props.cardData.owner].color);
-	}, []);
+	useEffect(() => {}, [gameData]);
 	return (
 		<div
-			// style={{ backgroundColor:gameData.players.[props.cardData.owner].color}}
+			style={{ backgroundColor: gameData.players[props.cardData.owner].color }}
 			className={"div" + props.cardData.id}
 			id={props.cardData.id}
 			onClick={() => {
