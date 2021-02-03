@@ -4,14 +4,110 @@
 }
 /* calc(100vh / 15)) */
 .Field {
-	background-color: royalblue;
+	background-color: rgb(226, 202, 158);
 	display: grid;
-	grid-template-columns: repeat(13, 1fr);
-	grid-template-rows: repeat(13, 1fr);
-	grid-column-gap: 1px;
-	grid-row-gap: 1px;
+	grid-template-columns: 5vw 7vw repeat(9, 10vw) 7vw 5vw;
+	grid-template-rows: 5vw 7vw repeat(9, 10vw) 7vw 5vw;
 }
 
+/* .Field div :first-of-type {
+	text-align: center;
+	
+} */
+.Field div {
+	width: auto;
+	height: auto;
+	font-size: small;
+	display: flex;
+	flex-direction: column;
+	font-size: 12px;
+	text-align: center;
+}
+.cardData {
+	display: flex;
+	align-items: center;
+}
+.div1 {
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1fr;
+}
+.div1 .cardData {
+	display: grid;
+	grid-area: 1 / 1 / 2 / 2;
+	transform: rotate(-45deg);
+}
+
+.div11 .cardData {
+	background-color: indigo;
+	transform: rotate(45deg);
+	justify-content: center;
+}
+.div11 .cardData .cardDataHomes {
+	width: 0vw;
+}
+.div21,
+.div31 {
+	/* width: 20vw;
+	height: 20vw; */
+}
+
+.div22 .cardData,
+.div23 .cardData,
+.div24 .cardData,
+.div25 .cardData,
+.div26 .cardData,
+.div27 .cardData,
+.div28 .cardData,
+.div29 .cardData,
+.div30 .cardData {
+	background-color: rgb(1, 233, 233);
+	transform: rotate(180deg);
+	height: 100%;
+	width: 10vw;
+}
+.div2 .cardData,
+.div3 .cardData,
+.div4 .cardData,
+.div5 .cardData,
+.div6 .cardData,
+.div7 .cardData,
+.div8 .cardData,
+.div9 .cardData,
+.div10 .cardData {
+	background-color: rgb(86, 233, 1);
+	height: 100%;
+	width: 10vw;
+}
+
+.div12 .cardData,
+.div13 .cardData,
+.div14 .cardData,
+.div15 .cardData,
+.div16 .cardData,
+.div17 .cardData,
+.div18 .cardData,
+.div19 .cardData,
+.div20 .cardData {
+	background-color: green;
+	transform: rotate(90deg);
+	height: 100%;
+	width: 10vw;
+}
+.div32 .cardData,
+.div33 .cardData,
+.div34 .cardData,
+.div34 .cardData,
+.div35 .cardData,
+.div36 .cardData,
+.div37 .cardData,
+.div38 .cardData,
+.div39 .cardData,
+.div40 .cardData {
+	background-color: rgb(208, 255, 0);
+	transform: rotate(-90deg);
+	height: 100%;
+	width: 10vw;
+}
 .div1 {
 	grid-area: 12 / 12 / 14 / 14;
 }
@@ -142,8 +238,10 @@
 .PlayersList {
 	grid-area: 3 / 11 / 5 / 7;
 	background-color: saddlebrown;
+	display: flex;
 }
 .PlayerCard {
 	grid-area: 4 / 4 / 4 / 7;
-	background-color: red;
+
+	background-color: lightblue;
 }

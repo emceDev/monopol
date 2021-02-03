@@ -16,31 +16,39 @@ export const FieldCard = (props) => {
 				setCardData(props.cardData);
 			}}
 		>
-			<div
-				style={{
-					width: "100%",
-					height: "20%",
-					backgroundColor:
-						props.cardData.color !== undefined ? props.cardData.color : "gray",
-				}}
-			></div>
-			{() => {
-				for (let i = 0; i < props.cardData.homes.length; i++) {
-					<div>x</div>;
-				}
-			}}
-			<p>
-				{props.cardData.id}.{props.cardData.name}
-			</p>
-			{props.cardData.price === 0 ? null : <p>Cena:{props.cardData.price}</p>}
-			<ol>
-				{!props.cardData.tax === true
-					? null
-					: props.cardData.tax.map((x) => <li>{x}</li>)}
-			</ol>
-			{!props.cardData.whoIsOn ? null : (
-				<p style={{ backgroundColor: "red" }}>{props.cardData.whoIsOn}</p>
-			)}
+			<div className="cardData">
+				<div
+					className="cardDataHomes"
+					style={{
+						width: "100%",
+						height: "20%",
+						backgroundColor: "red",
+						zIndex: 100,
+						// backgroundColor:
+						// 	props.cardData.color !== undefined
+						// 		? props.cardData.color
+						// 		: "gray",
+					}}
+				>
+					{() => {
+						for (let i = 0; i < props.cardData.homes.length; i++) {
+							<div>x</div>;
+						}
+					}}
+				</div>
+				<p>
+					{props.cardData.id}.{props.cardData.name}
+				</p>
+				{props.cardData.price === 0 ? null : <p>Cena:{props.cardData.price}</p>}
+				{/* <ol>
+					{!props.cardData.tax === true
+						? null
+						: props.cardData.tax.map((x) => <li>{x}</li>)}
+				</ol> */}
+				{!props.cardData.whoIsOn ? null : (
+					<p style={{ backgroundColor: "red" }}>{props.cardData.whoIsOn}</p>
+				)}
+			</div>
 		</div>
 	);
 };
