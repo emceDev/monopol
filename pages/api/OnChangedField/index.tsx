@@ -26,7 +26,7 @@ export async function onChangedField(data, cardD) {
 			return { code: "Jesteś właścicielem", data: card };
 		} else if (card.owner === "bank") {
 			console.log("Bank Jest właścicielem");
-			if (card.price !== 0) {
+			if (card.price !== 0 && card.owner === "bank") {
 				return { code: "chcesz kupić to pole?", data: card };
 			} else if (card.tax.length > 1) {
 				return changeBalance(
@@ -42,13 +42,13 @@ export async function onChangedField(data, cardD) {
 				});
 			}
 		} else {
-			let amount = card.tax[card.tax.homes];
+			let amount = card.tax[card.homes];
 			console.log(amount);
-			console.log("pay other player");
+			let code = "Zapłaciłeś/aś graczowi: " + card.owner + " " + amount;
 			return changeBalance(gameName, playerName, card.owner, amount).then(
 				(x) => {
 					return {
-						code: "paid other player",
+						code: code,
 						data: { amount: amount, receiver: card.owner },
 					};
 				}

@@ -49,7 +49,7 @@ export const GameData = () => {
 				<div>
 					<p>GameName:{gameData.name}</p>
 					<div>
-						{gameData.cards !== null ? (
+						{gameData.cards !== null && gameData.players !== null ? (
 							<GameField data={gameData} />
 						) : (
 							<p>no cards in game</p>

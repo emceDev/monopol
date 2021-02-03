@@ -9,7 +9,7 @@ export const FieldCard = (props) => {
 	useEffect(() => {}, [gameData]);
 	return (
 		<div
-			style={{ backgroundColor: gameData.players[props.cardData.owner].color }}
+			style={{ backgroundColor: gameData.players[props.cardData.owner]?.color }}
 			className={"div" + props.cardData.id}
 			id={props.cardData.id}
 			onClick={() => {

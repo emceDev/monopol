@@ -29,13 +29,12 @@ export const DisplayModal = () => {
 		<div className="DisplayModal">
 			{cardData !== null ? (
 				<>
-					cardData.title
 					{cardData.title !== undefined ? (
 						<Chance title={cardData.title} description={cardData.description} />
 					) : (
 						<DisplayModalCard cardData={cardData} />
 					)}
-					{cardData.price !== 0 && cardData.owner === "bank" ? (
+					{cardData.price !== 0 ? (
 						// buy sell cardData.owner === "bank" cardData.price > 0
 						// zloz oferte playerCurrent !==card.id
 						// nic cardData.owner === "bank"cardData.price === 0

@@ -83,10 +83,19 @@ const SetUpHomes = (props) => {
 };
 
 export const DisplayModalButtons = (props) => {
+	function c() {
+		console.log("buttons XXXXXXXXXXXXXXXX");
+		console.log(props);
+	}
 	return (
 		<div>
-			<TradeWithBankButtons data={props} />
-			<SetUpHomes data={props} />
+			{props.cardData.owner === "bank" ? (
+				<TradeWithBankButtons data={props} />
+			) : null}
+
+			{props.cardData.owner === props.playerName ? (
+				<SetUpHomes data={props} />
+			) : null}
 		</div>
 	);
 };

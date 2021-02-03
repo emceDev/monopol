@@ -36,8 +36,9 @@ async function moveTo(data, chance) {
 	return await movePlayer(newData);
 }
 const chances = (data) => [
-	"Przechodzisz na pole: " + randCity()[0],
-	'. Jeśli przechodzisz przez "Start", pobierasz $200.',
+	"Przechodzisz na pole: " +
+		randCity()[0] +
+		'. Jeśli przechodzisz przez "Start", pobierasz $200.',
 	"Przechodzisz do najbliższego miasta. Jeśli nie ma właściciela, możesz je kupić od Banku. Jeśli posiada właściciela, rzucasz kostką i płacisz mu dziesięciokrotność wyrzuconej liczby oczek.Przechodzisz na pole: " +
 		closestCity(data),
 	"Spotkałeś/aś dawnych znajomych, idziesz do baru na trzy kolejki. Przechodzisz na pole: 31.Bar",
@@ -61,7 +62,7 @@ const chances = (data) => [
 
 function randomCardDraw(data) {
 	let min = Math.ceil(0);
-	let max = Math.floor(chances.length);
+	let max = Math.floor(chances.length - 1);
 	let randNumber = Math.floor(Math.random() * (max - min + 1)) + min;
 	return chances(data)[randNumber];
 }
