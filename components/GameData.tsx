@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { PlayersList } from "../microComponents/PlayersList";
 import {
 	mainGameData,
 	cardsAtom,
@@ -23,13 +22,17 @@ export const GameData = () => {
 			}),
 		});
 		let response = await observer.json();
+		console.log("response :>> ");
 		console.log(response);
 		setCardsData(response.data.cards);
 		setPlayersData(response.data.players);
+		console.log("mainGameData");
+		console.log(gameData);
 	}
 
 	useEffect(() => {
 		if ((gameData.name !== null) === true) {
+			console.log("mainGameData");
 			console.log(gameData);
 			observ(gameData.name);
 		}
