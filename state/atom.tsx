@@ -29,19 +29,6 @@ export const gameNameAtom = atom({
 	default: null,
 });
 
-// E3B23C Ukraina
-// 75B8C8 Azerbejdżan (Naftanal...)
-// F4E3B2 Koleje
-// #FF715B Barbados (Bathseba...)
-// #BDB246 Electric Company
-// #F15946 Polska
-// #B4DC7F Zjednoczone Emiraty Arabskie
-// #F4E87C Ekwador (Portoviejo...)
-// #B07156 Sri Lanka (Moratuwa...)
-// #14591D Zimbabwe
-// #F9EAE1 Chance
-// #CDEDFD Luxury Tax
-// #593F62 Więzienie
 export const cardsAtom = atom({
 	key: "cards",
 	default: {

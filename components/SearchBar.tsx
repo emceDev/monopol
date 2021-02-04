@@ -17,6 +17,7 @@ export const SearchBar = () => {
 	const [players, setPlayers] = useRecoilState(playersAtom);
 	const [color, setColor] = useState("yellow");
 	const [cardsData, setCardsData] = useRecoilState(cardsAtom);
+	const [shown, setShown] = useState(true);
 
 	async function createGame() {
 		const res1 = await fetch("api/GameCreate", {
@@ -31,6 +32,7 @@ export const SearchBar = () => {
 		});
 		const res2 = await res1.json();
 		if (res2.code === "Game set succesfully") {
+			setShown(false);
 			setGameName(res2.name);
 			setCardsData(res2.cards);
 			setPlayers(res2.players);
@@ -53,7 +55,8 @@ export const SearchBar = () => {
 		console.log("response");
 		console.log(res2);
 		if (res2.response.code === "JoinedGame") {
-			console.log(res2);
+			// console.log(res2);
+			setShown(false);
 			setPlayers(res2.response.game.players);
 			setGameName(res2.response.game.name);
 			setCardsData(res2.response.game.cards);
@@ -76,8 +79,13 @@ export const SearchBar = () => {
 		console.log("leaveGame:>> ", res2.response);
 	}
 	return (
-		<div>
-			<div style={{ display: "flex", flexDirection: "column", width: "20vw" }}>
+		<div className="SearchBar">
+			<div
+				style={{
+					display: shown ? "flex" : "none",
+					flexDirection: "column",
+				}}
+			>
 				{error}
 				<input
 					onChange={(e) => {
@@ -112,6 +120,13 @@ export const SearchBar = () => {
 					}}
 				></input>
 			</div>
+			<button
+				onClick={() => {
+					setShown(!shown);
+				}}
+			>
+				{shown ? "Hide" : "Show"}
+			</button>
 		</div>
 	);
 };

@@ -7,8 +7,8 @@ async function checkForEntry(ref, data) {
 		.ref(ref + data.game)
 		.once("value")
 		.then((snap) => {
-			let x = snap.val();
-			return x === null ? null : x;
+			let game = snap.val();
+			return game === null ? null : game;
 		});
 }
 async function getGame(ref) {
@@ -81,9 +81,10 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 				res.json({ response: { code: "JoinedGame", game: game } })
 			);
 		} else {
-			return setFields(data).then((game) =>
-				res.json({ response: { code: "alreadyInGame", game: game } })
-			);
+			// return setFields(data).then(
+			// (game) => console.log(game)
+			res.json({ response: { code: "alreadyInGame", game: game } });
+			// );
 		}
 	});
 };

@@ -41,13 +41,10 @@ export const GameData = () => {
 	}, [gameData]);
 	return (
 		<div>
-			<h1>game</h1>
-			<button onClick={() => observ(gameData.name)}>watch</button>
-			{gameData.name === null ? (
-				<div>xd</div>
-			) : (
+			{gameData.name === null ? null : (
 				<div>
 					<p>GameName:{gameData.name}</p>
+					<button onClick={() => observ(gameData.name)}>Start</button>
 					<div>
 						{gameData.cards !== null && gameData.players !== null ? (
 							<GameField data={gameData} />

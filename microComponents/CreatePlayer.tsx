@@ -26,6 +26,7 @@ export const CreatePlayer = () => {
 				name: res2.response.name,
 				key: res2.response.key,
 			});
+			localStorage.setItem("player", JSON.stringify(res2.response));
 			router.push("/");
 		} else {
 			setError(res2.response);
@@ -36,8 +37,9 @@ export const CreatePlayer = () => {
 		register(data);
 	}
 	return (
-		<div>
+		<div className="Register">
 			{error}
+			<label>Wypełnij aby się zarejsestrować</label>
 			<input
 				placeholder="Give name"
 				onChange={(e) => {

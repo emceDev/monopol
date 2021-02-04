@@ -3,6 +3,7 @@ import { useRecoilState } from "recoil";
 
 import { mainPlayerData } from "../state/atom";
 import { useRouter } from "next/router";
+
 // check if user in db
 
 export const Login = () => {
@@ -26,7 +27,8 @@ export const Login = () => {
 				loggedIn: true,
 				name: res2.response.name,
 			});
-			router.push("/");
+			localStorage.setItem("player", JSON.stringify(res2.response));
+			router.push("/Home");
 		}
 	}
 	function handleLogin() {
@@ -35,8 +37,8 @@ export const Login = () => {
 	}
 
 	return (
-		<div>
-			{playerData.name}
+		<div className="Login">
+			<label>Fill to log in</label>
 			{error}
 			<input
 				placeholder="Give name to login"
@@ -55,7 +57,7 @@ export const Login = () => {
 					handleLogin();
 				}}
 			>
-				Login
+				Suko
 			</button>
 		</div>
 	);

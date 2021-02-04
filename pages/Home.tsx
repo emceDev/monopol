@@ -14,22 +14,23 @@ const Home = () => {
 
 	const router = useRouter();
 	useEffect(() => {
-		if (mainPlayer.loggedIn === false) {
+		if (mainPlayer.name === (undefined || null)) {
 			router.push("/");
 		} else {
+			console.log(mainPlayer);
 			// setData(observ());
 		}
-	}, [mainPlayer.loggedIn]);
+	}, [mainPlayer]);
 
 	return (
 		<div>
 			<Head>
-				<title>Create Next App</title>
+				<title>Monopolowi</title>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<div>
+				{"Witaj " + mainPlayer.name}
 				<SearchBar />
-
 				<GameData />
 			</div>
 		</div>

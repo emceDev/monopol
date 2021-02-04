@@ -1,0 +1,7 @@
+.Login,
+.Register {
+	display: flex;
+	flex-direction: column;
+}
+.Register {
+}
