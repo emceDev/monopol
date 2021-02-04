@@ -4,6 +4,7 @@ import { mainPlayerData } from "../state/atom";
 import { mainGameData, playersAtom, focusedCardData } from "../state/atom";
 import { DisplayModalButtons } from "../nanoComponents/DisplayModalButtons";
 import { DisplayModalCard } from "../nanoComponents/DisplayModalCard";
+
 const Chance = (props) => {
 	return (
 		<div>

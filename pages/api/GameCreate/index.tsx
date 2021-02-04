@@ -64,7 +64,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 					"city39",
 					"city40",
 				],
-				color: "blue",
+				color: "#8c8cc9cf",
 			},
 			[data.creator]: {
 				key: data.key,

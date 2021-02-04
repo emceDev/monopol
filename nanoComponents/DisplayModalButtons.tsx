@@ -42,9 +42,9 @@ const TradeWithBankButtons = (props) => {
 					);
 				}}
 			>
-				Yes
+				Kup
 			</button>
-			<button>No</button>
+			<button>Licytuj</button>
 		</div>
 	);
 };
@@ -89,10 +89,10 @@ export const DisplayModalButtons = (props) => {
 	}
 	return (
 		<div>
+			XD
 			{props.cardData.owner === "bank" ? (
 				<TradeWithBankButtons data={props} />
 			) : null}
-
 			{props.cardData.owner === props.playerName ? (
 				<SetUpHomes data={props} />
 			) : null}

@@ -1,23 +1,21 @@
-:root {
-	/* --gtcw: calc(50vw / 15); */
-	--white: #ffffff;
-}
-/* calc(100vh / 15)) */
 .Field {
-	background-color: rgb(226, 202, 158);
+	/* background-color: rgb(226, 202, 158); */
 	display: grid;
-	grid-template-columns: 5vw 7vw repeat(9, 10vw) 7vw 5vw;
+	grid-template-columns: 3vw 7vw repeat(9, 10vw) 7vw 3vw;
 	grid-template-rows: 5vw 7vw repeat(9, 10vw) 7vw 5vw;
 }
-
-/* .Field div :first-of-type {
-	text-align: center;
-	
-} */
+* {
+	word-break: break-all;
+}
+@media screen and (min-width: 320px) {
+	* {
+		font-size: calc(5px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+		word-break: break-all;
+	}
+}
 .Field div {
 	width: auto;
 	height: auto;
-	font-size: small;
 	display: flex;
 	flex-direction: column;
 	font-size: 12px;
@@ -27,10 +25,7 @@
 	display: flex;
 	align-items: center;
 }
-.div1 {
-	grid-template-columns: 1fr 1fr;
-	grid-template-rows: 1fr 1fr;
-}
+
 .div1 .cardData {
 	display: grid;
 	grid-area: 1 / 1 / 2 / 2;
@@ -60,7 +55,7 @@
 .div28 .cardData,
 .div29 .cardData,
 .div30 .cardData {
-	background-color: rgb(1, 233, 233);
+	/* background-color: rgb(1, 233, 233); */
 	transform: rotate(180deg);
 	height: 100%;
 	width: 10vw;
@@ -74,7 +69,7 @@
 .div8 .cardData,
 .div9 .cardData,
 .div10 .cardData {
-	background-color: rgb(86, 233, 1);
+	/* background-color: rgb(86, 233, 1); */
 	height: 100%;
 	width: 10vw;
 }
@@ -88,7 +83,7 @@
 .div18 .cardData,
 .div19 .cardData,
 .div20 .cardData {
-	background-color: green;
+	/* background-color: green; */
 	transform: rotate(90deg);
 	height: 100%;
 	width: 10vw;
@@ -103,7 +98,7 @@
 .div38 .cardData,
 .div39 .cardData,
 .div40 .cardData {
-	background-color: rgb(208, 255, 0);
+	/* background-color: rgb(208, 255, 0); */
 	transform: rotate(-90deg);
 	height: 100%;
 	width: 10vw;
@@ -232,16 +227,16 @@
 	grid-area: 1 / 3 / 3 / 3;
 }
 .DisplayModal {
-	grid-area: 3 / 7 / 3 / 4;
+	grid-area: 6 / 7 / 4 / 4;
 	background-color: slategrey;
 }
 .PlayersList {
-	grid-area: 3 / 11 / 5 / 7;
+	grid-area: 4 / 11 / 8 / 7;
 	background-color: saddlebrown;
 	display: flex;
 }
 .PlayerCard {
-	grid-area: 4 / 4 / 4 / 7;
+	grid-area: 8 / 4 / 6 / 7;
 
 	background-color: lightblue;
 }
