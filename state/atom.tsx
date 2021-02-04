@@ -51,7 +51,7 @@ export const cardsAtom = atom({
 			price: 0,
 			name: "Start",
 			country: "other",
-			tax: undefined,
+			tax: null,
 		},
 		city2: {
 			id: 2,

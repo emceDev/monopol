@@ -1,0 +1,74 @@
+.Field div {
+	width: auto;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	font-size: 12px;
+	text-align: center;
+}
+.cardData {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	border-left: 1px solid;
+	border-bottom: 1px solid;
+}
+.DisplayModal {
+	grid-area: 8/7/6/4;
+	background-color: slategrey;
+}
+.cardDataHomes {
+	z-index: 0;
+	border-bottom: solid 1px;
+	border-top: solid 1px;
+	min-height: 20%;
+	min-width: 100%;
+}
+.div1 .cardData {
+	border-right: solid 1px;
+	border-bottom: solid 1px;
+}
+.div11 .cardData {
+	border-bottom: solid 1px;
+}
+.div21 .cardData {
+	border-bottom: 0px;
+	border-left: solid 1px;
+	border-right: solid 1px;
+}
+.div31 .cardData {
+	border-right: 1px solid;
+	border-left: 0px;
+}
+
+.PlayersList {
+	grid-area: 4 / 11 / 8 / 7;
+	background-color: saddlebrown;
+	display: flex;
+}
+.PlayerCard {
+	grid-area: 6/4/4/7;
+	height: 100%;
+	background-color: lightblue;
+}
+.PlayerCardButton {
+	width: 100%;
+	height: 100%;
+	background-color: indigo;
+}
+
+.div1 .cardDataHomes,
+.div11 .cardDataHomes,
+.div21 .cardDataHomes,
+.div31 .cardDataHomes {
+	min-height: 0%;
+	max-height: 0%;
+	width: 0px;
+	border-top: 0px;
+}
+.div1 .cardData,
+.div11 .cardData,
+.div21 .cardData,
+.div31 .cardData {
+	height: 100%;
+}

@@ -1,4 +1,3 @@
-// import { FieldCard } from "../microComponents/FieldCard";
 import { useEffect, useState } from "react";
 import { mainGameData, playersAtom, focusedCardData } from "../state/atom";
 import { useRecoilState, useRecoilValue } from "recoil";
@@ -30,9 +29,6 @@ export const FieldCard = (props) => {
 				<div
 					className="cardDataHomes"
 					style={{
-						width: "100%",
-						height: "20%",
-						zIndex: 100,
 						backgroundColor:
 							props.cardData.color !== undefined
 								? props.cardData.color
