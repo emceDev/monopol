@@ -40,7 +40,7 @@ export const PlayerCard = () => {
 
 	return (
 		<div className="PlayerCard">
-			{playerData.loggedIn ? (
+			{playerData ? (
 				<>
 					<div>PlayerName:{playerData.name}</div>
 					{err}

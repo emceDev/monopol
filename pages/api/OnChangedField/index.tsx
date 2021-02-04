@@ -13,13 +13,6 @@ export async function onChangedField(data, cardD) {
 	let playerName = data.playerName;
 	let card = cardD;
 	let gameName = data.gameName;
-	const newData = (x: number) => {
-		let playerName = data.playerName;
-		let gameName = data.gameName;
-		let previousField = data.previousField;
-		let nextField = x;
-	};
-
 	if ((card.country === "other") === false) {
 		if (card.owner === playerName) {
 			console.log("player owns");
@@ -99,3 +92,4 @@ export async function onChangedField(data, cardD) {
 			};
 	}
 }
+// changeBalance(gameName,'bank',playerName,200)

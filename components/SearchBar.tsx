@@ -61,9 +61,11 @@ export const SearchBar = () => {
 			setGameName(res2.response.game.name);
 			setCardsData(res2.response.game.cards);
 		} else {
+			setShown(false);
 			setError(res2.response.code);
 			setPlayers(res2.response.game.players);
 			setGameName(res2.response.game.name);
+			setCardsData(res2.response.game.cards);
 		}
 	}
 	async function leaveGame() {

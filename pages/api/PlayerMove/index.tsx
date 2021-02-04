@@ -1,5 +1,6 @@
 import next, { NextApiRequest, NextApiResponse } from "next";
 import { app } from "../config/firebase";
+import { changeBalance } from "../MoneyTransfer";
 import { onChangedField } from "../OnChangedField";
 async function updateCurrentFieldInPlayers(data) {
 	return await app
@@ -72,7 +73,9 @@ export async function movePlayer(data) {
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
 	const data = JSON.parse(req.body);
-	console.log("move player");
+	if (data.nextField < data.previousField) {
+		changeBalance(data.gameName, "bank", data.playerName, 200);
+	}
 	return movePlayer(data).then((x) => {
 		return res.json(x);
 	});
