@@ -80,3 +80,4 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 		return res.json(x);
 	});
 };
+// przechodzisz na pole 15

@@ -40,7 +40,7 @@ export const GameData = () => {
 		return;
 	}, [gameData]);
 	return (
-		<div>
+		<div className="GameData">
 			{gameData.name === null ? null : (
 				<div>
 					<p>GameName:{gameData.name}</p>

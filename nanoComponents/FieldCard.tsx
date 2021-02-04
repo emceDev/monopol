@@ -13,7 +13,7 @@ export const FieldCard = (props) => {
 					? gameData.players[props.cardData.owner].color
 					: "#F9EAE1",
 			}}
-			className={"div" + props.cardData.id}
+			className={"div" + props.cardData.id + " " + "FieldCard"}
 			id={props.cardData.id}
 			onClick={() => {
 				setCardData(props.cardData);
@@ -37,20 +37,34 @@ export const FieldCard = (props) => {
 				>
 					{() => {
 						for (let i = 0; i < props.cardData.homes.length; i++) {
-							<div>x</div>;
+							<div></div>;
 						}
 					}}
 				</div>
-				<p>
-					{props.cardData.id}.{props.cardData.name}
-				</p>
-				{props.cardData.price === 0 ? null : <p>Cena:{props.cardData.price}</p>}
-				<ol style={{ display: scale ? "block" : "none" }}>
-					{props.cardData.tax === null ||
-					(props.cardData.tax === undefined) === true
-						? null
-						: props.cardData.tax.map((x) => <li>{x}</li>)}
-				</ol>
+				<div>
+					<p>
+						{props.cardData.id}.{props.cardData.name}
+					</p>
+					{props.cardData.price === 0 ? null : (
+						<p>Cena:{props.cardData.price}</p>
+					)}
+					<ol
+						style={{
+							// display: scale ? "block" : "none",
+							opacity: scale ? "1" : "0",
+							// transform: scale ? "scaleY(1)" : "scaleY(0)",
+							// height: scale ? "7vw" : "0%",
+							backgroundColor: gameData.players[props.cardData.owner].color,
+						}}
+						className="taxList"
+					>
+						{props.cardData.tax === null ||
+						(props.cardData.tax === undefined) === true
+							? null
+							: props.cardData.tax.map((x) => <li>{x}</li>)}
+					</ol>
+				</div>
+
 				{!props.cardData.whoIsOn ? null : (
 					<p style={{ backgroundColor: "Brown" }}>{props.cardData.whoIsOn}</p>
 				)}

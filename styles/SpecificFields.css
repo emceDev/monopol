@@ -1,11 +1,3 @@
-.Field div {
-	width: auto;
-	height: auto;
-	display: flex;
-	flex-direction: column;
-	font-size: 12px;
-	text-align: center;
-}
 .cardData {
 	display: flex;
 	align-items: center;
@@ -25,6 +17,7 @@
 	min-width: 100%;
 }
 .div1 .cardData {
+	border-top: 0px;
 	border-right: solid 1px;
 	border-bottom: solid 1px;
 }
@@ -32,13 +25,12 @@
 	border-bottom: solid 1px;
 }
 .div21 .cardData {
-	border-bottom: 0px;
+	border-bottom: solid 1px;
 	border-left: solid 1px;
-	border-right: solid 1px;
 }
 .div31 .cardData {
 	border-right: 1px solid;
-	border-left: 0px;
+	border-left: 1px solid;
 }
 
 .PlayersList {
@@ -52,11 +44,26 @@
 	background-color: lightblue;
 }
 .PlayerCardButton {
-	width: 100%;
-	height: 100%;
+	width: 50%;
+	height: 50%;
+	margin: auto;
 	background-color: indigo;
 }
 
+.taxList {
+	position: absolute;
+	width: 10vw;
+	transition: opacity 0.4s;
+}
+
+@keyframes zoom {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
 .div1 .cardDataHomes,
 .div11 .cardDataHomes,
 .div21 .cardDataHomes,

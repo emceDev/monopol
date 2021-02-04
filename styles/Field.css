@@ -1,7 +1,12 @@
+.GameData {
+	width: 200vw;
+}
 .Field {
+	margin: auto;
 	/* background-color: rgb(226, 202, 158); */
+	max-width: 98vw;
 	display: grid;
-	grid-template-columns: 3vw 7vw repeat(9, 10vw) 7vw 3vw;
+	grid-template-columns: 7vw 7vw repeat(9, 10vw) 7vw 7vw;
 	grid-template-rows: 5vw 7vw repeat(9, 10vw) 7vw 5vw;
 }
 
@@ -14,7 +19,11 @@
 		word-break: break-all;
 	}
 }
-
+.cardData {
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+}
 .div22 .cardData,
 .div23 .cardData,
 .div24 .cardData,
@@ -24,8 +33,10 @@
 .div28 .cardData,
 .div29 .cardData,
 .div30 .cardData {
-	transform: rotate(180deg);
-	height: 100%;
+	/* transform: rotate(180deg); */
+	/* height: 100%; */
+	display: flex;
+	flex-direction: column-reverse;
 	width: 10vw;
 }
 .div2 .cardData,
@@ -50,9 +61,29 @@
 .div18 .cardData,
 .div19 .cardData,
 .div20 .cardData {
-	transform: rotate(90deg);
+	/* transform: rotate(90deg); */
 	height: 100%;
-	width: 10vw;
+	width: 14vw;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row-reverse;
+}
+.div12 .cardDataHomes,
+.div13 .cardDataHomes,
+.div14 .cardDataHomes,
+.div15 .cardDataHomes,
+.div16 .cardDataHomes,
+.div17 .cardDataHomes,
+.div18 .cardDataHomes,
+.div19 .cardDataHomes,
+.div20 .cardDataHomes {
+	/* transform: rotate(90deg); */
+	border-left: 1px solid;
+	border-right: 1px solid;
+	border-top: 0px;
+	border-bottom: 0px;
+	height: 100%;
+	min-width: 20%;
 }
 .div32 .cardData,
 .div33 .cardData,
@@ -64,9 +95,28 @@
 .div38 .cardData,
 .div39 .cardData,
 .div40 .cardData {
-	transform: rotate(-90deg);
+	/* transform: rotate(-90deg); */
+	display: flex;
+	flex-direction: row;
+	justify-content: end;
 	height: 100%;
-	width: 10vw;
+	width: 14vw;
+}
+.div32 .cardData .cardDataHomes,
+.div33 .cardData .cardDataHomes,
+.div34 .cardData .cardDataHomes,
+.div34 .cardData .cardDataHomes,
+.div35 .cardData .cardDataHomes,
+.div36 .cardData .cardDataHomes,
+.div37 .cardData .cardDataHomes,
+.div38 .cardData .cardDataHomes,
+.div39 .cardData .cardDataHomes,
+.div40 .cardData .cardDataHomes {
+	border-right: 1px solid;
+	border-top: 0px;
+	border-bottom: 0px;
+	height: 100%;
+	min-width: 20%;
 }
 .div1 {
 	grid-area: 12 / 12 / 14 / 14;
