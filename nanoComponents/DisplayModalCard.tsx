@@ -10,8 +10,8 @@ export const DisplayModalCard = (props) => {
 			</p>
 			<p>cena: {props.cardData.price}</p>
 			{/* {console.log(props.cardData.tax)} */}
-			{props.cardData.tax === undefined ? null : props.cardData.tax.length ===
-			  1 ? (
+			{props.cardData.tax === undefined ||
+			props.cardData.tax === null ? null : props.cardData.tax.length === 1 ? (
 				<p>{props.cardData.tax[0]}</p>
 			) : (
 				<ol>

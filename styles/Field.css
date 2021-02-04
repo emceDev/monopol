@@ -24,27 +24,30 @@
 .cardData {
 	display: flex;
 	align-items: center;
+	border-left: solid 1px;
+	border-top: solid 1px;
+}
+.cardData .cardDataHomes {
+	border-bottom: solid 1px;
 }
 
-.div1 .cardData {
+.div1 .cardData,
+.div11 .cardData {
 	display: grid;
 	grid-area: 1 / 1 / 2 / 2;
-	transform: rotate(-45deg);
+	border-left: 0px;
+	border-top: 0px;
+}
+.div21 * {
+	border: 0px;
+}
+/* .div11 {
+	border-top: 1px solid;
 }
 
-.div11 .cardData {
-	background-color: indigo;
-	transform: rotate(45deg);
-	justify-content: center;
-}
-.div11 .cardData .cardDataHomes {
-	width: 0vw;
-}
-.div21,
 .div31 {
-	/* width: 20vw;
-	height: 20vw; */
-}
+	border-bottom: 1px solid;
+} */
 
 .div22 .cardData,
 .div23 .cardData,
@@ -55,7 +58,6 @@
 .div28 .cardData,
 .div29 .cardData,
 .div30 .cardData {
-	/* background-color: rgb(1, 233, 233); */
 	transform: rotate(180deg);
 	height: 100%;
 	width: 10vw;
@@ -69,7 +71,6 @@
 .div8 .cardData,
 .div9 .cardData,
 .div10 .cardData {
-	/* background-color: rgb(86, 233, 1); */
 	height: 100%;
 	width: 10vw;
 }
@@ -227,16 +228,22 @@
 	grid-area: 1 / 3 / 3 / 3;
 }
 .DisplayModal {
-	grid-area: 6 / 7 / 4 / 4;
+	grid-area: 8/7/6/4;
 	background-color: slategrey;
 }
+
 .PlayersList {
 	grid-area: 4 / 11 / 8 / 7;
 	background-color: saddlebrown;
 	display: flex;
 }
 .PlayerCard {
-	grid-area: 8 / 4 / 6 / 7;
-
+	grid-area: 6/4/4/7;
+	height: 100%;
 	background-color: lightblue;
+}
+.PlayerCardButton {
+	width: 100%;
+	height: 100%;
+	background-color: indigo;
 }

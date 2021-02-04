@@ -88,7 +88,7 @@ export const DisplayModalButtons = (props) => {
 		console.log(props);
 	}
 	return (
-		<div>
+		<div className="DisplayModalButtons">
 			XD
 			{props.cardData.owner === "bank" ? (
 				<TradeWithBankButtons data={props} />

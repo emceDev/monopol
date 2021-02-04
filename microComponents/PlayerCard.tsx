@@ -41,11 +41,13 @@ export const PlayerCard = () => {
 	return (
 		<div className="PlayerCard">
 			{playerData.loggedIn ? (
-				<div>
+				<>
 					<div>PlayerName:{playerData.name}</div>
 					{err}
-					<button onClick={() => roll()}>roll</button>
-				</div>
+					<div className="PlayerCardButton" onClick={() => roll()}>
+						roll
+					</div>
+				</>
 			) : (
 				<div>zaloguj siebie</div>
 			)}

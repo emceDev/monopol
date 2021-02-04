@@ -50,7 +50,8 @@ export const FieldCard = (props) => {
 				</p>
 				{props.cardData.price === 0 ? null : <p>Cena:{props.cardData.price}</p>}
 				<ol style={{ display: scale ? "block" : "none" }}>
-					{!props.cardData.tax === true
+					{props.cardData.tax === null ||
+					(props.cardData.tax === undefined) === true
 						? null
 						: props.cardData.tax.map((x) => <li>{x}</li>)}
 				</ol>

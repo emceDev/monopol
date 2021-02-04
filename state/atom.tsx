@@ -203,7 +203,7 @@ export const cardsAtom = atom({
 			country: "koleje",
 			color: "#F4E3B2",
 			homes: 0,
-			tax: null,
+			tax: [12],
 		},
 		city17: {
 			id: 17,
