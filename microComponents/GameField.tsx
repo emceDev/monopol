@@ -15,7 +15,6 @@ export const GameField = (props) => {
 
 	return (
 		<div className="Field" onClick={(e) => clicked(e)}>
-			<DisplayModal />
 			<PlayerCard />
 			<NewsFeed news={props.data.newsFeed} />
 			{gameData.players !== null ? <PlayersList data={gameData} /> : null}

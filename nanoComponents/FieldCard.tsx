@@ -5,7 +5,15 @@ export const FieldCard = (props) => {
 	const gameData = useRecoilValue(mainGameData);
 	const [cardData, setCardData] = useRecoilState(focusedCardData);
 	const [scale, setScale] = useState(false);
-	useEffect(() => {}, [gameData]);
+	const [homes, setHomes] = useState([]);
+
+	useEffect(() => {
+		let homesArr = [];
+		for (let i = 0; i < props.cardData.homes; i++) {
+			homesArr.push(<div className="home"></div>);
+		}
+		setHomes(homesArr);
+	}, [gameData]);
 	return (
 		<div
 			style={{
@@ -35,11 +43,7 @@ export const FieldCard = (props) => {
 								: "gray",
 					}}
 				>
-					{() => {
-						for (let i = 0; i < props.cardData.homes.length; i++) {
-							<div className="home"></div>;
-						}
-					}}
+					{homes}
 				</div>
 				<div>
 					<p>

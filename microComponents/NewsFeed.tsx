@@ -14,7 +14,11 @@ export const NewsFeed = (props) => {
 			}}
 			style={{ height: shown ? "20vh" : "5vh" }}
 		>
-			<ol>{props.news?.map((news) => ({ news }))}</ol>
+			<ol>
+				{props.news?.map((news) => (
+					<li>{news}</li>
+				))}
+			</ol>
 		</div>
 	);
 };
