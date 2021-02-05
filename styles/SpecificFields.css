@@ -7,12 +7,16 @@
 }
 .NewsFeed {
 	position: fixed;
+	z-index: 2;
 	width: 50vw;
-	height: 5vh;
 	background-color: blueviolet;
-	top: 5%;
+	top: 0vh;
 	left: 25vw;
+	overflow: scroll;
+	overflow-x: hidden;
+	transition: height 0.7s;
 }
+
 .DisplayModal {
 	grid-area: 8/7/6/4;
 	background-color: slategrey;
@@ -71,8 +75,6 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-}
-.cardDataPlayer {
 }
 .taxList {
 	position: absolute;
