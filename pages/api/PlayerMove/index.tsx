@@ -68,9 +68,9 @@ export async function movePlayer(data) {
 		.then((x) => updateCurrentFieldInPlayers(data))
 		.then((x) => getCard(data.gameName, data.nextField, ""))
 		.then((card) => onChangedField(data, card))
-		.then((x) => () => {
-			setNewsFeed(game, x.newsFeed);
-			x;
+		.then((x) => {
+			setNewsFeed(data.gameName, x.newsFeed);
+			return x;
 		});
 
 	return changed;

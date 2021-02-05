@@ -1,5 +1,9 @@
 import { atom, selector } from "recoil";
 
+export const newsFeedAtom = atom({
+	key: "newsFeedData",
+	default: null,
+});
 export const focusedCardData = atom({
 	key: "focusedCardData",
 	default: null,
@@ -442,7 +446,8 @@ export const mainGameData = selector({
 		const players = get(playersAtom);
 		const cards = get(cardsAtom);
 		const name = get(gameNameAtom);
-		const mainGameData = { name, players, cards };
+		const newsFeed = get(newsFeedAtom);
+		const mainGameData = { name, players, cards, newsFeed };
 		return {
 			...mainGameData,
 		};

@@ -5,6 +5,7 @@ import {
 	cardsAtom,
 	playersAtom,
 	gameNameAtom,
+	newsFeedAtom,
 } from "../state/atom";
 import { GameField } from "../microComponents/GameField";
 import swr from "swr";
@@ -12,6 +13,7 @@ export const GameData = () => {
 	const gameData = useRecoilValue(mainGameData);
 	const [cardsData, setCardsData] = useRecoilState(cardsAtom);
 	const [playersData, setPlayersData] = useRecoilState(playersAtom);
+	const [newsFeedData, setNewsFeedData] = useRecoilState(newsFeedAtom);
 	const [gameName, setGameName] = useRecoilState(gameNameAtom);
 	const [observing, setObserving] = useState(false);
 	async function observ(x: string) {
@@ -28,6 +30,7 @@ export const GameData = () => {
 			console.log(response);
 			setCardsData(response.data.cards);
 			setPlayersData(response.data.players);
+			setNewsFeedData(response.data.newsFeed);
 			console.log("mainGameData");
 			console.log(gameData);
 		}, 2000);
@@ -48,7 +51,6 @@ export const GameData = () => {
 					{!observing ? (
 						<button onClick={() => observ(gameData.name)}>Start</button>
 					) : null}
-
 					<div>
 						{gameData.cards !== null && gameData.players !== null ? (
 							<GameField data={gameData} />

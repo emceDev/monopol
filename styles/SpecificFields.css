@@ -5,6 +5,14 @@
 	border-left: 1px solid;
 	border-bottom: 1px solid;
 }
+.NewsFeed {
+	position: fixed;
+	width: 50vw;
+	height: 5vh;
+	background-color: blueviolet;
+	top: 5%;
+	left: 25vw;
+}
 .DisplayModal {
 	grid-area: 8/7/6/4;
 	background-color: slategrey;
