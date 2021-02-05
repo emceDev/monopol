@@ -54,7 +54,7 @@ export const FieldCard = (props) => {
 							opacity: scale ? "1" : "0",
 							// transform: scale ? "scaleY(1)" : "scaleY(0)",
 							// height: scale ? "7vw" : "0%",
-							backgroundColor: gameData.players[props.cardData.owner].color,
+							backgroundColor: gameData.players[props.cardData.owner]?.color,
 						}}
 						className="taxList"
 					>
@@ -66,7 +66,14 @@ export const FieldCard = (props) => {
 				</div>
 
 				{!props.cardData.whoIsOn ? null : (
-					<p style={{ backgroundColor: "Brown" }}>{props.cardData.whoIsOn}</p>
+					<div
+						className="whoIsOn"
+						style={{
+							backgroundColor: gameData?.players[props.cardData.whoIsOn]?.color,
+						}}
+					>
+						{props.cardData.whoIsOn}
+					</div>
 				)}
 			</div>
 		</div>

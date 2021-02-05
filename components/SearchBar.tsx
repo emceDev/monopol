@@ -54,18 +54,20 @@ export const SearchBar = () => {
 		const res2 = await res1.json();
 		console.log("response");
 		console.log(res2);
-		if (res2.response.code === "JoinedGame") {
+		if (res2.response.code === "Pomyślnie dołączono") {
 			// console.log(res2);
 			setShown(false);
 			setPlayers(res2.response.game.players);
 			setGameName(res2.response.game.name);
 			setCardsData(res2.response.game.cards);
-		} else {
+		} else if (res2.response.code === "Ponowne dołączanie do gry") {
 			setShown(false);
 			setError(res2.response.code);
 			setPlayers(res2.response.game.players);
 			setGameName(res2.response.game.name);
 			setCardsData(res2.response.game.cards);
+		} else {
+			setError(res2.response.code);
 		}
 	}
 	async function leaveGame() {

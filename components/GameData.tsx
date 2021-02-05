@@ -14,7 +14,7 @@ export const GameData = () => {
 	const [playersData, setPlayersData] = useRecoilState(playersAtom);
 	const [gameName, setGameName] = useRecoilState(gameNameAtom);
 
-	async function observ(x) {
+	async function observ(x: string) {
 		setInterval(async () => {
 			const observer = await fetch("api/GameObserver", {
 				method: "POST",

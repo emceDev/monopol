@@ -76,14 +76,16 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 
 	let isInDb = checkForEntry(reference, data);
 	return isInDb.then((game) => {
-		if (game.players[data.player] === undefined) {
+		if (game === null) {
+			res.json({ response: { code: "Nie znaleziono gry", game: null } });
+		} else if (game.players[data.player] === undefined) {
 			return setFields(data).then((game) =>
-				res.json({ response: { code: "JoinedGame", game: game } })
+				res.json({ response: { code: "Pomyślnie dołączono", game: game } })
 			);
-		} else {
+		} else if (game.players[data.player] !== undefined) {
 			// return setFields(data).then(
 			// (game) => console.log(game)
-			res.json({ response: { code: "alreadyInGame", game: game } });
+			res.json({ response: { code: "Ponowne dołączanie do gry", game: game } });
 			// );
 		}
 	});
