@@ -64,7 +64,7 @@ export const PlayerCard = () => {
 						<div className="PlayerCardUi">
 							<div className="PlayerDataRoll">
 								<p>{playerData.name}</p>
-								<p>{playersData[playerData.name].balance}</p>
+								<p>{playersData[playerData.name]?.balance}</p>
 								<div className="RollButton" onClick={() => roll()}>
 									Rzut kostką!
 								</div>
