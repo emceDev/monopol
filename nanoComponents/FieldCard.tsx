@@ -37,7 +37,7 @@ export const FieldCard = (props) => {
 				>
 					{() => {
 						for (let i = 0; i < props.cardData.homes.length; i++) {
-							<div></div>;
+							<div className="home"></div>;
 						}
 					}}
 				</div>
@@ -72,7 +72,13 @@ export const FieldCard = (props) => {
 							backgroundColor: gameData?.players[props.cardData.whoIsOn]?.color,
 						}}
 					>
-						{props.cardData.whoIsOn}
+						{props.cardData.whoIsOn.length === 1 ? (
+							<div className="cardDataPlayer">{props.cardData.whoIsOn}</div>
+						) : (
+							props.cardData.whoIsOn.map((player) => {
+								return <div className="cardDataPlayer">{player}</div>;
+							})
+						)}
 					</div>
 				)}
 			</div>

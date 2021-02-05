@@ -10,7 +10,7 @@ export const PlayerCard = () => {
 	const [playersData, setPlayersData] = useRecoilState(playersAtom);
 	const [err, setErr] = useState(null);
 	const [cardData, setCardData] = useRecoilState(focusedCardData);
-
+	const [cooldown, setCooldown] = useState(false);
 	async function movePlayer(fieldId) {
 		const res1 = await fetch("api/PlayerMove", {
 			method: "POST",
@@ -36,6 +36,10 @@ export const PlayerCard = () => {
 		} else {
 			movePlayer(sum);
 		}
+		setCooldown(true);
+		setTimeout(() => {
+			setCooldown(false);
+		}, 2000);
 	}
 
 	return (
@@ -44,9 +48,11 @@ export const PlayerCard = () => {
 				<>
 					<div>PlayerName:{playerData.name}</div>
 					{err}
-					<div className="PlayerCardButton" onClick={() => roll()}>
-						roll
-					</div>
+					{!cooldown ? (
+						<div className="PlayerCardButton" onClick={() => roll()}>
+							Rzut kostką!
+						</div>
+					) : null}
 				</>
 			) : (
 				<div>zaloguj siebie</div>

@@ -1,6 +1,7 @@
 import next, { NextApiRequest, NextApiResponse } from "next";
 import { app } from "../config/firebase";
 import { changeBalance } from "../MoneyTransfer";
+import { setNewsFeed } from "../NewsFeed";
 import { onChangedField } from "../OnChangedField";
 async function updateCurrentFieldInPlayers(data) {
 	return await app
@@ -67,7 +68,11 @@ export async function movePlayer(data) {
 		.then((x) => updateCurrentFieldInPlayers(data))
 		.then((x) => getCard(data.gameName, data.nextField, ""))
 		.then((card) => onChangedField(data, card))
-		.then((x) => x);
+		.then((x) => () => {
+			setNewsFeed(game, x.newsFeed);
+			x;
+		});
+
 	return changed;
 }
 
@@ -81,3 +86,9 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 	});
 };
 // przechodzisz na pole 15
+
+// player moved
+// player paid player
+// player bought
+// player paid player
+// player chance

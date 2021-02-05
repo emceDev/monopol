@@ -13,15 +13,30 @@ export async function onChangedField(data, cardD) {
 	let playerName = data.playerName;
 	let card = cardD;
 	let gameName = data.gameName;
+
 	if ((card.country === "other") === false) {
 		if (card.owner === playerName) {
 			console.log("player owns");
-			return { code: "Jesteś właścicielem", data: card };
+			return {
+				newsFeed: playerName + " jest właścicielem pola " + card.name,
+				code: "Jesteś właścicielem",
+				data: card,
+			};
 		} else if (card.owner === "bank") {
 			console.log("Bank Jest właścicielem");
 			if (card.price !== 0 && card.owner === "bank") {
-				return { code: "chcesz kupić to pole?", data: card };
-			} else if (card.tax.length > 1) {
+				return {
+					newsFeed:
+						"bank sklada ofertę kupna pola " +
+						card.name +
+						" graczowi " +
+						playerName +
+						" za " +
+						card.price,
+					code: "chcesz kupić to pole?",
+					data: card,
+				};
+			} else if (card.tax.length === 1) {
 				return changeBalance(
 					gameName,
 					playerName,
@@ -29,7 +44,14 @@ export async function onChangedField(data, cardD) {
 					card.tax[0]
 				).then((x) => {
 					return {
-						code: "paid to" + card.owner,
+						newsFeed:
+							"gracz " +
+							playerName +
+							" stanął na polu " +
+							card.name +
+							" i zapłacił podatek wielkośći " +
+							card.tax[0],
+						code: playerName + " paid to " + card.owner,
 						data: card,
 					};
 				});
@@ -41,6 +63,13 @@ export async function onChangedField(data, cardD) {
 			return changeBalance(gameName, playerName, card.owner, amount).then(
 				(x) => {
 					return {
+						newsFeed:
+							"gracz " +
+							playerName +
+							" stanął na polu " +
+							card.name +
+							" i zapłacił graczowi " +
+							amount,
 						code: code,
 						data: { amount: amount, receiver: card.owner },
 					};
@@ -51,21 +80,26 @@ export async function onChangedField(data, cardD) {
 		console.log("card.country other");
 		if (card.id === 1) {
 			return {
+				newsFeed: playerName + " Wylądował na starcie.",
 				code: "Jesteś na starcie :)",
 				data: card,
 			};
 		} else if (card.id === 11) {
 			return {
-				code: "Odwiedzasz więzienie",
+				newsFeed: "Gracz " + playerName + " przechodzi obok baru",
+				code: "Przechodzisz obok baru",
 				data: card,
 			};
 		} else if (card.id === 21) {
 			return {
-				code: "Jesteś na parkingu",
+				newsFeed: "Gracz " + playerName + " odpoczywa na parkingu",
+				code: "Odpoczywasz na parkingu",
 				data: card,
 			};
 		} else if (card.id === 31) {
 			return {
+				newsFeed:
+					"Gracz " + playerName + " spędza trzy kolejki ze znajomymi w barze",
 				code: "Idziesz Do Baru",
 				data: card,
 			};
@@ -73,6 +107,13 @@ export async function onChangedField(data, cardD) {
 			return changeBalance(gameName, playerName, card.owner, card.tax[0]).then(
 				() => {
 					return {
+						newsFeed:
+							"Gracz " +
+							playerName +
+							" stanął na polu " +
+							card.name +
+							"i zaplacił " +
+							card.tax[0],
 						code: card.name + card.tax[0],
 						data: card,
 					};
@@ -82,14 +123,21 @@ export async function onChangedField(data, cardD) {
 			let chance = await chanceHandler(data);
 			console.log(chance);
 			return {
+				newsFeed:
+					"Gracz " +
+					playerName +
+					" stanął na polu " +
+					card.name +
+					". " +
+					chance,
 				code: chance,
 				data: card,
 			};
 		} else
 			return {
+				newsFeed: "Programista nie przewidział takiej rzeczy :P To ja O.o",
 				code: "some wronge",
 				data: card,
 			};
 	}
 }
-// changeBalance(gameName,'bank',playerName,200)

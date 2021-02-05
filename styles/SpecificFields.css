@@ -43,26 +43,29 @@
 	height: 100%;
 	background-color: lightblue;
 }
-.PlayerCardButton * {
+.PlayerCardButton {
 	width: 10vw;
 	height: 10vw;
 	/* transition: opacity 1s; */
-	opacity: 0.1;
 	z-index: 100;
 	position: fixed;
-	top: 20%;
-	left: 20%;
+	bottom: 5%;
+	left: 5%;
 	margin: auto;
 	background-color: indigo;
 	color: white;
 	font-size: xx-large;
 	font-weight: 900;
 }
-.PlayerCardButton {
-	background-color: red;
-	opacity: 1;
-}
 
+.whoIsOn {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.cardDataPlayer {
+}
 .taxList {
 	position: absolute;
 	width: 10vw;

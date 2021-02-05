@@ -76,6 +76,10 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 			},
 		},
 		cards: data.cards,
+		newsFeed: {
+			who: null,
+			what: null,
+		},
 	};
 	gameModel.cards.city1.whoIsOn = [data.creator];
 

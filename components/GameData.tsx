@@ -13,8 +13,9 @@ export const GameData = () => {
 	const [cardsData, setCardsData] = useRecoilState(cardsAtom);
 	const [playersData, setPlayersData] = useRecoilState(playersAtom);
 	const [gameName, setGameName] = useRecoilState(gameNameAtom);
-
+	const [observing, setObserving] = useState(false);
 	async function observ(x: string) {
+		setObserving(true);
 		setInterval(async () => {
 			const observer = await fetch("api/GameObserver", {
 				method: "POST",
@@ -44,7 +45,10 @@ export const GameData = () => {
 			{gameData.name === null ? null : (
 				<div>
 					<p>GameName:{gameData.name}</p>
-					<button onClick={() => observ(gameData.name)}>Start</button>
+					{!observing ? (
+						<button onClick={() => observ(gameData.name)}>Start</button>
+					) : null}
+
 					<div>
 						{gameData.cards !== null && gameData.players !== null ? (
 							<GameField data={gameData} />
