@@ -36,9 +36,6 @@ export const DisplayModal = () => {
 						<DisplayModalCard cardData={cardData} />
 					)}
 					{cardData.price !== 0 ? (
-						// buy sell cardData.owner === "bank" cardData.price > 0
-						// zloz oferte playerCurrent !==card.id
-						// nic cardData.owner === "bank"cardData.price === 0
 						<DisplayModalButtons
 							cardData={cardData}
 							playerName={playerData.name}

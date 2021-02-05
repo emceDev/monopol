@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
+import { DisplayModalCard } from "../nanoComponents/DisplayModalCard";
+import { PlayerCardList } from "../nanoComponents/PlayerCardList";
 import { mainPlayerData } from "../state/atom";
 import { mainGameData, playersAtom, focusedCardData } from "../state/atom";
 import { DisplayModal } from "./DisplayModal";
@@ -11,6 +13,15 @@ export const PlayerCard = () => {
 	const [err, setErr] = useState(null);
 	const [cardData, setCardData] = useRecoilState(focusedCardData);
 	const [cooldown, setCooldown] = useState(false);
+	const [ownedFields, setownedFields] = useState(null);
+	const [cardListHoover, setCardListHoover] = useState(false);
+	useEffect(() => {
+		let owned = Object.values(gameData.cards).filter(
+			(card) => card.owner === playerData.name
+		);
+		setownedFields(owned);
+	}, [gameData.cards]);
+
 	async function movePlayer(fieldId) {
 		const res1 = await fetch("api/PlayerMove", {
 			method: "POST",
@@ -24,7 +35,8 @@ export const PlayerCard = () => {
 		const res2 = await res1.json();
 		console.log("MOVEID");
 		console.log(res2);
-		setErr(res2.code);
+		// setErr(res2.code);
+
 		setCardData(res2?.data);
 	}
 	function roll() {
@@ -46,11 +58,32 @@ export const PlayerCard = () => {
 		<div className="PlayerCard">
 			{playerData ? (
 				<>
-					<div>PlayerName:{playerData.name}</div>
-					{err}
+					{/* {err} */}
+
 					{!cooldown ? (
-						<div className="PlayerCardButton" onClick={() => roll()}>
-							Rzut kostką!
+						<div className="PlayerCardUi">
+							<div className="PlayerDataRoll">
+								<p>{playerData.name}</p>
+								<p>{playersData[playerData.name].balance}</p>
+								<div className="RollButton" onClick={() => roll()}>
+									Rzut kostką!
+								</div>
+							</div>
+							<div className="PlayerDisplayModal">
+								<DisplayModal />
+								<div
+									className="mainPlayerCardList"
+									onMouseOver={() => setCardListHoover(true)}
+									onMouseLeave={() => {
+										setCardListHoover(false);
+									}}
+									style={{ height: cardListHoover ? "fit-content" : "3vw" }}
+								>
+									{ownedFields?.map((field) => (
+										<DisplayModalCard cardData={field} />
+									))}
+								</div>
+							</div>
 						</div>
 					) : null}
 				</>

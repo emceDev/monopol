@@ -4,7 +4,10 @@ export const DisplayModalCard = (props) => {
 	// 	console.log(props.cardData.id);
 	// }, []);
 	return (
-		<div>
+		<div
+			className="DisplayModalCard"
+			style={{ backgroundColor: props.cardData.color }}
+		>
 			<p>
 				{props.cardData.id}. {props.cardData.name}
 			</p>
