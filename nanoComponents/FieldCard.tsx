@@ -45,13 +45,19 @@ export const FieldCard = (props) => {
 				>
 					{homes}
 				</div>
-				<div>
-					<p>
-						{props.cardData.id}.{props.cardData.name}
-					</p>
-					{props.cardData.price === 0 ? null : (
-						<p>Cena:{props.cardData.price}</p>
-					)}
+				<div className="CardDataContainer">
+					<div>
+						<div style={{ fontWeight: "bold" }}>
+							{props.cardData.id}.{props.cardData.name}
+						</div>
+						<div>
+							{props.cardData.country !== "other"
+								? props.cardData.country
+								: null}
+						</div>
+
+						{props.cardData.price === 0 ? null : <p>{props.cardData.price}</p>}
+					</div>
 					<ol
 						style={{
 							// display: scale ? "block" : "none",
@@ -73,6 +79,9 @@ export const FieldCard = (props) => {
 					<div
 						className="whoIsOn"
 						style={{
+							position: "absolute",
+							width: "fit-content",
+
 							backgroundColor: gameData?.players[props.cardData.whoIsOn]?.color,
 						}}
 					>
@@ -80,7 +89,18 @@ export const FieldCard = (props) => {
 							<div className="cardDataPlayer">{props.cardData.whoIsOn}</div>
 						) : (
 							props.cardData.whoIsOn.map((player) => {
-								return <div className="cardDataPlayer">{player}</div>;
+								return (
+									<div
+										className="cardDataPlayer"
+										style={{
+											border: "1px solid",
+											padding: "5%",
+											backgroundColor: gameData?.players[player]?.color,
+										}}
+									>
+										{player}
+									</div>
+								);
 							})
 						)}
 					</div>

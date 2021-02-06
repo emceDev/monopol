@@ -2,6 +2,8 @@
 @import "SpecificFields.css";
 @import "Login.css";
 @import "SearchBar.css";
+@import "FieldCard.css";
+@import "PlayersList.css";
 html,
 body {
 	padding: 0;

@@ -71,7 +71,7 @@ export async function onChangedField(data, cardD) {
 							" i zapłacił graczowi " +
 							amount,
 						code: code,
-						data: { amount: amount, receiver: card.owner },
+						data: card,
 					};
 				}
 			);

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 async function transferCard(cardName, receiverRef, gameName) {
 	const pay = await fetch("api/CardTransfer", {
 		method: "POST",
@@ -83,14 +84,10 @@ const SetUpHomes = (props) => {
 };
 
 export const DisplayModalButtons = (props) => {
-	function c() {
-		console.log("buttons XXXXXXXXXXXXXXXX");
-		console.log(props);
-	}
 	return (
 		<div className="DisplayModalButtons">
-			XD
-			{props.cardData.owner === "bank" ? (
+			{props.cardData.owner === "bank" &&
+			props.cardData.whoIsOn?.includes(props.playerName) === true ? (
 				<TradeWithBankButtons data={props} />
 			) : null}
 			{props.cardData.owner === props.playerName ? (

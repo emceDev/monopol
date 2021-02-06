@@ -24,6 +24,7 @@ export default function RegLog() {
 			console.log("asdasd");
 		}
 	}, [player]);
+
 	return (
 		<div className={styles.container}>
 			{player === null ? (

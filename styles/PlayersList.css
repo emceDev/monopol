@@ -1,0 +1,5 @@
+.PlayersList {
+	grid-area: 4 / 4 / 8 / 11;
+	background-color: saddlebrown;
+	display: flex;
+}

@@ -60,32 +60,36 @@ export const PlayerCard = () => {
 				<>
 					{/* {err} */}
 
-					{!cooldown ? (
-						<div className="PlayerCardUi">
-							<div className="PlayerDataRoll">
-								<p>{playerData.name}</p>
-								<p>{playersData[playerData.name]?.balance}</p>
-								<div className="RollButton" onClick={() => roll()}>
-									Rzut kostką!
-								</div>
+					<div className="PlayerCardUi">
+						<div className="PlayerDataRoll">
+							<p>{playerData.name}</p>
+							<p>{playersData[playerData.name]?.balance}</p>
+							{/* {!cooldown ? ( */}
+							<div
+								className="RollButton"
+								onClick={() => roll()}
+								style={{ visibility: cooldown ? "hidden" : "visible" }}
+							>
+								Rzut kostką!
 							</div>
-							<div className="PlayerDisplayModal">
-								<DisplayModal />
-								<div
-									className="mainPlayerCardList"
-									onMouseOver={() => setCardListHoover(true)}
-									onMouseLeave={() => {
-										setCardListHoover(false);
-									}}
-									style={{ height: cardListHoover ? "fit-content" : "3vw" }}
-								>
-									{ownedFields?.map((field) => (
-										<DisplayModalCard cardData={field} />
-									))}
-								</div>
+							{/* ) : null} */}
+						</div>
+						<div className="PlayerDisplayModal">
+							<DisplayModal />
+							<div
+								className="mainPlayerCardList"
+								onMouseOver={() => setCardListHoover(true)}
+								onMouseLeave={() => {
+									setCardListHoover(false);
+								}}
+								style={{ height: cardListHoover ? "fit-content" : "3vw" }}
+							>
+								{ownedFields?.map((field) => (
+									<DisplayModalCard cardData={field} />
+								))}
 							</div>
 						</div>
-					) : null}
+					</div>
 				</>
 			) : (
 				<div>zaloguj siebie</div>

@@ -1,8 +1,4 @@
-import { useEffect } from "react";
 export const DisplayModalCard = (props) => {
-	// useEffect(() => {
-	// 	console.log(props.cardData.id);
-	// }, []);
 	return (
 		<div
 			className="DisplayModalCard"
@@ -11,7 +7,7 @@ export const DisplayModalCard = (props) => {
 			<p>
 				{props.cardData.id}. {props.cardData.name}
 			</p>
-			<p>cena: {props.cardData.price}</p>
+			{props.cardData.price !== 0 ? <p>cena:{props.cardData.price}</p> : null}
 			{/* {console.log(props.cardData.tax)} */}
 			{props.cardData.tax === undefined ||
 			props.cardData.tax === null ? null : props.cardData.tax.length === 1 ? (

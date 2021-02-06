@@ -16,6 +16,7 @@ export const GameData = () => {
 	const [newsFeedData, setNewsFeedData] = useRecoilState(newsFeedAtom);
 	const [gameName, setGameName] = useRecoilState(gameNameAtom);
 	const [observing, setObserving] = useState(false);
+
 	async function observ(x: string) {
 		setObserving(true);
 		setInterval(async () => {
@@ -26,20 +27,20 @@ export const GameData = () => {
 				}),
 			});
 			let response = await observer.json();
-			console.log("response :>> ");
-			console.log(response);
+			// console.log("response :>> ");
+			// console.log(response);
 			setCardsData(response.data.cards);
 			setPlayersData(response.data.players);
 			setNewsFeedData(response.data.newsFeed);
-			console.log("mainGameData");
-			console.log(gameData);
+			// console.log("mainGameData");
+			// console.log(gameData);
 		}, 2000);
 	}
 
 	useEffect(() => {
 		if ((gameData.name !== null) === true) {
-			console.log("mainGameData");
-			console.log(gameData);
+			// console.log("mainGameData");
+			// console.log(gameData);
 		}
 		return;
 	}, [gameData]);
