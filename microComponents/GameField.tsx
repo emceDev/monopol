@@ -9,12 +9,9 @@ import { NewsFeed } from "./NewsFeed";
 
 export const GameField = (props) => {
 	const gameData = useRecoilValue(mainGameData);
-	function clicked(e) {
-		console.log(e.target.id);
-	}
 
 	return (
-		<div className="Field" onClick={(e) => clicked(e)}>
+		<div className="Field">
 			<PlayerCard />
 			<NewsFeed news={props.data.newsFeed} />
 			{gameData.players !== null ? <PlayersList data={gameData} /> : null}

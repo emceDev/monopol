@@ -8,6 +8,12 @@ export const focusedCardData = atom({
 	key: "focusedCardData",
 	default: null,
 });
+export const tradeAtom = atom({
+	key: "tradeAtom",
+	default: {
+		isOpen: false,
+	},
+});
 
 export const mainPlayerData = atom({
 	key: "mainPlayerData",
