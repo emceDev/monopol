@@ -19,21 +19,21 @@ export const Trade = (props) => {
 	function listen() {
 		setShow(!show);
 		// join two in one object and push to the server
-		const el = document.getElementsByClassName("PlayersList")[0];
-		el.addEventListener("click", (e) => {
-			if (e.target.className === "PlayersListCard") {
-				e.target.style.border = "1px solid";
-				let owner = e.target.parentElement.parentElement.id;
-				if (playerAtom.name === owner) {
-					setOfferArr((offerArr) => [...offerArr, e.target.id]);
-					console.log("daj pole", e.target.id);
-				} else {
-					setReceiver(owner);
-					setDemandsArr((demandsArr) => [...demandsArr, e.target.id]);
-					console.log("wez pole" + e.target.id);
-				}
-			}
-		});
+		// const el = document.getElementsByClassName("PlayersList")[0];
+		// el.addEventListener("click", (e) => {
+		// 	if (e.target.className === "PlayersListCard") {
+		// 		e.target.style.border = "1px solid";
+		// 		let owner = e.target.parentElement.parentElement.id;
+		// 		if (playerAtom.name === owner) {
+		// 			setOfferArr((offerArr) => [...offerArr, e.target.id]);
+		// 			console.log("daj pole", e.target.id);
+		// 		} else {
+		// 			setReceiver(owner);
+		// 			setDemandsArr((demandsArr) => [...demandsArr, e.target.id]);
+		// 			console.log("wez pole" + e.target.id);
+		// 		}
+		// 	}
+		// });
 	}
 	function log() {
 		console.log(gameData);
@@ -70,6 +70,12 @@ export const Trade = (props) => {
 								}}
 							/>
 							<input
+								placeholder="Pola oddzielone przecinkami"
+								onChange={(e) => {
+									setDemandsArr([e.target.value]);
+								}}
+							/>
+							<input
 								placeholder="od kogo"
 								onChange={(e) => {
 									setReceiver(e.target.value);
@@ -85,8 +91,14 @@ export const Trade = (props) => {
 									setOfferMoney(e.target.value);
 								}}
 							/>
+							<input
+								placeholder="Pola oddzielone przecinkami"
+								onChange={(e) => {
+									setOfferArr([e.target.value]);
+								}}
+							/>
 							<div>
-								{offerArr.map((x) => {
+								{offerArr?.map((x) => {
 									return x;
 								})}
 							</div>
