@@ -4,6 +4,7 @@
 @import "SearchBar.css";
 @import "FieldCard.css";
 @import "PlayersList.css";
+@import "Trade.css";
 html,
 body {
 	padding: 0;

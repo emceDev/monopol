@@ -453,7 +453,8 @@ export const mainGameData = selector({
 		const cards = get(cardsAtom);
 		const name = get(gameNameAtom);
 		const newsFeed = get(newsFeedAtom);
-		const mainGameData = { name, players, cards, newsFeed };
+		const trade = get(tradeAtom);
+		const mainGameData = { name, players, cards, newsFeed, trade };
 		return {
 			...mainGameData,
 		};

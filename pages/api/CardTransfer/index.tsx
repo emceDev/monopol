@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { app } from "../config/firebase";
 
 async function getData(ref) {
-	console.log(ref);
+	console.log("getData   " + ref);
 	return await app
 		.database()
 		.ref(ref)
@@ -13,6 +13,8 @@ async function getData(ref) {
 }
 
 async function updateData(updates) {
+	console.log("updates");
+	console.log(updates);
 	let result;
 	await app
 		.database()
@@ -38,13 +40,21 @@ async function modifyCards(playerCards, cardRef, type) {
 		}
 	} else {
 		if ((playerCards === null) === true) {
+			console.log("modifycards1");
+			console.log([cardRef]);
 			return [cardRef];
 		} else if (playerCards.includes(cardRef) !== true) {
+			console.log("modifycards2");
+			console.log([...playerCards, cardRef]);
 			return [...playerCards, cardRef];
 		}
 	}
 }
-async function setCardOwner(fullCardRef, receiverRef, gameRef, cardRef) {
+export async function setCardOwner(fullCardRef, receiverRef, gameRef, cardRef) {
+	// console.log("fullCardRef   ", fullCardRef);
+	// console.log(" gameRef   ", gameRef);
+	// console.log("receiverRef   ", receiverRef);
+	// console.log("cardRef   ", cardRef);
 	let cardData = await getData(gameRef + "/cards/" + cardRef).then((x) => x);
 	// wlassciciel karty
 	let giverCardsRef = getData(
