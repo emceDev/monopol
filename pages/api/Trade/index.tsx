@@ -8,7 +8,8 @@ async function handleCards(giver, receiver, demandsCards, offeredCards, game) {
 	let i = 0;
 	let z = 0;
 	console.log("demandsCards", demandsCards);
-	if (demandsCards !== undefined) {
+
+	if (demandsCards !== undefined && demandsCards !== null) {
 		while (i < demandsCards.length) {
 			console.log("demandsCards[i]", demandsCards[i]);
 			await setCardOwner(
@@ -19,11 +20,12 @@ async function handleCards(giver, receiver, demandsCards, offeredCards, game) {
 			).then((x) => i++);
 		}
 	}
-	if (offeredCards !== undefined) {
+	if (offeredCards !== undefined && offeredCards !== null) {
 		while (z < offeredCards.length) {
-			setCardOwner(
-				"Games/" + game + "/cards/city" + demandsCards[z],
-				giver,
+			console.log("offeredCards[z]   ", offeredCards[z]);
+			await setCardOwner(
+				"Games/" + game + "/cards/city" + offeredCards[z],
+				receiver,
 				"Games/" + game,
 				"city" + offeredCards[z]
 			).then((x) => z++);
