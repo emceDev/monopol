@@ -20,7 +20,7 @@ export const Trade = (props) => {
 		setShow(!show);
 	}
 	function log() {
-		console.log(gameData);
+		console.log("money is: " + offerArr);
 	}
 	async function sendOffer() {
 		setShow(false);
@@ -51,7 +51,7 @@ export const Trade = (props) => {
 								type="number"
 								placeholder="Ile chcesz"
 								onChange={(e) => {
-									setDemandMoney(e.target.value);
+									setDemandMoney(Number(e.target.value));
 								}}
 							/>
 							<input
@@ -74,7 +74,7 @@ export const Trade = (props) => {
 								type="number"
 								placeholder="Ile zapłacisz"
 								onChange={(e) => {
-									setOfferMoney(e.target.value);
+									setOfferMoney(Number(e.target.value));
 								}}
 							/>
 							<input

@@ -4,23 +4,30 @@ import { setCardOwner } from "../CardTransfer/index";
 import { changeBalance } from "../MoneyTransfer/index";
 
 async function handleCards(giver, receiver, demandsCards, offeredCards, game) {
+	console.log("card handler");
 	let i = 0;
 	let z = 0;
-	while (i < demandsCards.length) {
-		await setCardOwner(
-			"Games/" + game + "/cards/city" + demandsCards[i],
-			receiver,
-			"Games/" + game,
-			"city" + demandsCards[i]
-		).then((x) => i++);
+	console.log("demandsCards", demandsCards);
+	if (demandsCards !== undefined) {
+		while (i < demandsCards.length) {
+			console.log("demandsCards[i]", demandsCards[i]);
+			await setCardOwner(
+				"Games/" + game + "/cards/city" + demandsCards[i],
+				giver,
+				"Games/" + game,
+				"city" + demandsCards[i]
+			).then((x) => i++);
+		}
 	}
-	while (z < offeredCards.length) {
-		setCardOwner(
-			"Games/" + game + "/cards/city" + demandsCards[z],
-			giver,
-			"Games/" + game,
-			"city" + offeredCards[z]
-		).then((x) => z++);
+	if (offeredCards !== undefined) {
+		while (z < offeredCards.length) {
+			setCardOwner(
+				"Games/" + game + "/cards/city" + demandsCards[z],
+				giver,
+				"Games/" + game,
+				"city" + offeredCards[z]
+			).then((x) => z++);
+		}
 	}
 }
 async function handleMoney(giver, receiver, offeredMoney, demandsMoney, game) {
@@ -43,7 +50,8 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 	let offeredCards = data.data.offerings.cards;
 
 	if (data.x === true) {
-		console.log(data);
+		// console.log(data);
+
 		handleCards(giver, receiver, demandsCards, offeredCards, game);
 		handleMoney(giver, receiver, offeredMoney, demandsMoney, game);
 		app

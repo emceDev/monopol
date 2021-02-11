@@ -31,6 +31,7 @@ async function updateData(updates) {
 }
 
 async function modifyCards(playerCards, cardRef, type) {
+	console.log("modifyCards");
 	// true ===giver(seller) cards array
 	if (type === true) {
 		if ((playerCards.length === 1 || playerCards.length === null) === true) {
@@ -51,27 +52,32 @@ async function modifyCards(playerCards, cardRef, type) {
 	}
 }
 export async function setCardOwner(fullCardRef, receiverRef, gameRef, cardRef) {
-	console.log("fullCardRef   ", fullCardRef);
-	console.log(" gameRef   ", gameRef);
-	console.log("receiverRef   ", receiverRef);
-	console.log("cardRef   ", cardRef);
+	// console.log("fullCardRef   ", fullCardRef);
+	// console.log(" gameRef   ", gameRef);
+	// console.log("receiverRef   ", receiverRef);
+	// console.log("cardRef   ", cardRef);
 	let cardData = await getData(gameRef + "/cards/" + cardRef).then((x) => x);
+	console.log("cardData", cardData);
 	// wlassciciel karty
 	let giverCardsRef = getData(
 		gameRef + "/players/" + cardData.owner + "/cards/"
 	);
-
-	// karty banku
+	console.log("giverCardsRef", giverCardsRef);
+	// karty włascicela
 	let giverCards = await giverCardsRef.then((x) => {
 		return modifyCards(x, cardRef, true);
 	});
+	console.log("giverCards", giverCards);
 	// karrty po modufikacjy
 	let receiverCardsRef = getData(
 		gameRef + "/players/" + receiverRef + "/cards/"
 	);
+	console.log("receiverCardsRef", receiverCardsRef);
+
 	let receiverCards = await receiverCardsRef.then((x) => {
 		return modifyCards(x, cardRef, false);
 	});
+	console.log("receiverCards", receiverCards);
 	var updates = {};
 	updates[fullCardRef + "/owner/"] = receiverRef;
 	updates[gameRef + "/players/" + receiverRef + "/cards"] = receiverCards;

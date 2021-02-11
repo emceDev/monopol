@@ -26,7 +26,7 @@ export async function changeBalance(gameRef, giverRef, receiverRef, amount) {
 	updates[
 		"Games/" + gameRef + "/players/" + receiverRef + "/balance/"
 	] = receiverBalance;
-	console.log(updates);
+	// console.log(updates);
 	let result;
 	await app
 		.database()
