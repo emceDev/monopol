@@ -13,7 +13,7 @@ export default function RegLog() {
 	const [choice, setChoice] = useState(false);
 	const router = useRouter();
 	useEffect(() => {
-		// setPlayer(JSON.parse(localStorage.getItem("player")));
+		setPlayer(JSON.parse(localStorage.getItem("player")));
 		// console.log(player);
 	}, []);
 	useEffect(() => {

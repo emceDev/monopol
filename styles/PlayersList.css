@@ -1,6 +1,19 @@
 .PlayersList {
-	grid-area: 4 / 4 / 8 / 11;
 	height: fit-content;
-	background-color: saddlebrown;
+	max-width: 15vw;
+	/* background-color: saddlebrown; */
 	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+.Player {
+	padding: 5%;
+}
+.Trade {
+	position: fixed;
+	background-color: red;
+	height: 31vh;
+	width: 31vw;
+	top: 30vh;
+	left: 30vw;
 }

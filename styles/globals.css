@@ -5,6 +5,9 @@
 @import "FieldCard.css";
 @import "PlayersList.css";
 @import "Trade.css";
+@import "NewsFeed.css";
+@import "Perspective.css";
+@import "Ui.css";
 html,
 body {
 	padding: 0;

@@ -40,60 +40,58 @@ export const Trade = (props) => {
 		console.log(res2);
 	}
 	return (
-		<div>
-			<button onClick={() => log()}>LOG meeeee</button>
-			{show ? (
-				<div>
-					<div className="TradeContainer" style={{ display: "flex" }}>
+		<div className="Trade">
+			<div>
+				<div className="TradeContainer" style={{ display: "flex" }}>
+					<div>
+						<p>żądanie</p>
+						<input
+							type="number"
+							placeholder="Ile chcesz"
+							onChange={(e) => {
+								setDemandMoney(Number(e.target.value));
+							}}
+						/>
+						<input
+							placeholder="Pola oddzielone przecinkami"
+							onChange={(e) => {
+								setDemandsArr([e.target.value]);
+							}}
+						/>
+						<input
+							placeholder="od kogo"
+							onChange={(e) => {
+								setReceiver(e.target.value);
+							}}
+						/>
+						<div>{demandsArr?.map((x) => x)}</div>
+					</div>
+					<div>
+						<p>Oferta</p>
+						<input
+							type="number"
+							placeholder="Ile zapłacisz"
+							onChange={(e) => {
+								setOfferMoney(Number(e.target.value));
+							}}
+						/>
+						<input
+							placeholder="Pola oddzielone przecinkami"
+							onChange={(e) => {
+								setOfferArr([e.target.value]);
+							}}
+						/>
 						<div>
-							<p>żądanie</p>
-							<input
-								type="number"
-								placeholder="Ile chcesz"
-								onChange={(e) => {
-									setDemandMoney(Number(e.target.value));
-								}}
-							/>
-							<input
-								placeholder="Pola oddzielone przecinkami"
-								onChange={(e) => {
-									setDemandsArr([e.target.value]);
-								}}
-							/>
-							<input
-								placeholder="od kogo"
-								onChange={(e) => {
-									setReceiver(e.target.value);
-								}}
-							/>
-							<div>{demandsArr?.map((x) => x)}</div>
-						</div>
-						<div>
-							<p>Oferta</p>
-							<input
-								type="number"
-								placeholder="Ile zapłacisz"
-								onChange={(e) => {
-									setOfferMoney(Number(e.target.value));
-								}}
-							/>
-							<input
-								placeholder="Pola oddzielone przecinkami"
-								onChange={(e) => {
-									setOfferArr([e.target.value]);
-								}}
-							/>
-							<div>
-								{offerArr?.map((x) => {
-									return x;
-								})}
-							</div>
+							{offerArr?.map((x) => {
+								return x;
+							})}
 						</div>
 					</div>
 				</div>
-			) : null}
+			</div>
+
 			<button onClick={() => (show ? sendOffer() : listen())}>
-				{show ? "wyślij" : "rozwiń"}
+				wyślij oferte
 			</button>
 			{trade?.[playerAtom.name] !== undefined ? (
 				<Offer trade={trade[playerAtom.name]} gameName={gameData.name} />

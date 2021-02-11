@@ -1,0 +1,4 @@
+.NewsFeed ol {
+	display: flex;
+	flex-direction: column-reverse;
+}

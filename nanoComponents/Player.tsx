@@ -3,14 +3,14 @@ import { Card } from "./Card";
 export const Player = (props) => {
 	return (
 		<div
-			style={{ marginLeft: "5vh" }}
 			id={props.player.name}
 			key={props.player.name}
 			className="Player"
+			style={{ backgroundColor: props.player.color }}
 		>
 			<div>name: {props.player.name}</div>
 			<div>balance: {props.player.balance}</div>
-			{props.cards !== undefined ? (
+			{props.cards !== undefined && props.focus === true ? (
 				<div style={{ maxHeight: "20vh", overflow: "overlay" }}>
 					{Object.values(props.cards).map((card: any) => {
 						if (
@@ -22,9 +22,7 @@ export const Player = (props) => {
 						} else return;
 					})}
 				</div>
-			) : (
-				<p>no cards at that moment</p>
-			)}
+			) : null}
 		</div>
 	);
 };

@@ -8,8 +8,13 @@ import {
 	newsFeedAtom,
 	tradeAtom,
 } from "../state/atom";
+
+import { NewsFeed } from "../microComponents/NewsFeed";
+import { PlayerCard } from "../microComponents/PlayerCard";
 import { GameField } from "../microComponents/GameField";
+import { PlayersList } from "../microComponents/PlayersList";
 import swr from "swr";
+import { Trade } from "../nanoComponents/Trade";
 export const GameData = () => {
 	const gameData = useRecoilValue(mainGameData);
 	const [cardsData, setCardsData] = useRecoilState(cardsAtom);
@@ -52,10 +57,20 @@ export const GameData = () => {
 			{gameData.name === null ? null : (
 				<div>
 					<p>GameName:{gameData.name}</p>
-					{!observing ? (
-						<button onClick={() => observ(gameData.name)}>Start</button>
-					) : null}
-					<div>
+					<div className="UI">
+						{!observing ? (
+							<button
+								className="StartButton"
+								onClick={() => observ(gameData.name)}
+							>
+								Start
+							</button>
+						) : null}
+						<PlayerCard />
+						<NewsFeed news={newsFeedData} />
+						{gameData.players !== null ? <PlayersList data={gameData} /> : null}
+					</div>
+					<div className="FieldContainer">
 						{gameData.cards !== null && gameData.players !== null ? (
 							<GameField data={gameData} />
 						) : (
