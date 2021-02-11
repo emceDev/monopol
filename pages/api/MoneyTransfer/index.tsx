@@ -17,7 +17,7 @@ export async function changeBalance(gameRef, giverRef, receiverRef, amount) {
 		(balance) => balance - amount
 	);
 	let receiverBalance = await getBalance(gameRef, receiverRef).then(
-		(balance) => balance + amount
+		(balance) => amount + balance
 	);
 	var updates = {};
 	updates[

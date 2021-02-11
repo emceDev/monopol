@@ -18,22 +18,6 @@ export const Trade = (props) => {
 	}, [demandsArr]);
 	function listen() {
 		setShow(!show);
-		// join two in one object and push to the server
-		// const el = document.getElementsByClassName("PlayersList")[0];
-		// el.addEventListener("click", (e) => {
-		// 	if (e.target.className === "PlayersListCard") {
-		// 		e.target.style.border = "1px solid";
-		// 		let owner = e.target.parentElement.parentElement.id;
-		// 		if (playerAtom.name === owner) {
-		// 			setOfferArr((offerArr) => [...offerArr, e.target.id]);
-		// 			console.log("daj pole", e.target.id);
-		// 		} else {
-		// 			setReceiver(owner);
-		// 			setDemandsArr((demandsArr) => [...demandsArr, e.target.id]);
-		// 			console.log("wez pole" + e.target.id);
-		// 		}
-		// 	}
-		// });
 	}
 	function log() {
 		console.log(gameData);
@@ -57,13 +41,14 @@ export const Trade = (props) => {
 	}
 	return (
 		<div>
-			{/* <button onClick={() => log()}>LOG meeeee</button> */}
+			<button onClick={() => log()}>LOG meeeee</button>
 			{show ? (
 				<div>
 					<div className="TradeContainer" style={{ display: "flex" }}>
 						<div>
 							<p>żądanie</p>
 							<input
+								type="number"
 								placeholder="Ile chcesz"
 								onChange={(e) => {
 									setDemandMoney(e.target.value);
@@ -86,6 +71,7 @@ export const Trade = (props) => {
 						<div>
 							<p>Oferta</p>
 							<input
+								type="number"
 								placeholder="Ile zapłacisz"
 								onChange={(e) => {
 									setOfferMoney(e.target.value);
@@ -110,7 +96,7 @@ export const Trade = (props) => {
 				{show ? "wyślij" : "rozwiń"}
 			</button>
 			{trade?.[playerAtom.name] !== undefined ? (
-				<Offer trade={trade[playerAtom.name]} />
+				<Offer trade={trade[playerAtom.name]} gameName={gameData.name} />
 			) : (
 				console.log("nemore")
 			)}

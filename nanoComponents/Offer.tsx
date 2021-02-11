@@ -1,10 +1,11 @@
 import { tradeAtom } from "../state/atom";
 
-async function trade(x, data) {
+async function trade(x, data, gameName) {
 	const observer = await fetch("api/Trade", {
 		method: "POST",
 		body: JSON.stringify({
 			x: x,
+			gameName: gameName,
 			data: data,
 		}),
 	});
@@ -25,14 +26,14 @@ export const Offer = (props) => {
 			<div>
 				<button
 					onClick={() => {
-						trade(true, props.trade);
+						trade(true, props.trade, props.gameName);
 					}}
 				>
 					Accept
 				</button>
 				<button
 					onClick={() => {
-						trade(false, props.trade);
+						trade(false, props.trade, props.gameName);
 					}}
 				>
 					Reject

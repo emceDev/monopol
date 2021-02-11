@@ -36,7 +36,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 	console.log(data);
 	let giver = data.data.giver;
 	let receiver = data.data.receiver;
-	let game = data.data.game;
+	let game = data.gameName;
 	let demandsMoney = data.data.demands.money;
 	let offeredMoney = data.data.offerings.money;
 	let demandsCards = data.data.demands.cards;
