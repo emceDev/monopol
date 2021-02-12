@@ -40,6 +40,8 @@ export const PlayerCard = () => {
 		setCardData(res2?.data);
 	}
 	function roll() {
+		// console.log(gameData.queue);
+		// console.log(=== playerData.name)
 		let rolled = Math.floor(Math.random() * (12 - 2 + 1)) + 2;
 		let previousField = playersData[playerData.name].currentField;
 		let sum = previousField + rolled;
@@ -65,13 +67,18 @@ export const PlayerCard = () => {
 							<p>{playerData.name}</p>
 							<p>{playersData[playerData.name]?.balance}</p>
 							{/* {!cooldown ? ( */}
-							<div
-								className="RollButton"
-								onClick={() => roll()}
-								style={{ visibility: cooldown ? "hidden" : "visible" }}
-							>
-								Rzut kostką!
-							</div>
+							{gameData?.queue.players !== null &&
+							gameData?.queue?.players[gameData.queue.current] ===
+								playerData.name ? (
+								<div
+									className="RollButton"
+									onClick={() => roll()}
+									style={{ visibility: cooldown ? "hidden" : "visible" }}
+								>
+									Rzut kostką!
+								</div>
+							) : null}
+
 							{/* ) : null} */}
 						</div>
 						<div className="PlayerDisplayModal">

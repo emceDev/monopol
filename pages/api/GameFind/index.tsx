@@ -1,5 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import { queueAtom } from "../../../state/atom";
 import { app } from "../config/firebase";
+import { addToQueue } from "../Queue";
 
 async function checkForEntry(ref, data) {
 	return await app
@@ -79,9 +81,12 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 		if (game === null) {
 			res.json({ response: { code: "Nie znaleziono gry", game: null } });
 		} else if (game.players[data.player] === undefined) {
-			return setFields(data).then((game) =>
-				res.json({ response: { code: "Pomyślnie dołączono", game: game } })
-			);
+			return setFields(data).then((game) => {
+				addToQueue(game.players[data.player].name, game.name);
+				return res.json({
+					response: { code: "Pomyślnie dołączono", game: game },
+				});
+			});
 		} else if (game.players[data.player] !== undefined) {
 			// return setFields(data).then(
 			// (game) => console.log(game)

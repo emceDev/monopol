@@ -3,6 +3,7 @@ import { app } from "../config/firebase";
 import { changeBalance } from "../MoneyTransfer";
 import { setNewsFeed } from "../NewsFeed";
 import { onChangedField } from "../OnChangedField";
+import { moveQueue } from "../Queue/index";
 async function updateCurrentFieldInPlayers(data) {
 	return await app
 		.database()
@@ -82,6 +83,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 		changeBalance(data.gameName, "bank", data.playerName, 200);
 	}
 	return movePlayer(data).then((x) => {
+		moveQueue(data.gameName);
 		return res.json(x);
 	});
 };

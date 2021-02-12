@@ -7,6 +7,7 @@ import {
 	gameNameAtom,
 	newsFeedAtom,
 	tradeAtom,
+	queueAtom,
 } from "../state/atom";
 
 import { NewsFeed } from "../microComponents/NewsFeed";
@@ -23,7 +24,7 @@ export const GameData = () => {
 	const [gameName, setGameName] = useRecoilState(gameNameAtom);
 	const [trade, setTrade] = useRecoilState(tradeAtom);
 	const [observing, setObserving] = useState(false);
-
+	const [queue, setQueue] = useRecoilState(queueAtom);
 	async function observ(x: string) {
 		setObserving(true);
 		setInterval(async () => {
@@ -40,6 +41,7 @@ export const GameData = () => {
 			setPlayersData(response.data.players);
 			setNewsFeedData(response.data.newsFeed);
 			setTrade(response.data.offers);
+			setQueue(response.data.queue);
 			// console.log("mainGameData");
 			// console.log(gameData);
 		}, 2000);

@@ -76,8 +76,10 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 			},
 		},
 		cards: data.cards,
-		newsFeed: ["no news yet", "4Sure"],
+		queue: data.queue,
+		newsFeed: ["Game Created", "Succesfully"],
 	};
+	gameModel.queue.players = [data.creator];
 	gameModel.cards.city1.whoIsOn = [data.creator];
 
 	let x = checkForDuplicate(reference, data);

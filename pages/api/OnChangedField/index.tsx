@@ -1,6 +1,7 @@
 import { app } from "../config/firebase";
 import { changeBalance } from "../MoneyTransfer";
 import { chanceHandler } from "../ChanceHandle/";
+import { placeInJail } from "../Queue";
 // import { movePlayer } from "../PlayerMove/index";
 // NIE => LICYTACJA
 
@@ -97,6 +98,7 @@ export async function onChangedField(data, cardD) {
 				data: card,
 			};
 		} else if (card.id === 31) {
+			placeInJail(gameName, playerName);
 			return {
 				newsFeed:
 					"Gracz " + playerName + " spędza trzy kolejki ze znajomymi w barze",
@@ -135,7 +137,7 @@ export async function onChangedField(data, cardD) {
 			};
 		} else
 			return {
-				newsFeed: "Programista nie przewidział takiej rzeczy :P To ja O.o",
+				newsFeed: "Programista nie przewidział takiej rzeczy :P To ja UwU",
 				code: "some wronge",
 				data: card,
 			};

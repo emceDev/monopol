@@ -7,6 +7,7 @@ import {
 	playersAtom,
 	cardsAtom,
 } from "../state/atom";
+import { Connection } from "./connection";
 
 export const SearchBar = () => {
 	const [name, setName] = useState("");
@@ -28,6 +29,7 @@ export const SearchBar = () => {
 				key: playerData.key,
 				cards: gameData.cards,
 				color: color,
+				queue: gameData.queue,
 			}),
 		});
 		const res2 = await res1.json();
@@ -84,6 +86,10 @@ export const SearchBar = () => {
 	}
 	return (
 		<div className="SearchBar">
+			{
+				<script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
+			}
+			<Connection />
 			<div
 				style={{
 					display: shown ? "flex" : "none",

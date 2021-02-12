@@ -445,7 +445,15 @@ export const cardsAtom = atom({
 		},
 	},
 });
-
+export const queueAtom = atom({
+	key: "queue",
+	default: {
+		players: null,
+		current: 0,
+		jail: null,
+		tick: 0,
+	},
+});
 export const mainGameData = selector({
 	key: "mainGameData",
 	get: ({ get }) => {
@@ -454,7 +462,8 @@ export const mainGameData = selector({
 		const name = get(gameNameAtom);
 		const newsFeed = get(newsFeedAtom);
 		const trade = get(tradeAtom);
-		const mainGameData = { name, players, cards, newsFeed, trade };
+		const queue = get(queueAtom);
+		const mainGameData = { name, players, cards, newsFeed, trade, queue };
 		return {
 			...mainGameData,
 		};
