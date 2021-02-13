@@ -65,29 +65,33 @@ async function miners(game) {
 	const arr = [6, 16, 26, 36];
 	const first = app
 		.database()
-		.ref("Games/998/cards/city6/owner")
+		.ref("Games/" + game + "/cards/city6/owner")
 		.once("value")
 		.then((x) => x.val());
 	const second = app
 		.database()
-		.ref("Games/998/cards/city16/owner")
+		.ref("Games/" + game + "/cards/city16/owner")
 		.once("value")
 		.then((x) => x.val());
 	const third = app
 		.database()
-		.ref("Games/998/cards/city26/owner")
+		.ref("Games/" + game + "/cards/city26/owner")
 		.once("value")
 		.then((x) => x.val());
 	const fourth = app
 		.database()
-		.ref("Games/998/cards/city36/owner")
+		.ref("Games/" + game + "/cards/city36/owner")
 		.once("value")
 		.then((x) => x.val());
 	const promises = [first, second, third, fourth];
 	// owners.filter((x) => x.value !== "bank")
 	Promise.allSettled(promises).then((owners) =>
 		owners.filter((x) =>
-			x.value !== "bank" ? changeBalance(game, "bank", x.value, 60) : null
+			x.status === "fulfilled"
+				? x.value !== "bank"
+					? changeBalance(game, "bank", x.value, 60)
+					: null
+				: null
 		)
 	);
 }
