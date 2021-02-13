@@ -67,7 +67,10 @@ export const PlayerCard = () => {
 							<p>{playerData.name}</p>
 							<p>{playersData[playerData.name]?.balance}</p>
 							{/* {!cooldown ? ( */}
-
+							{/* {console.log(
+								gameData?.queue?.players[gameData.queue.current] ===
+									playerData.name
+							)} */}
 							<div
 								className="RollButton"
 								onClick={() => roll()}
@@ -76,10 +79,10 @@ export const PlayerCard = () => {
 										gameData?.queue.players !== null &&
 										gameData?.queue?.players[gameData.queue.current] ===
 											playerData.name
-											? "hidden"
-											: cooldown
-											? "hidden"
-											: "visible",
+											? cooldown
+												? "collapse"
+												: "visible"
+											: "collapse",
 								}}
 							>
 								Rzut kostką!

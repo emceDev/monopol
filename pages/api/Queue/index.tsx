@@ -1,6 +1,6 @@
 import next, { NextApiRequest, NextApiResponse } from "next";
 import { app } from "../config/firebase";
-import { changeBalance } from "../MoneyTransfer";
+import MoneyTransfer, { changeBalance } from "../MoneyTransfer";
 import { setNewsFeed } from "../NewsFeed";
 import { onChangedField } from "../OnChangedField";
 
@@ -61,16 +61,52 @@ async function updateQueue(updates) {
 		})
 		.then((x) => console.log(x));
 }
+async function miners(game) {
+	const arr = [6, 16, 26, 36];
+	const first = app
+		.database()
+		.ref("Games/998/cards/city6/owner")
+		.once("value")
+		.then((x) => x.val());
+	const second = app
+		.database()
+		.ref("Games/998/cards/city16/owner")
+		.once("value")
+		.then((x) => x.val());
+	const third = app
+		.database()
+		.ref("Games/998/cards/city26/owner")
+		.once("value")
+		.then((x) => x.val());
+	const fourth = app
+		.database()
+		.ref("Games/998/cards/city36/owner")
+		.once("value")
+		.then((x) => x.val());
+	const promises = [first, second, third, fourth];
+	// owners.filter((x) => x.value !== "bank")
+	Promise.allSettled(promises).then((owners) =>
+		owners.filter((x) =>
+			x.value !== "bank" ? changeBalance(game, "bank", x.value, 60) : null
+		)
+	);
+}
 export async function moveQueue(game) {
 	let queueData = await queue(game).then((x) => x);
 	let current = queueData.current;
 	let max = queueData.players.length;
 	let updated;
 	let tick = queueData.tick;
-
+	let mineTick = queueData.mineTick;
 	// console.log(max);
 	// console.log(current);
 
+	if (mineTick < 4) {
+		mineTick = mineTick + 1;
+	} else {
+		mineTick = 0;
+		miners(game);
+	}
 	if (current < max - 1) {
 		updated = current + 1;
 		tick = tick + 1;
@@ -78,11 +114,13 @@ export async function moveQueue(game) {
 		tick = tick + 1;
 		updated = 0;
 	}
-
+	// get the mines by ids where owner !== bank
+	// how to check
+	//
 	let updates = {};
 	updates["Games/" + game + "/queue/current"] = updated;
 	updates["Games/" + game + "/queue/tick"] = tick;
-
+	updates["Games/" + game + "/queue/mineTick"] = mineTick;
 	// if tick === jai tick move player back to queue
 
 	queueData.jail !== undefined && queueData.jail !== null
