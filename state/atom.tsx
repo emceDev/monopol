@@ -158,7 +158,7 @@ export const cardsAtom = atom({
 			color: "#FF715B",
 			tax: [10, 50, 150, 450, 625],
 			homes: 0,
-			homeCost: 50,
+			homeCost: 100,
 		},
 		city13: {
 			id: 13,
@@ -179,7 +179,7 @@ export const cardsAtom = atom({
 			color: "#FF715B",
 			tax: [10, 50, 150, 450, 625],
 			homes: 0,
-			homeCost: 50,
+			homeCost: 100,
 		},
 		city15: {
 			id: 15,
@@ -190,7 +190,7 @@ export const cardsAtom = atom({
 			color: "#FF715B",
 			tax: [12, 60, 180, 600, 700],
 			homes: 0,
-			homeCost: 50,
+			homeCost: 100,
 		},
 		city16: {
 			id: 16,
@@ -211,7 +211,7 @@ export const cardsAtom = atom({
 			color: "#912F56",
 			tax: [14, 70, 200, 550, 700],
 			homes: 0,
-			homeCost: 50,
+			homeCost: 100,
 		},
 		city18: {
 			id: 18,
@@ -230,7 +230,7 @@ export const cardsAtom = atom({
 			color: "#912F56",
 			tax: [14, 70, 200, 550, 700],
 			homes: 0,
-			homeCost: 50,
+			homeCost: 100,
 		},
 		city20: {
 			id: 20,
@@ -241,7 +241,7 @@ export const cardsAtom = atom({
 			color: "#912F56",
 			tax: [16, 80, 220, 600, 800],
 			homes: 0,
-			homeCost: 50,
+			homeCost: 100,
 		},
 		city21: {
 			id: 21,
@@ -260,7 +260,7 @@ export const cardsAtom = atom({
 			color: "#B4DC7F",
 			tax: [18, 90, 250, 700, 875],
 			homes: 0,
-			homeCost: 50,
+			homeCost: 150,
 		},
 		city23: {
 			id: 23,
@@ -279,7 +279,7 @@ export const cardsAtom = atom({
 			color: "#B4DC7F",
 			tax: [18, 90, 250, 700, 875],
 			homes: 0,
-			homeCost: 50,
+			homeCost: 150,
 		},
 		city25: {
 			id: 25,
@@ -290,7 +290,7 @@ export const cardsAtom = atom({
 			color: "#B4DC7F",
 			tax: [20, 100, 300, 750, 925],
 			homes: 0,
-			homeCost: 50,
+			homeCost: 150,
 		},
 		city26: {
 			id: 26,
@@ -311,7 +311,7 @@ export const cardsAtom = atom({
 			color: "#F4E87C",
 			tax: [22, 110, 330, 800, 975],
 			homes: 0,
-			homeCost: 50,
+			homeCost: 150,
 		},
 		city28: {
 			id: 28,
@@ -322,7 +322,7 @@ export const cardsAtom = atom({
 			color: "#F4E87C",
 			tax: [22, 110, 330, 800, 975],
 			homes: 0,
-			homeCost: 50,
+			homeCost: 150,
 		},
 		city29: {
 			id: 29,
@@ -342,7 +342,7 @@ export const cardsAtom = atom({
 			color: "#F4E87C",
 			tax: [24, 120, 350, 850, 1025],
 			homes: 0,
-			homeCost: 50,
+			homeCost: 150,
 		},
 		city31: {
 			id: 31,
@@ -361,7 +361,7 @@ export const cardsAtom = atom({
 			color: "#B07156",
 			tax: [26, 130, 390, 900, 1100],
 			homes: 0,
-			homeCost: 50,
+			homeCost: 200,
 		},
 		city33: {
 			id: 33,
@@ -372,7 +372,7 @@ export const cardsAtom = atom({
 			color: "#B07156",
 			tax: [26, 130, 390, 900, 1100],
 			homes: 0,
-			homeCost: 50,
+			homeCost: 200,
 		},
 		city34: {
 			id: 34,
@@ -391,7 +391,7 @@ export const cardsAtom = atom({
 			color: "#B07156",
 			tax: [28, 150, 450, 1000, 1200],
 			homes: 0,
-			homeCost: 50,
+			homeCost: 200,
 		},
 		city36: {
 			id: 36,
@@ -414,7 +414,7 @@ export const cardsAtom = atom({
 		city38: {
 			id: 38,
 			owner: "bank",
-			price: 350,
+			price: 200,
 			name: "Harare",
 			country: "Zimbabwe",
 			color: "#14591D",
@@ -441,7 +441,7 @@ export const cardsAtom = atom({
 			color: "#14591D",
 			tax: [50, 200, 600, 1400, 1700],
 			homes: 0,
-			homeCost: 50,
+			homeCost: 200,
 		},
 	},
 });
