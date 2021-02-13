@@ -53,7 +53,7 @@ export const PlayerCard = () => {
 		setCooldown(true);
 		setTimeout(() => {
 			setCooldown(false);
-		}, 2000);
+		}, 5000);
 	}
 
 	return (
@@ -67,17 +67,23 @@ export const PlayerCard = () => {
 							<p>{playerData.name}</p>
 							<p>{playersData[playerData.name]?.balance}</p>
 							{/* {!cooldown ? ( */}
-							{gameData?.queue.players !== null &&
-							gameData?.queue?.players[gameData.queue.current] ===
-								playerData.name ? (
-								<div
-									className="RollButton"
-									onClick={() => roll()}
-									style={{ visibility: cooldown ? "hidden" : "visible" }}
-								>
-									Rzut kostką!
-								</div>
-							) : null}
+
+							<div
+								className="RollButton"
+								onClick={() => roll()}
+								style={{
+									visibility:
+										gameData?.queue.players !== null &&
+										gameData?.queue?.players[gameData.queue.current] ===
+											playerData.name
+											? "hidden"
+											: cooldown
+											? "hidden"
+											: "visible",
+								}}
+							>
+								Rzut kostką!
+							</div>
 
 							{/* ) : null} */}
 						</div>

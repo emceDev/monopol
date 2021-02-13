@@ -52,10 +52,10 @@ async function modifyCards(playerCards, cardRef, type) {
 	}
 }
 export async function setCardOwner(fullCardRef, receiverRef, gameRef, cardRef) {
-	// console.log("fullCardRef   ", fullCardRef);
-	// console.log(" gameRef   ", gameRef);
-	// console.log("receiverRef   ", receiverRef);
-	// console.log("cardRef   ", cardRef);
+	console.log("fullCardRef   ", fullCardRef);
+	console.log(" gameRef   ", gameRef);
+	console.log("receiverRef   ", receiverRef);
+	console.log("cardRef   ", cardRef);
 	let cardData = await getData(gameRef + "/cards/" + cardRef).then((x) => x);
 	console.log("cardData", cardData);
 	// wlassciciel karty

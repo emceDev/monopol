@@ -11,7 +11,7 @@ const players = async () => {
 		.once("value")
 		.then((snap) => snap.val());
 };
-async function queue(game) {
+export async function queue(game) {
 	console.log("queue");
 	return await app
 		.database()
@@ -98,7 +98,7 @@ export async function moveQueue(game) {
 	// if()
 }
 export const addToQueue = async (player, game) => {
-	let previousQueue = await queue().then((x) => x.players);
+	let previousQueue = await queue(game).then((x) => x.players);
 	console.log("add to queue");
 	// console.log(previousQueue);
 	// console.log(game);

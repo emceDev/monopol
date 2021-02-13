@@ -25,6 +25,20 @@ async function transferMoney(receiverRef, amount, gameName, playerName) {
 	const res = await pay.json();
 	console.log(res);
 }
+async function auction(card, game, player) {
+	const auction = await fetch("api/Auction", {
+		method: "POST",
+		body: JSON.stringify({
+			code: "set",
+			game: game,
+			card: card,
+			player: player,
+		}),
+	});
+	console.log(card, game);
+	const res = await auction.json();
+	console.log(res);
+}
 const TradeWithBankButtons = (props) => {
 	return (
 		<div>
@@ -45,7 +59,17 @@ const TradeWithBankButtons = (props) => {
 			>
 				Kup
 			</button>
-			<button>Licytuj</button>
+			<button
+				onClick={() => {
+					auction(
+						props.data.cardData,
+						props.data.gameName,
+						props.data.playerName
+					);
+				}}
+			>
+				Licytuj
+			</button>
 		</div>
 	);
 };
