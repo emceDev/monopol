@@ -74,16 +74,16 @@ export const PlayerCard = () => {
 							<div
 								className="RollButton"
 								onClick={() => roll()}
-								style={{
-									visibility:
-										gameData?.queue.players !== null &&
-										gameData?.queue?.players[gameData.queue.current] ===
-											playerData.name
-											? cooldown
-												? "collapse"
-												: "visible"
-											: "collapse",
-								}}
+								// style={{
+								// 	visibility:
+								// 		gameData?.queue.players !== null &&
+								// 		gameData?.queue?.players[gameData.queue.current] ===
+								// 			playerData.name
+								// 			? cooldown
+								// 				? "collapse"
+								// 				: "visible"
+								// 			: "collapse",
+								// }}
 							>
 								Rzut kostką!
 							</div>
