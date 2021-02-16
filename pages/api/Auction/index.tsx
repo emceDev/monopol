@@ -57,13 +57,12 @@ async function nextPlayer(game) {
 			tick = tick + 1;
 			updated = 0;
 		}
+		console.log("next" + updated);
+		let updates = {};
+		updates["Games/" + game + "/auction/queue/players/current"] = updated;
+		updates["Games/" + game + "/auction/queue/players/tick"] = tick;
+		updateAuction(updates);
 	}
-
-	console.log("next" + updated);
-	let updates = {};
-	updates["Games/" + game + "/auction/queue/players/current"] = updated;
-	updates["Games/" + game + "/auction/queue/players/tick"] = tick;
-	updateAuction(updates);
 }
 
 async function updateAuction(updates) {
@@ -79,12 +78,12 @@ async function updateAuction(updates) {
 				return null;
 			}
 		})
-		.then((x) => console.log(x));
+		.then((x) => x);
 }
 
 async function setAuction(data) {
 	let players = await queue(data.game).then((x) => x);
-	console.log(queue);
+	console.log(players);
 	// current + 1
 
 	app

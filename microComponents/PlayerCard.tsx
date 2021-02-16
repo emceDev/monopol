@@ -80,7 +80,7 @@ export const PlayerCard = () => {
 										gameData?.queue?.players[gameData.queue.current] ===
 											playerData.name
 											? "visible"
-											: "collapse",
+											: "visible",
 								}}
 							>
 								Rzut kostką!

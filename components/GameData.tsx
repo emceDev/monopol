@@ -80,6 +80,10 @@ export const GameData = () => {
 								auction={auction}
 								game={gameData.name}
 								player={player.name}
+								// przycisk odpierdala
+								// po chance tez odpierala
+								// licytacja nie dziala cardowner set
+								// da sie wymienic pole ktorego sie niema
 							/>
 						)}
 						{gameData.players !== null ? <PlayersList data={gameData} /> : null}
