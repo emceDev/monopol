@@ -42,10 +42,15 @@ export async function placeInJail(game, player) {
 	console.log("updlalsdlsdl");
 	console.log(jail);
 	// console.log("jail" + jail?.[tick]);
-	updates["Games/" + game + "/queue/jail/" + tick] =
-		jail === null || jail === undefined ? [player] : [...jail, player];
-	updates["Games/" + game + "/queue/players/"] = updated;
-	return updateQueue(updates);
+	if (updated !== 0) {
+		updates["Games/" + game + "/queue/jail/" + tick] =
+			jail === null || jail === undefined ? [player] : [...jail, player];
+
+		updates["Games/" + game + "/queue/players/"] = updated;
+		return updateQueue(updates);
+	} else {
+		console.log("jail is full");
+	}
 }
 async function updateQueue(updates) {
 	console.log("updateQueue");
