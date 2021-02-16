@@ -10,12 +10,10 @@ import {
 	queueAtom,
 	mainPlayerData,
 } from "../state/atom";
-
 import { NewsFeed } from "../microComponents/NewsFeed";
 import { PlayerCard } from "../microComponents/PlayerCard";
 import { GameField } from "../microComponents/GameField";
 import { PlayersList } from "../microComponents/PlayersList";
-import swr from "swr";
 import { Trade } from "../nanoComponents/Trade";
 import { Auction } from "../microComponents/Auction";
 export const GameData = () => {

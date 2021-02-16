@@ -34,7 +34,7 @@ export default function RegLog() {
 							setChoice(!choice);
 						}}
 					>
-						{!choice ? "Zaloguj" : "Zarejestruj"}
+						{!choice ? "Mam konto" : "Stwórz konto"}
 					</button>
 					{choice ? <Login /> : <CreatePlayer />}
 				</>

@@ -17,8 +17,8 @@ export const Offer = (props) => {
 		console.log(props);
 	}
 	return (
-		<div className="Offer">
-			<button onClick={() => log()}>log</button>
+		<div className="OfferReceived">
+			{/* <button onClick={() => log()}>log</button> */}
 			<div>
 				<p> Gracz {props.trade.giver} chce wziąść:</p>
 				Pieniądze {props.trade.demands.money}

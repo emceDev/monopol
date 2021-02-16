@@ -96,7 +96,9 @@ export const PlayerCard = () => {
 								onMouseLeave={() => {
 									setCardListHoover(false);
 								}}
-								style={{ height: cardListHoover ? "fit-content" : "3vw" }}
+								style={{
+									height: cardListHoover ? "fit-content" : "5vh",
+								}}
 							>
 								{ownedFields?.map((field) => (
 									<DisplayModalCard cardData={field} />

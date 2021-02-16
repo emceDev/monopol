@@ -1,4 +1,18 @@
-.TradeComtainer {
+.Trade {
+	height: fit-content;
+	background-color: blueviolet;
+	color: whitesmoke;
+}
+.TradeContainer {
 	display: flex;
+	text-align: center;
+	flex-direction: column;
+}
+.Trade input {
+	padding: 1%;
+	font-weight: bold;
+}
+.OfferReceived {
+	align-content: center;
 	text-align: center;
 }

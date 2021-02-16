@@ -31,28 +31,29 @@ export const Auction = (props) => {
 			style={{ position: "fixed", top: "20vh", left: "30vw" }}
 		>
 			<DisplayModalCard cardData={props.auction.card} />
-			<div>
-				<p>{props?.auction?.player}</p>
-				<p>{props?.auction?.price}</p>
+			<div className="AuctionInteraction">
+				<p>Gracz: {props?.auction?.player}</p>
+				<p>Stawka: {props?.auction?.price}</p>
 				<input
 					onChange={(e) => setBet(e.target.value)}
 					type="number"
+					placeholder="Nowa stawka"
 					min={props.auction.price}
 				></input>
-				{console.log(
+				{/* {console.log(
 					props.auction.queue.players.players[
 						props.auction.queue.players.current
 					]
 					// props.auction.queue.players.players[0][
 					// 	props.auction.queue.players.current
 					// ]
-				)}
+				)} */}
 				{props.auction.queue.players.players[
 					props.auction.queue.players.current
 				] === props.player ? (
 					<>
-						<button onClick={() => handleAuction("bet")}>Pump it Up</button>
-						<button onClick={() => handleAuction("leave")}>Pasuj TO</button>
+						<button onClick={() => handleAuction("bet")}>Podbij</button>
+						<button onClick={() => handleAuction("leave")}>Pass</button>
 					</>
 				) : (
 					<p>

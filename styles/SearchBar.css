@@ -3,8 +3,27 @@
 	z-index: 1;
 	margin-left: 33vw;
 	width: 33vw;
-	background-color: rosybrown;
+	background-color: rgba(143, 188, 178, 0.226);
 	height: auto;
 	/* position: absolute; */
 	/* margin: 0 auto; */
+}
+.SearchBar input {
+	padding: 3%;
+}
+.SearchBarToggleOn {
+	width: 100%;
+	/* color: red; */
+}
+.SearchBarToggleOff {
+	/* color: blue; */
+	height: 10%;
+	padding: 0%;
+	width: 100%;
+	opacity: 0.1;
+}
+.SearchBar .error {
+	font-size: large;
+	text-align: center;
+	color: violet;
 }

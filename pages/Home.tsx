@@ -23,7 +23,7 @@ const Home = () => {
 	}, [mainPlayer]);
 
 	return (
-		<div>
+		<div className="Home">
 			<Head>
 				<title>Monopolowi</title>
 				<link rel="icon" href="/favicon.ico" />

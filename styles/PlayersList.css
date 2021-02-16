@@ -1,19 +1,46 @@
 .PlayersList {
 	height: fit-content;
-	max-width: 15vw;
+	width: 15vw;
 	/* background-color: saddlebrown; */
 	display: flex;
 	flex-direction: column;
-	justify-content: space-evenly;
+	justify-content: end;
+	z-index: 3;
+	position: fixed;
+	top: 0%;
+	right: 5%;
+	height: 94vh;
+	margin-top: 3vh;
 }
 .Player {
 	padding: 5%;
+	max-height: 10%;
+	border: 1px solid;
 }
 .Trade {
 	position: fixed;
-	background-color: red;
+	/* background-color: red; */
 	height: 31vh;
 	width: 31vw;
 	top: 30vh;
 	left: 30vw;
+}
+.PlayerListCardsList {
+	display: flex;
+	flex-direction: row;
+	width: 15vw;
+}
+.PlayersList .mainPlayerCardList {
+	position: absolute;
+	top: 5vh;
+	right: 15vw;
+	width: 50vw;
+	max-height: 80vh;
+	padding: 1vw;
+	padding-bottom: 10vh;
+	overflow-y: scroll;
+}
+
+.PlayersList .displayModalCard {
+	max-height: 10vh;
 }

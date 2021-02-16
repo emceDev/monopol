@@ -33,7 +33,14 @@ export const DisplayModal = () => {
 					{cardData.title !== undefined ? (
 						<Chance title={cardData.title} description={cardData.description} />
 					) : (
-						<DisplayModalCard cardData={cardData} />
+						<>
+							<a
+								href={"#" + cardData.id}
+								onClick={() => console.log(cardData.id)}
+							>
+								<DisplayModalCard cardData={cardData} />
+							</a>
+						</>
 					)}
 					{cardData.price !== 0 ? (
 						<DisplayModalButtons

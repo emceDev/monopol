@@ -19,7 +19,6 @@ export const PlayersList = (props) => {
 						);
 				  })
 				: null}
-			<button onClick={() => setFocus(!focus)}>Szczegóły</button>
 			<button onClick={() => setShowTrade(!showTrade)}>handel</button>
 			{showTrade ? <Trade /> : null}
 		</div>

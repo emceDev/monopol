@@ -38,16 +38,16 @@ export const Login = () => {
 
 	return (
 		<div className="Login">
-			<label>Fill to log in</label>
+			<label>Wypełnij aby się zalogować</label>
 			{error}
 			<input
-				placeholder="Give name to login"
+				placeholder="Login"
 				onChange={(e) => {
 					setName(e.target.value);
 				}}
 			></input>
 			<input
-				placeholder="password"
+				placeholder="Hasło"
 				onChange={(e) => {
 					setPassword(e.target.value);
 				}}
@@ -57,7 +57,7 @@ export const Login = () => {
 					handleLogin();
 				}}
 			>
-				Suko
+				Zaloguj
 			</button>
 		</div>
 	);

@@ -86,14 +86,14 @@ export const SearchBar = () => {
 	}
 	return (
 		<div className="SearchBar">
-			<Connection />
 			<div
 				style={{
 					display: shown ? "flex" : "none",
 					flexDirection: "column",
 				}}
 			>
-				{error}
+				<p className="error">{error}</p>
+
 				<input
 					onChange={(e) => {
 						setName(e.target.value);
@@ -131,8 +131,9 @@ export const SearchBar = () => {
 				onClick={() => {
 					setShown(!shown);
 				}}
+				className={shown ? "SearchBarToggleOn" : "SearchBarToggleOff"}
 			>
-				{shown ? "Hide" : "Show"}
+				{shown ? "Zwiń" : "Rozwiń"}
 			</button>
 		</div>
 	);

@@ -12,18 +12,13 @@
 	grid-row-gap: 0px; */
 }
 .UI div {
-	z-index: 100;
+	/* z-index: 100; */
 }
 .PlayersList {
-	/* grid-area: 1 / 5 / 5 / 6; */
-	position: fixed;
-	top: 0%;
-	right: 5%;
-	height: 94vh;
-	margin-top: 3vh;
 }
 .PlayerCardUi {
 	grid-area: 5 / 1 / 6 / 2;
+	max-width: 30vw;
 }
 .NewsFeed {
 	position: fixed;
@@ -100,14 +95,17 @@
 	display: flex;
 }
 .mainPlayerCardList {
+	background-color: rgba(173, 216, 230, 0.274);
 	display: flex;
 	position: fixed;
 	bottom: 0px;
-	right: 20%;
+	right: 1vw;
 	padding-top: 1%;
 	justify-content: space-evenly;
 	height: fit-content;
-	width: max-content;
+	/* width: max-content; */
+	max-width: 70vw;
+	flex-flow: wrap;
 }
 .DisplayModalCard {
 	word-break: break-all;

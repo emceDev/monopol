@@ -39,21 +39,21 @@ export const CreatePlayer = () => {
 	return (
 		<div className="Register">
 			{error}
-			<label>Wypełnij aby się zarejsestrować</label>
+			<label>Wypełnij aby się zarejestrować</label>
 			<input
-				placeholder="Give name"
+				placeholder="Login"
 				onChange={(e) => {
 					setName(e.target.value);
 				}}
 			></input>
 			<input
-				placeholder="Give password"
+				placeholder="Hasło"
 				onChange={(e) => {
 					setPassword(e.target.value);
 				}}
 			></input>
 			<input
-				placeholder="Wpisz kolor po angielsku"
+				placeholder="Kolor po angielsku"
 				onChange={(e) => {
 					setColor(e.target.value);
 				}}
@@ -63,7 +63,7 @@ export const CreatePlayer = () => {
 					handleRegister();
 				}}
 			>
-				Register
+				Zarejestruj
 			</button>
 		</div>
 	);

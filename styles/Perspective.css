@@ -3,4 +3,7 @@
 }
 .Field {
 	transform: rotateX(45deg);
+	/* background-repeat: no-repeat;
+	background-image: url(../images//pobrane.jpeg);
+	background-size: fill; */
 }
