@@ -34,12 +34,13 @@ export const DisplayModal = () => {
 						<Chance title={cardData.title} description={cardData.description} />
 					) : (
 						<>
-							<a
-								href={"#" + cardData.id}
-								onClick={() => console.log(cardData.id)}
+							<button
+								style={{ marginTop: "0px", width: "100%" }}
+								onClick={() => setCardData(null)}
 							>
-								<DisplayModalCard cardData={cardData} />
-							</a>
+								zwiń
+							</button>
+							<DisplayModalCard cardData={cardData} />
 						</>
 					)}
 					{cardData.price !== 0 ? (

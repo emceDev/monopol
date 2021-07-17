@@ -20,7 +20,12 @@ export const PlayersList = (props) => {
 				  })
 				: null}
 			<button onClick={() => setShowTrade(!showTrade)}>handel</button>
-			{showTrade ? <Trade /> : null}
+			{showTrade ? (
+				<div>
+					<Trade />
+					<button onClick={() => setShowTrade(false)}>wyjdź</button>
+				</div>
+			) : null}
 		</div>
 	);
 };

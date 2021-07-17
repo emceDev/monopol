@@ -106,5 +106,4 @@ export const Trade = (props) => {
 			</button>
 		</div>
 	);
-	return <div>trading here</div>;
 };

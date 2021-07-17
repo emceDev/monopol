@@ -155,3 +155,10 @@ export const addToQueue = async (player, game) => {
 		.ref("Games/" + game + "/queue/players/")
 		.set([...previousQueue, player]);
 };
+
+// 1 2 3 4 5 6 7 8 9
+
+// Number of players
+// each move increment current by one
+// if current > number of players
+// set to 0

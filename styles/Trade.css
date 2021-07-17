@@ -3,6 +3,15 @@
 	background-color: blueviolet;
 	color: whitesmoke;
 }
+@media only screen and (max-width: 900px) {
+	.Trade {
+		width: 50%;
+		left: 25%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+}
 .TradeContainer {
 	display: flex;
 	text-align: center;

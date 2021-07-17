@@ -11,15 +11,7 @@
 	grid-column-gap: 0px;
 	grid-row-gap: 0px; */
 }
-.UI div {
-	/* z-index: 100; */
-}
-.PlayersList {
-}
-.PlayerCardUi {
-	grid-area: 5 / 1 / 6 / 2;
-	max-width: 30vw;
-}
+
 .NewsFeed {
 	position: fixed;
 	z-index: 2;
@@ -30,7 +22,13 @@
 	overflow: scroll;
 	overflow-x: hidden;
 	transition: height 0.7s;
+	height: 50vh;
 }
+.NewsFeed li {
+	line-break: auto;
+	word-break: keep-all;
+}
+
 .StartButton {
 	grid-area: 3 / 3 / 4 / 4;
 }
@@ -39,6 +37,8 @@
 }
 
 .PlayerCardUi {
+	grid-area: 5 / 1 / 6 / 2;
+	max-width: 30vw;
 	display: flex;
 	flex-direction: row;
 	width: fit-content;
@@ -58,6 +58,7 @@
 	text-align: center;
 	word-break: keep-all;
 }
+
 .PlayerDataRoll {
 	background-color: brown;
 	display: flex;
@@ -65,7 +66,12 @@
 	justify-content: space-between;
 	align-items: center;
 }
-.RollButton {
+.RollButton_inactive {
+	background-color: magenta;
+	width: 100%;
+	height: 10vh;
+}
+.RollButton_active {
 	background-color: magenta;
 	width: 100%;
 	height: 10vh;
@@ -90,6 +96,7 @@
 	align-items: center;
 	display: flex;
 	flex-direction: column;
+	justify-content: start;
 }
 .PlayerDisplayModal {
 	display: flex;
@@ -107,10 +114,51 @@
 	max-width: 70vw;
 	flex-flow: wrap;
 }
+
 .DisplayModalCard {
 	word-break: break-all;
 	min-width: 10vw;
 	margin-left: 1%;
 
 	/* margin-left: 1%; */
+}
+@media only screen and (max-width: 900px) {
+	.TradeWithBankButtons {
+		display: flex;
+		flex-direction: row;
+	}
+
+	.PlayerCardUi * {
+		font-size: 6vh;
+		min-width: fit-content;
+	}
+	.PlayerCardUi {
+		height: 125vh;
+	}
+	.PlayerDataRoll {
+		width: 25vw;
+	}
+	.RollButton_active,
+	.RollButton_inactive {
+		height: 60%;
+	}
+
+	.mainPlayerCardList {
+		background-attachment: local;
+		max-height: fit-content;
+		min-height: 10vh;
+	}
+	.NewsFeed {
+		width: 70%;
+		height: 150vh;
+		font-size: 15vw;
+		font-weight: 500;
+		color: whitesmoke;
+		/* height: 50%; */
+	}
+	.NewsFeed li {
+		font-size: 3.6vw;
+		line-break: auto;
+		word-break: keep-all;
+	}
 }

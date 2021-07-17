@@ -12,6 +12,7 @@
 	height: 94vh;
 	margin-top: 3vh;
 }
+
 .Player {
 	padding: 5%;
 	max-height: 10%;
@@ -43,4 +44,23 @@
 
 .PlayersList .displayModalCard {
 	max-height: 10vh;
+}
+@media only screen and (max-width: 900px) {
+	.PlayersList {
+		right: 0px;
+		width: fit-content;
+		height: fit-content;
+	}
+	.Player {
+		padding: 3%;
+	}
+	.PlayersList * {
+		font-size: 6vh;
+	}
+	.mainPlayerCardList {
+		z-index: 10001;
+	}
+	.PlayerListCardsList .DisplayModalCard {
+		font-size: 1vw;
+	}
 }

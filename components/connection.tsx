@@ -9,6 +9,7 @@ import {
 } from "../state/atom";
 import dynamic from "next/dynamic";
 // import {  } from "peerjs/index/Peer";
+
 export const Connection = () => {
 	// const [connect, setConnect] = useState(null);
 	const [listen, setListen] = useState(null);

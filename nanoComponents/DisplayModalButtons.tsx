@@ -41,7 +41,7 @@ async function auction(card, game, player) {
 }
 const TradeWithBankButtons = (props) => {
 	return (
-		<div>
+		<div className="TradeWithBankButtons">
 			<button
 				onClick={() => {
 					transferCard(

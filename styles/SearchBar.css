@@ -8,6 +8,12 @@
 	/* position: absolute; */
 	/* margin: 0 auto; */
 }
+@media only screen and (max-width: 700px) {
+	.SearchBar {
+		margin-left: 10vw;
+		width: 80vw;
+	}
+}
 .SearchBar input {
 	padding: 3%;
 }

@@ -4,6 +4,7 @@ import { changeBalance } from "../MoneyTransfer";
 import { setNewsFeed } from "../NewsFeed";
 import { onChangedField } from "../OnChangedField";
 import { moveQueue } from "../Queue/index";
+
 async function updateCurrentFieldInPlayers(data) {
 	return await app
 		.database()

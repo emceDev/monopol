@@ -16,6 +16,7 @@ import { GameField } from "../microComponents/GameField";
 import { PlayersList } from "../microComponents/PlayersList";
 import { Trade } from "../nanoComponents/Trade";
 import { Auction } from "../microComponents/Auction";
+
 export const GameData = () => {
 	const gameData = useRecoilValue(mainGameData);
 	const [cardsData, setCardsData] = useRecoilState(cardsAtom);
@@ -27,6 +28,7 @@ export const GameData = () => {
 	const [observing, setObserving] = useState(false);
 	const [queue, setQueue] = useRecoilState(queueAtom);
 	const [auction, setAuction] = useState(null);
+
 	async function observ(x: string) {
 		setObserving(true);
 		setInterval(async () => {
@@ -37,8 +39,8 @@ export const GameData = () => {
 				}),
 			});
 			let response = await observer.json();
-			// console.log("response :>> ");
-			// console.log(response);
+			console.log("response :>> ");
+			console.log(response);
 			setCardsData(response.data.cards);
 			setPlayersData(response.data.players);
 			setNewsFeedData(response.data.newsFeed);
@@ -57,6 +59,7 @@ export const GameData = () => {
 		}
 		return;
 	}, [gameData]);
+
 	return (
 		<div className="GameData">
 			{gameData.name === null ? null : (

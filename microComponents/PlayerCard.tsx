@@ -60,39 +60,32 @@ export const PlayerCard = () => {
 		<div className="PlayerCard">
 			{playerData ? (
 				<>
-					{/* {err} */}
-
 					<div className="PlayerCardUi">
 						<div className="PlayerDataRoll">
 							<p>{playerData.name}</p>
 							<p>{playersData[playerData.name]?.balance}</p>
-							{/* {!cooldown ? ( */}
-							{/* {console.log(
-								gameData?.queue?.players[gameData.queue.current] ===
-									playerData.name
-							)} */}
-							<div
-								className="RollButton"
-								onClick={() => roll()}
-								style={{
-									visibility:
-										gameData?.queue.players !== null &&
-										gameData?.queue?.players[gameData.queue.current] ===
-											playerData.name
-											? "visible"
-											: "visible",
-								}}
-							>
+							{/* button */}
+							<div className="RollButton_active" onClick={roll}>
 								Rzut kostką!
 							</div>
-
-							{/* ) : null} */}
+							{/* {gameData?.queue.players !== null &&
+							gameData?.queue?.players[gameData.queue.current] ===
+								playerData.name ? (
+								<div className="RollButton_active" onClick={roll}>
+									Rzut kostką!
+								</div>
+							) : (
+								<div className="RollButton_inactive">
+									Poczekaj na swoją kolejkę
+								</div>
+							)} */}
 						</div>
 						<div className="PlayerDisplayModal">
 							<DisplayModal />
 							<div
 								className="mainPlayerCardList"
-								onMouseOver={() => setCardListHoover(true)}
+								onMouseOver={() => setCardListHoover(!cardListHoover)}
+								onClick={() => setCardListHoover(!cardListHoover)}
 								onMouseLeave={() => {
 									setCardListHoover(false);
 								}}

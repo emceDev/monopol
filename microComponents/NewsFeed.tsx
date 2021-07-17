@@ -12,7 +12,7 @@ export const NewsFeed = (props) => {
 			onMouseLeave={() => {
 				setShown(false);
 			}}
-			style={{ height: shown ? "20vh" : "5vh" }}
+			style={{ maxHeight: shown ? "50vh" : "15vh" }}
 		>
 			<ol>
 				{props.news?.map((news) => (
