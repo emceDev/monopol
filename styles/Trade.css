@@ -3,6 +3,12 @@
 	background-color: blueviolet;
 	color: whitesmoke;
 }
+.TradeButtonHighLighted {
+	background-color: red;
+}
+.TradeButton {
+	background-color: green;
+}
 @media only screen and (max-width: 900px) {
 	.Trade {
 		width: 50%;

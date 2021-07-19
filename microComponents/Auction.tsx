@@ -8,6 +8,8 @@ export const Auction = (props) => {
 
 	async function handleAuction(action) {
 		if (action === "bet" && bet < props.auction.price) {
+			console.log(props.auction.price);
+			console.log(bet);
 			console.log("too small shiet");
 		} else {
 			const res1 = await fetch("api/Auction", {
@@ -26,19 +28,17 @@ export const Auction = (props) => {
 	}
 
 	return (
-		<div
-			className="Auction"
-			style={{ position: "fixed", top: "20vh", left: "30vw" }}
-		>
+		<div className="Auction">
 			<DisplayModalCard cardData={props.auction.card} />
 			<div className="AuctionInteraction">
-				<p>Gracz: {props?.auction?.player}</p>
-				<p>Stawka: {props?.auction?.price}</p>
+				<p>LICYTACJA!</p>
+				<p>Minimalna stawka: {props?.auction?.price}</p>
 				<input
 					onChange={(e) => setBet(e.target.value)}
 					type="number"
 					placeholder="Nowa stawka"
 					min={props.auction.price}
+					defaultValue={props.auction.price}
 				></input>
 				{/* {console.log(
 					props.auction.queue.players.players[
@@ -57,6 +57,7 @@ export const Auction = (props) => {
 					</>
 				) : (
 					<p>
+						Kolej gracza:
 						{
 							props.auction.queue.players.players[
 								props.auction.queue.players.current

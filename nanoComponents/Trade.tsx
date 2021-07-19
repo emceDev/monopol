@@ -10,20 +10,22 @@ export const Trade = (props) => {
 	const [trade, setTrade] = useRecoilState(tradeAtom);
 	const [offerMoney, setOfferMoney] = useState(0);
 	const [demandMoney, setDemandMoney] = useState(0);
-	const [demandsArr, setDemandsArr] = useState(null);
+	const [demandsArr, setDemandsArr] = useState([]);
 	const [offerArr, setOfferArr] = useState([]);
 	const [show, setShow] = useState(false);
+	const [error, setError] = useState("");
 	useEffect(() => {
 		console.log(demandsArr);
+
+		// console.log(x);
 	}, [demandsArr]);
 	function listen() {
 		setShow(!show);
 	}
-	function log() {
-		console.log("money is: " + offerArr);
-	}
+
 	async function sendOffer() {
-		setShow(false);
+		// setShow(false);
+		console.log("oferta sent");
 		const res1 = await fetch("api/SetTradeOffer", {
 			method: "POST",
 			body: JSON.stringify({
@@ -31,18 +33,20 @@ export const Trade = (props) => {
 				offer: {
 					giver: playerAtom.name,
 					receiver: receiver,
-					demands: { money: demandMoney, cards: demandsArr },
-					offerings: { money: offerMoney, cards: offerArr },
+					demands: { money: demandMoney, cards: demandsArr[0]?.split(",") },
+					offerings: { money: offerMoney, cards: offerArr[0]?.split(",") },
 				},
 			}),
 		});
 		const res2 = await res1.json();
-		console.log(res2);
+		setError(res2.requirement);
+		console.log(res2.requirement[0]);
 	}
 	return (
 		<div className="Trade">
 			{show ? (
 				<>
+					{error !== "" ? <p>{error[1]}</p> : <p>Handluj</p>}
 					<div>
 						<div className="TradeContainer">
 							<div>

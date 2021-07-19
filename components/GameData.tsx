@@ -39,8 +39,8 @@ export const GameData = () => {
 				}),
 			});
 			let response = await observer.json();
-			console.log("response :>> ");
-			console.log(response);
+			// console.log("response :>> ");
+			// console.log(response);
 			setCardsData(response.data.cards);
 			setPlayersData(response.data.players);
 			setNewsFeedData(response.data.newsFeed);
@@ -81,10 +81,6 @@ export const GameData = () => {
 								auction={auction}
 								game={gameData.name}
 								player={player.name}
-								// przycisk odpierdala
-								// po chance tez odpierala
-								// licytacja nie dziala cardowner set
-								// da sie wymienic pole ktorego sie niema
 							/>
 						)}
 						{gameData.players !== null ? <PlayersList data={gameData} /> : null}

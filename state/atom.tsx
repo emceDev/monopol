@@ -4,6 +4,12 @@ export const newsFeedAtom = atom({
 	key: "newsFeedData",
 	default: null,
 });
+export const highLight = atom({
+	key: "highLight",
+	default: {
+		card: "none",
+	},
+});
 export const focusedCardData = atom({
 	key: "focusedCardData",
 	default: null,

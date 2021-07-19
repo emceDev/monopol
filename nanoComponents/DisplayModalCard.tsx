@@ -1,8 +1,14 @@
+import { highLight } from "../state/atom";
+import { useRecoilState, useRecoilValue } from "recoil";
 export const DisplayModalCard = (props) => {
+	const [highLighted, setHighLight] = useRecoilState(highLight);
 	return (
 		<div
 			className="DisplayModalCard"
 			style={{ backgroundColor: props.cardData.color }}
+			onClick={() => {
+				setHighLight(props.cardData.id);
+			}}
 		>
 			<p>
 				{props.cardData.id}. {props.cardData.name}

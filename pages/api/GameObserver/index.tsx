@@ -6,7 +6,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 	const gameData = app.database().ref("Games/" + data.game + "/");
 
 	return gameData.once("value").then((snapshot) => {
-		console.log("solved");
+		// console.log("solved");
 		// console.log(snapshot);
 		return res.json({ data: snapshot.val() });
 	});
