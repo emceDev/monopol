@@ -39,14 +39,13 @@ export const Trade = (props) => {
 			}),
 		});
 		const res2 = await res1.json();
-		setError(res2.requirement);
-		console.log(res2.requirement[0]);
+		setError(res2.x);
 	}
 	return (
 		<div className="Trade">
 			{show ? (
 				<>
-					{error !== "" ? <p>{error[1]}</p> : <p>Handluj</p>}
+					{error !== "" ? <p>{error}</p> : <p>Handluj</p>}
 					<div>
 						<div className="TradeContainer">
 							<div>
