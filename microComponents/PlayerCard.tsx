@@ -65,10 +65,10 @@ export const PlayerCard = () => {
 							<p>{playerData.name}</p>
 							<p>{playersData[playerData.name]?.balance}</p>
 							{/* button */}
-							<div className="RollButton_active" onClick={roll}>
+							{/* <div className="RollButton_active" onClick={roll}>
 								Rzut kostką!
-							</div>
-							{/* {gameData?.queue.players !== null &&
+							</div> */}
+							{gameData?.queue.players !== null &&
 							gameData?.queue?.players[gameData.queue.current] ===
 								playerData.name ? (
 								<div className="RollButton_active" onClick={roll}>
@@ -78,7 +78,7 @@ export const PlayerCard = () => {
 								<div className="RollButton_inactive">
 									Poczekaj na swoją kolejkę
 								</div>
-							)} */}
+							)}
 						</div>
 						<div className="PlayerDisplayModal">
 							<DisplayModal />
