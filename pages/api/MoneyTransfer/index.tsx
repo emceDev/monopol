@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { app } from "../config/firebase";
 
-async function getBalance(gameRef, playerRef) {
+export async function getBalance(gameRef, playerRef) {
 	return await app
 		.database()
 		.ref("Games/" + gameRef + "/players/" + playerRef + "/balance/")
@@ -20,12 +20,10 @@ export async function changeBalance(gameRef, giverRef, receiverRef, amount) {
 		(balance) => amount + balance
 	);
 	var updates = {};
-	updates[
-		"Games/" + gameRef + "/players/" + giverRef + "/balance/"
-	] = giverBalance;
-	updates[
-		"Games/" + gameRef + "/players/" + receiverRef + "/balance/"
-	] = receiverBalance;
+	updates["Games/" + gameRef + "/players/" + giverRef + "/balance/"] =
+		giverBalance;
+	updates["Games/" + gameRef + "/players/" + receiverRef + "/balance/"] =
+		receiverBalance;
 	// console.log(updates);
 	let result;
 	await app

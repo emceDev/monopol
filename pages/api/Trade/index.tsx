@@ -2,7 +2,6 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { app } from "../config/firebase";
 import { setCardOwner } from "../CardTransfer/index";
 import { changeBalance } from "../MoneyTransfer/index";
-
 async function handleCards(giver, receiver, demandsCards, offeredCards, game) {
 	console.log("card handler");
 	let i = 0;

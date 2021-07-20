@@ -173,41 +173,4 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 				});
 			}
 		});
-	return res.json("Pomyślnie wysłano ofertę, poczekaj na odpowiedź");
-	// check balance of giver
-	// receiverInventory.money
-	// check balance of receiver
-
-	// check cards of giver
-	// checkCards(data.gameName, data.offer.giver, data.offer.demands.cards).then(
-	// 	(x) => console.log(x)
-	// );
-
-	// // check cards of receiver
-	// checkCards(
-	// 	data.gameName,
-	// 	data.offer.receiver,
-	// 	data.offer.offerings.cards
-	// ).then((x) => console.log(x));
-
-	// console.log(data);
 };
-
-// offer: {
-// 	giver: playerAtom.name,
-// 	receiver: receiver,
-// 	demands: { money: demandMoney, cards: demandsArr },
-// 	offerings: { money: offerMoney, cards: offerArr },
-// },
-//
-// app
-// 	.database()
-// 	.ref("Games/" + data.gameName + "/offers/" + data.offer.receiver)
-// 	.set(data.offer);
-// return res.json({ response: checkDemands });
-
-// get inventory
-// check if owner of cards
-// check money
-// ====goood====
-// get 2nd inventory

@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+
 async function transferCard(cardName, receiverRef, gameName) {
 	const pay = await fetch("api/CardTransfer", {
 		method: "POST",
@@ -40,36 +41,55 @@ async function auction(card, game, player) {
 	console.log(res);
 }
 const TradeWithBankButtons = (props) => {
+	const [error, setError] = useState(true);
+
+	async function buy(data) {
+		let buy = await fetch("api/Buy", {
+			method: "POST",
+			body: JSON.stringify({ data }),
+		});
+		const res = await buy.json();
+		console.log(res);
+		if (res.response === true) {
+			transferCard(data.cardData.id, data.playerName, data.gameName);
+			transferMoney(
+				data.cardData.owner,
+				data.cardData.price,
+				data.gameName,
+				data.playerName
+			);
+			setError(false);
+		} else {
+			setError(false);
+		}
+	}
 	return (
 		<div className="TradeWithBankButtons">
-			<button
-				onClick={() => {
-					transferCard(
-						props.data.cardData.id,
-						props.data.playerName,
-						props.data.gameName
-					);
-					transferMoney(
-						props.data.cardData.owner,
-						props.data.cardData.price,
-						props.data.gameName,
-						props.data.playerName
-					);
-				}}
-			>
-				Kup
-			</button>
-			<button
-				onClick={() => {
-					auction(
-						props.data.cardData,
-						props.data.gameName,
-						props.data.playerName
-					);
-				}}
-			>
-				Licytuj
-			</button>
+			{error ? (
+				<div>
+					{" "}
+					<button
+						onClick={() => {
+							buy(props.data);
+						}}
+					>
+						Kup
+					</button>
+					<button
+						onClick={() => {
+							auction(
+								props.data.cardData,
+								props.data.gameName,
+								props.data.playerName
+							);
+						}}
+					>
+						Licytuj
+					</button>
+				</div>
+			) : (
+				<></>
+			)}
 		</div>
 	);
 };
