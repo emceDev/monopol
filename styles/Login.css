@@ -37,14 +37,6 @@
 	max-width: 60vw;
 	/* padding: 10vw; */
 }
-@media only screen and (max-width: 900px) {
-	.Register,
-	.Login {
-		width: 80vw;
-		height: 80vh;
-	}
-}
-
 .Register input,
 .Login input {
 	font-size: medium;
@@ -58,4 +50,34 @@
 	font-weight: bold;
 	padding: 3%;
 	color: whitesmoke;
+}
+
+@media only screen and (max-width: 900px) {
+	.LoginPanel {
+		min-width: 98vw;
+		max-width: 98vw;
+		padding-left: 1vw;
+	}
+	.LoginPanel input {
+		/* font-size: small; */
+		background-color: red;
+		width: inherit;
+	}
+	.Register,
+	.Login {
+		min-height: 80vh;
+		max-height: 80vh;
+	}
+	.Login {
+		width: 25vw;
+		/* padding: 5%; */
+	}
+	.Login input,
+	.Register input {
+		width: 90%;
+	}
+	.Login:hover {
+		/* width: 65vw; */
+		width: 80vw;
+	}
 }
