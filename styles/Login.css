@@ -1,14 +1,41 @@
 .Login,
 .Register {
-	width: 40vw;
+	/* width: 40vw; */
+	width: max-content;
+	padding: 1vw;
 	height: 40vh;
+	/* height: 100%; */
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	align-content: center;
 	justify-content: center;
 	background-color: #555555a4;
-	padding: 10vw;
+}
+
+.LoginPanel label {
+	text-align: center;
+	word-break: break-word;
+}
+.Login {
+	width: 20vw;
+	/* width: auto; */
+	transition: width 1s ease-in-out;
+	background-color: forestgreen;
+}
+.Register {
+	flex: auto;
+	background-color: indigo;
+}
+.Login:hover {
+	width: 55vw;
+}
+.LoginPanel {
+	display: flex;
+	justify-content: flex-start;
+	min-width: 60vw;
+	max-width: 60vw;
+	/* padding: 10vw; */
 }
 @media only screen and (max-width: 900px) {
 	.Register,
@@ -17,6 +44,7 @@
 		height: 80vh;
 	}
 }
+
 .Register input,
 .Login input {
 	font-size: medium;
