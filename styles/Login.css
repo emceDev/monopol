@@ -59,8 +59,6 @@
 		padding-left: 1vw;
 	}
 	.LoginPanel input {
-		/* font-size: small; */
-		background-color: red;
 		width: inherit;
 	}
 	.Register,
