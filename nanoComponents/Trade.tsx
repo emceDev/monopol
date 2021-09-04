@@ -107,6 +107,7 @@ export const Trade = (props) => {
 			<button onClick={() => setShow(!show)}>
 				{!show ? "Stwórz ofertę" : "Sprawdź oferty"}
 			</button>
+			<button onClick={() => props.setShowTrade()}>Wyjdz</button>
 		</div>
 	);
 };

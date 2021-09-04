@@ -18,14 +18,7 @@
 	max-height: 10%;
 	border: 1px solid;
 }
-.Trade {
-	position: fixed;
-	/* background-color: red; */
-	height: 31vh;
-	width: 31vw;
-	top: 30vh;
-	left: 30vw;
-}
+
 .PlayerListCardsList {
 	display: flex;
 	flex-direction: row;

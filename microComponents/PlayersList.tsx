@@ -48,8 +48,8 @@ export const PlayersList = (props) => {
 			{showTrade ? (
 				<div>
 					{/* {console.log(trade !== undefined)} */}
-					<Trade />
-					<button onClick={() => setShowTrade(false)}>wyjdź</button>
+					<Trade setShowTrade={() => setShowTrade(false)} />
+					{/* <button onClick={() => setShowTrade(false)}>wyjdź</button> */}
 				</div>
 			) : null}
 		</div>
