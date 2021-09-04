@@ -2,7 +2,7 @@ import { Card } from "./Card";
 import { useState } from "react";
 import { DisplayModalCard } from "./DisplayModalCard";
 export const Player = (props) => {
-	const [expand, setExpand] = useState(true);
+	const [expand, setExpand] = useState(false);
 	return (
 		<div
 			id={props.player.name}
