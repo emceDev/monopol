@@ -9,6 +9,7 @@ import {
 	tradeAtom,
 	queueAtom,
 	mainPlayerData,
+	hintAtom,
 } from "../state/atom";
 import { NewsFeed } from "../microComponents/NewsFeed";
 import { PlayerCard } from "../microComponents/PlayerCard";
@@ -28,7 +29,7 @@ export const GameData = () => {
 	const [observing, setObserving] = useState(false);
 	const [queue, setQueue] = useRecoilState(queueAtom);
 	const [auction, setAuction] = useState(null);
-
+	const [hint, setHintAtom] = useRecoilState(hintAtom);
 	async function observ(x: string) {
 		setObserving(true);
 		setInterval(async () => {
@@ -56,10 +57,10 @@ export const GameData = () => {
 		if ((gameData.name !== null) === true) {
 			// console.log("mainGameData");
 			// console.log(gameData);
+			setHintAtom("Aby ropocząć grę wciśnij start");
 		}
 		return;
 	}, [gameData]);
-
 	return (
 		<div className="GameData">
 			{gameData.name === null ? null : (

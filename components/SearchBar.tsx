@@ -104,24 +104,24 @@ export const SearchBar = () => {
 						findGame();
 					}}
 				>
-					Join Game
+					Dołącz do gry
 				</button>
 				<button
 					onClick={() => {
 						leaveGame();
 					}}
 				>
-					Leave Game
+					Wyjdź z gry
 				</button>
 				<button
 					onClick={() => {
 						createGame();
 					}}
 				>
-					Create Game
+					Stwórz grę
 				</button>
 				<input
-					placeholder="Your color here"
+					placeholder="Kolor twojego pionka po angielsku"
 					onChange={(e) => {
 						setColor(e.target.value);
 					}}
@@ -133,7 +133,7 @@ export const SearchBar = () => {
 				}}
 				className={shown ? "SearchBarToggleOn" : "SearchBarToggleOff"}
 			>
-				{shown ? "Zwiń" : "Rozwiń"}
+				{shown ? "Zwiń menu" : "Rozwiń menu"}
 			</button>
 		</div>
 	);

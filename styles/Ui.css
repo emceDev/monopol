@@ -16,17 +16,23 @@
 	position: fixed;
 	z-index: 2;
 	width: 50vw;
-	background-color: blueviolet;
 	top: 0vh;
 	left: 25vw;
 	overflow: scroll;
 	overflow-x: hidden;
-	transition: height 0.7s;
-	height: 50vh;
+	transition: height 0.7s, background-color 0.7s;
+	height: 15vh;
+	color: whitesmoke;
+	font-weight: bold;
+	background-color: #8a2be278;
 }
 .NewsFeed li {
 	line-break: auto;
 	word-break: keep-all;
+}
+.NewsFeed:hover {
+	height: 50vh;
+	background-color: #8a2be2;
 }
 
 .StartButton {
@@ -113,15 +119,23 @@
 	/* width: max-content; */
 	max-width: 70vw;
 	flex-flow: wrap;
+	opacity: 1;
+	animation: appearcardlist ease-out 0.5s;
 }
-
+@keyframes appearcardlist {
+	0% {
+		opacity: 0.6;
+	}
+	100% {
+		opacity: 1;
+	}
+}
 .DisplayModalCard {
 	word-break: break-all;
 	min-width: 10vw;
 	margin-left: 1%;
-
-	/* margin-left: 1%; */
 }
+
 @media only screen and (max-width: 900px) {
 	.TradeWithBankButtons {
 		display: flex;
@@ -143,18 +157,34 @@
 		height: 60%;
 	}
 
-	.mainPlayerCardList {
+	.PlayersList .mainPlayerCardList {
 		background-attachment: local;
-		max-height: fit-content;
-		min-height: 10vh;
+		top: 0;
+		width: 600px;
+		min-height: 100%;
+		color: red;
+	}
+	.PlayerDisplayModal .DisplayModalCard {
+		/* color: blue; */
 	}
 	.NewsFeed {
+		left: 25;
 		width: 70%;
-		height: 150vh;
+		/* height: 150vh; */
 		font-size: 15vw;
 		font-weight: 500;
 		color: whitesmoke;
+		transition: left 1.5s, height 1s, width 1s;
 		/* height: 50%; */
+	}
+	.NewsFeed:hover {
+		height: 80%;
+		left: 0;
+		width: 100%;
+		z-index: 10000;
+		padding-left: 1%;
+		/* position: absolute; */
+		/* margin: 0 auto; */
 	}
 	.NewsFeed li {
 		font-size: 3.6vw;

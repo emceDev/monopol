@@ -4,7 +4,19 @@
 	color: whitesmoke;
 }
 .TradeButtonHighLighted {
-	background-color: red;
+	/* background-color: red; */
+	animation: pulse 2s infinite;
+}
+@keyframes pulse {
+	0% {
+		background-color: blueviolet;
+	}
+	50% {
+		background-color: cadetblue;
+	}
+	100% {
+		background-color: blueviolet;
+	}
 }
 .TradeButton {
 	background-color: green;

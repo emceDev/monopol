@@ -460,6 +460,11 @@ export const queueAtom = atom({
 		tick: 0,
 	},
 });
+export const hintAtom = atom({
+	key: "hintAtom",
+	default:
+		"tutaj zobaczysz powiadomienia z gry, możesz wyłączyć tę funkcję za 99.9$",
+});
 export const mainGameData = selector({
 	key: "mainGameData",
 	get: ({ get }) => {
@@ -469,7 +474,8 @@ export const mainGameData = selector({
 		const newsFeed = get(newsFeedAtom);
 		const trade = get(tradeAtom);
 		const queue = get(queueAtom);
-		const mainGameData = { name, players, cards, newsFeed, trade, queue };
+		const hint = get(hintAtom);
+		const mainGameData = { name, players, cards, newsFeed, trade, queue, hint };
 		return {
 			...mainGameData,
 		};

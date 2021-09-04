@@ -29,14 +29,6 @@ export default function RegLog() {
 		<div className={styles.container}>
 			{player === null ? (
 				<>
-					{/* <button
-						onClick={() => {
-							setChoice(!choice);
-						}}
-					>
-						{!choice ? "Panel Logowania" : "Panel rejestracji"}
-					</button>
-					{choice ? } */}
 					<div className="LoginPanel">
 						<Login /> <CreatePlayer />
 					</div>
