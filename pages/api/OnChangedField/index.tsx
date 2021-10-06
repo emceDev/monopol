@@ -121,7 +121,7 @@ export async function onChangedField(data, cardD) {
 					};
 				}
 			);
-		} else if (card.name === "Chance" || "CommunityChest") {
+		} else if (card.name === "Chance" || "Community Chest") {
 			let chance = await chanceHandler(data);
 			console.log(chance);
 			return {
