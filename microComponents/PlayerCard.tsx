@@ -71,11 +71,11 @@ export const PlayerCard = () => {
 							{gameData?.queue.players !== null &&
 							gameData?.queue?.players[gameData.queue.current] ===
 								playerData.name ? (
-								<div className="RollButton_active" onClick={roll}>
+								<div id="RollDiceButton"className="RollButton_active" onClick={roll}>
 									Rzut kostką!
 								</div>
 							) : (
-								<div className="RollButton_inactive">
+								<div id="TurnIndicator"className="RollButton_inactive">
 									Poczekaj na swoją kolejkę
 								</div>
 							)}
@@ -84,7 +84,8 @@ export const PlayerCard = () => {
 							<DisplayModal />
 							<div
 								className="mainPlayerCardList"
-								onMouseOver={() => setCardListHoover(!cardListHoover)}
+								// onMouseOver={() => setCardListHoover(!cardListHoover)}
+								onMouseOver={() => setCardListHoover(true)}
 								onClick={() => setCardListHoover(!cardListHoover)}
 								onMouseLeave={() => {
 									setCardListHoover(false);
@@ -93,7 +94,7 @@ export const PlayerCard = () => {
 									height: cardListHoover ? "fit-content" : "5vh",
 								}}
 							>
-								{ownedFields?.map((field) => (
+								{ownedFields?.map((field: any) => (
 									<DisplayModalCard cardData={field} />
 								))}
 							</div>

@@ -20,10 +20,11 @@ export const Login = () => {
 			body: JSON.stringify({ data: data }),
 		});
 		const res2 = await res1.json();
-		// console.log(res2.response);
+		let p=res2.response
 		if (res2.response !== undefined) {
 			setPlayerData({
 				...playerData,
+				...p,
 				loggedIn: true,
 				name: res2.response.name,
 			});
@@ -31,8 +32,24 @@ export const Login = () => {
 			router.push("/Home");
 		}
 	}
+	function deviceType() {
+		const ua = navigator.userAgent;
+		if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
+			return "tablet";
+		}
+		if (
+			/Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
+				ua
+			)
+		) {
+			return "mobile";
+		}
+		return "desktop";
+	};
 	function handleLogin() {
-		let data = { name, password };
+		let device = deviceType()
+		// console.log(device)
+		let data = { name, password, device };
 		login(data);
 	}
 
@@ -42,17 +59,20 @@ export const Login = () => {
 			{error}
 			<input
 				placeholder="Login"
+				id="LoginLogin"
 				onChange={(e) => {
 					setName(e.target.value);
 				}}
 			></input>
 			<input
 				placeholder="Hasło"
+				id="LoginPassword"
 				onChange={(e) => {
 					setPassword(e.target.value);
 				}}
 			></input>
 			<button
+				id="LoginSubmit"
 				onClick={() => {
 					handleLogin();
 				}}

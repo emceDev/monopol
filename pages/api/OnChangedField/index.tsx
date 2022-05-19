@@ -137,7 +137,7 @@ export async function onChangedField(data, cardD) {
 			};
 		} else
 			return {
-				newsFeed: "Programista nie przewidział takiej rzeczy :P To ja UwU",
+				newsFeed: "Programista nie przewidział takiej rzeczy :P To ja ",
 				code: "some wronge",
 				data: card,
 			};

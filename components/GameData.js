@@ -30,7 +30,8 @@ export const GameData = () => {
 	const [queue, setQueue] = useRecoilState(queueAtom);
 	const [auction, setAuction] = useState(null);
 	const [hint, setHintAtom] = useRecoilState(hintAtom);
-	async function observ(x: string) {
+	const [viewport, setViewport] = useState(null);
+	async function observ(x) {
 		setObserving(true);
 		setInterval(async () => {
 			const observer = await fetch("api/GameObserver", {
@@ -61,6 +62,55 @@ export const GameData = () => {
 		}
 		return;
 	}, [gameData]);
+	const getDeviceType = () => {
+		const ua = navigator.userAgent;
+		if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
+			return "tablet";
+		}
+		if (
+			/Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
+				ua
+			)
+		) {
+			return "mobile";
+		}
+		return "desktop";
+	};
+	async function sendDevice() {
+		let type = getDeviceType();
+		await fetch("api/SendDevice", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				device: type,
+			}),
+		});
+	}
+	useEffect(() => {
+		window.addEventListener("keydown", function (e) {
+			// console.log(e.target.type);
+			if (e.target.type === "number" || e.target.type === "text") {
+				return;
+			} else {
+				if (e.key === "s") {
+					window.scrollBy(0, 250);
+				}
+				if (e.key === "w") {
+					window.scrollBy(0, -250);
+				}
+				if (e.key === "d") {
+					window.scrollBy(250, 0);
+				}
+				if (e.key === "a") {
+					window.scrollBy(-250, 0);
+				}
+			}
+		});
+		return;
+	}, []);
+
 	return (
 		<div className="GameData">
 			{gameData.name === null ? null : (
@@ -69,7 +119,9 @@ export const GameData = () => {
 					<div className="UI">
 						{!observing ? (
 							<button
+								id="GameStartButton"
 								className="StartButton"
+								// onClick={() => sendDevice()}
 								onClick={() => observ(gameData.name)}
 							>
 								Start

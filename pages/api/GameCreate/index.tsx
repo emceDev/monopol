@@ -12,12 +12,23 @@ async function checkForDuplicate(ref, data) {
 			return x === null ? false : true;
 		});
 }
-
+export async function setParticipated(playerKey,gameName) {
+	return await app
+	.database()
+	.ref("Players/"+playerKey+'/participatedGames/')
+	.push(gameName)
+	.then((x) => console.log(x));
+}
 export default (req: NextApiRequest, res: NextApiResponse) => {
 	const data = JSON.parse(req.body);
+	// game model quadra quotes problem
+	// console.log('=======Game CREATE DATA')
+	// console.log(data)
+	// console.log('=======')
 	const reference = "Games/";
 	const gameModel = {
 		name: data.name,
+		date:JSON.stringify(new Date()),
 		players: {
 			bank: {
 				name: "bank",
@@ -81,18 +92,19 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 	};
 	gameModel.queue.players = [data.creator];
 	gameModel.cards.city1.whoIsOn = [data.creator];
-
-	let x = checkForDuplicate(reference, data);
-	return x.then((x) => {
-		if (x === true) {
-			res.json({ response: "game exists" });
+	// console.log(data)
+	let duplicate = checkForDuplicate(reference, data);
+	return duplicate.then((isDuplicate) => {
+		if (isDuplicate === true) {
+			res.status(409).json({ response: "game exists" });
 		} else {
-			const key = app.database().ref("Games/" + data.name);
-			return key.set(gameModel, (error) => {
+			const game = app.database().ref("Games/" + data.name);
+			return game.set(gameModel, async (error) => {
 				if (error) {
 					res.json(error);
 				} else {
-					res.json({
+					await setParticipated(data.key,data.name)
+					return res.json({
 						players: gameModel.players,
 						cards: gameModel.cards,
 						name: data.name,
@@ -101,5 +113,6 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 				}
 			});
 		}
+		
 	});
 };

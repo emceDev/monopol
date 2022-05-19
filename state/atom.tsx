@@ -25,6 +25,7 @@ export const mainPlayerData = atom({
 	key: "mainPlayerData",
 	default: {
 		loggedIn: false,
+		lastOnline:null,
 		key: null,
 		name: null,
 	},

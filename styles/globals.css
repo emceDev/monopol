@@ -9,8 +9,10 @@
 @import "Perspective.css";
 @import "Ui.css";
 @import "Auction.css";
+@import "PremiumFeatures.css";
 html,
 body {
+	scroll-behavior: smooth;
 	background-color: lightcoral;
 	padding: 0;
 	margin: 0;

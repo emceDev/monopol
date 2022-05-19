@@ -69,6 +69,7 @@ const TradeWithBankButtons = (props) => {
 				<div>
 					{" "}
 					<button
+					id="BuyFieldButton"
 						onClick={() => {
 							buy(props.data);
 						}}
@@ -76,6 +77,7 @@ const TradeWithBankButtons = (props) => {
 						Kup
 					</button>
 					<button
+					id="StartAuctionButton"
 						onClick={() => {
 							auction(
 								props.data.cardData,

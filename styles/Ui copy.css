@@ -1,0 +1,193 @@
+.UI {
+	/* position: fixed;
+	width: 100vw;
+	height: 100vh;
+	top: 0px;
+	left: 0px; */
+	/* z-index: -100; */
+	/* display: grid; */
+	/* grid-template-columns: repeat(5, 1fr);
+	grid-template-rows: repeat(5, 1fr);
+	grid-column-gap: 0px;
+	grid-row-gap: 0px; */
+}
+
+.NewsFeed {
+	position: fixed;
+	z-index: 2;
+	width: 50vw;
+	top: 0vh;
+	left: 25vw;
+	overflow: scroll;
+	overflow-x: hidden;
+	transition: height 0.7s, background-color 0.7s;
+	height: 15vh;
+	color: whitesmoke;
+	font-weight: bold;
+	background-color: #8a2be278;
+}
+.NewsFeed li {
+	line-break: auto;
+	word-break: keep-all;
+}
+.NewsFeed:hover {
+	height: 50vh;
+	background-color: #8a2be2;
+}
+
+.StartButton {
+	grid-area: 3 / 3 / 4 / 4;
+}
+.Trade {
+	grid-area: 3 / 3 / 4 / 4;
+}
+
+.PlayerCardUi {
+	grid-area: 5 / 1 / 6 / 2;
+	max-width: 30vw;
+	display: flex;
+	flex-direction: row;
+	width: fit-content;
+	height: fit-content;
+	padding: 1vw;
+	/* transition: opacity 1s; */
+	z-index: 100;
+	position: fixed;
+	bottom: 5%;
+	left: 5%;
+	margin: auto;
+	background-color: indigo;
+	color: white;
+	font-size: xx-large;
+	padding-top: 1%;
+	font-weight: 900;
+	text-align: center;
+	word-break: keep-all;
+}
+
+.PlayerDataRoll {
+	background-color: brown;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
+.RollButton_inactive {
+	background-color: magenta;
+	width: 100%;
+	height: 10vh;
+}
+.RollButton_active {
+	background-color: magenta;
+	width: 100%;
+	height: 10vh;
+	animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+	0% {
+		background-color: #001f3f;
+	}
+	50% {
+		background-color: #ff4136;
+	}
+	100% {
+		background-color: #001f3f;
+	}
+}
+.DisplayModal {
+	background-color: rgb(0, 113, 226);
+	min-width: 10vw;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+}
+.PlayerDisplayModal {
+	display: flex;
+}
+.mainPlayerCardList {
+	background-color: rgba(173, 216, 230, 0.274);
+	display: flex;
+	position: fixed;
+	bottom: 0px;
+	right: 1vw;
+	padding-top: 1%;
+	justify-content: space-evenly;
+	height: fit-content;
+	/* width: max-content; */
+	max-width: 70vw;
+	flex-flow: wrap;
+	opacity: 1;
+	animation: appearcardlist ease-out 0.5s;
+}
+@keyframes appearcardlist {
+	0% {
+		opacity: 0.6;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+.DisplayModalCard {
+	word-break: break-all;
+	min-width: 10vw;
+	margin-left: 1%;
+}
+
+@media only screen and (max-width: 900px) {
+	.TradeWithBankButtons {
+		display: flex;
+		flex-direction: row;
+	}
+
+	.PlayerCardUi * {
+		font-size: 6vh;
+		min-width: fit-content;
+	}
+	.PlayerCardUi {
+		height: 125vh;
+	}
+	.PlayerDataRoll {
+		width: 25vw;
+	}
+	.RollButton_active,
+	.RollButton_inactive {
+		height: 60%;
+	}
+
+	.PlayersList .mainPlayerCardList {
+		background-attachment: local;
+		top: 0;
+		width: 600px;
+		min-height: 100%;
+	}
+	.PlayerDisplayModal .DisplayModalCard {
+		/* color: blue; */
+	}
+	.NewsFeed {
+		left: 25;
+		width: 70%;
+		/* height: 150vh; */
+		font-size: 15vw;
+		font-weight: 500;
+		color: whitesmoke;
+		transition: left 1.5s, height 1s, width 1s;
+		/* height: 50%; */
+	}
+	.NewsFeed:hover {
+		height: 80%;
+		left: 0;
+		width: 100%;
+		z-index: 10000;
+		padding-left: 1%;
+		/* position: absolute; */
+		/* margin: 0 auto; */
+	}
+	.NewsFeed li {
+		font-size: 3.6vw;
+		line-break: auto;
+		word-break: keep-all;
+	}
+}

@@ -8,7 +8,7 @@ import {
 	cardsAtom,
 } from "../state/atom";
 import { Connection } from "./connection";
-
+import {FeedbackForm} from '../microComponents/FeedbackForm'
 export const SearchBar = () => {
 	const [name, setName] = useState("");
 	const [error, setError] = useState(null);
@@ -21,8 +21,10 @@ export const SearchBar = () => {
 	const [shown, setShown] = useState(true);
 
 	async function createGame() {
+		// console.log(playerData)
 		const res1 = await fetch("api/GameCreate", {
 			method: "POST",
+
 			body: JSON.stringify({
 				name: name,
 				creator: playerData.name,
@@ -92,17 +94,20 @@ export const SearchBar = () => {
 					flexDirection: "column",
 				}}
 			>
-				<p className="error">{error}</p>
+				<p className="error"
+				id="ErrorField">{error}</p>
 
 				<input
 					onChange={(e) => {
 						setName(e.target.value);
 					}}
+					id="GameNameInput"
 				></input>
 				<button
 					onClick={() => {
 						findGame();
 					}}
+					id="FindGameButton"
 				>
 					Dołącz do gry
 				</button>
@@ -110,6 +115,7 @@ export const SearchBar = () => {
 					onClick={() => {
 						leaveGame();
 					}}
+					id="LeaveGameButton"
 				>
 					Wyjdź z gry
 				</button>
@@ -117,6 +123,7 @@ export const SearchBar = () => {
 					onClick={() => {
 						createGame();
 					}}
+					id="CreateGameButton"
 				>
 					Stwórz grę
 				</button>
@@ -125,7 +132,9 @@ export const SearchBar = () => {
 					onChange={(e) => {
 						setColor(e.target.value);
 					}}
+					id="ColorInput"
 				></input>
+				<FeedbackForm/>
 			</div>
 			<button
 				onClick={() => {
@@ -135,6 +144,7 @@ export const SearchBar = () => {
 			>
 				{shown ? "Zwiń menu" : "Rozwiń menu"}
 			</button>
+			
 		</div>
 	);
 };

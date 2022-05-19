@@ -22,7 +22,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "components/GameData.js", "nanoComponents/NewsFeedQuestion.js", "pages/api/LogIn/index.js"  ],
   "exclude": [
     "node_modules"
   ]

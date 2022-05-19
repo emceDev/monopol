@@ -50,11 +50,12 @@ export async function placeInJail(game, player) {
 			jail === null || jail === undefined ? [player] : [...jail, player];
 		// queue without player
 		updates["Games/" + game + "/queue/players/"] = updated;
-		// changing shiet m8
-		if(current===players.lenght){
-			return updates["Games/"+game+"/queue/current/"] = 0
-		}
-		
+		current
+		// updates["Games/"+game+'/queue/current']= 
+		console.log('====PLACE IN JAIL');
+		console.log(tick)
+		console.log(players)
+		console.log('====PLACE IN JAIL');
 		// get players lenght ex:4
 		// get current 3
 		// player to jail = current

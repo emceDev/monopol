@@ -6,6 +6,7 @@ import { useRecoilState } from "recoil";
 import { mainPlayerData, hintAtom } from "../state/atom";
 import Router, { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import {PremiumFeatures} from '../components/PremiumFeatures'
 import useSWR from "swr";
 
 const Home = () => {
@@ -29,10 +30,10 @@ const Home = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<div>
-				<div className="Hint"></div>
-				{"Witaj w monopolowych " + mainPlayer.name + " " + hint}
+				{/* <div className="Hint"> {"Witaj w monopolowych " + mainPlayer.name + " " + hint}</div> */}
 				<SearchBar />
 				<GameData />
+				<PremiumFeatures/>
 			</div>
 		</div>
 	);
