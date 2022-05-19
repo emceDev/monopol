@@ -22,6 +22,7 @@ export const Login = () => {
 		const res2 = await res1.json();
 		let p=res2.response
 		if (res2.response !== undefined) {
+	
 			setPlayerData({
 				...playerData,
 				...p,
@@ -30,6 +31,9 @@ export const Login = () => {
 			});
 			localStorage.setItem("player", JSON.stringify(res2.response));
 			router.push("/Home");
+		}else{
+			
+			setError('Błędny login lub hasło')
 		}
 	}
 	function deviceType() {
@@ -56,7 +60,7 @@ export const Login = () => {
 	return (
 		<div className="Login">
 			<label>Wypełnij aby się zalogować</label>
-			{error}
+			<div style={{color:"white"}}>{error}</div>
 			<input
 				placeholder="Login"
 				id="LoginLogin"

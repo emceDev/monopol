@@ -29,9 +29,15 @@ export default (req, res) => {
 	// let date = toString(new Date());
 	let x = checkForEntry(reference, data);
 	return x.then((x) => {
-		delete x.password;
-		loginHistory(x.key, date);
-		sendUserDevice(x.key, data.device);
-		return res.json({ response: x });
+		x !== undefined
+			? (() => {
+					console.log("not undefined");
+					console.log(x);
+					delete x.password;
+					loginHistory(x.key, date);
+					sendUserDevice(x.key, data.device);
+					return res.json({ response: x });
+			  })()
+			: res.status(404).json({ response: undefined });
 	});
 };
