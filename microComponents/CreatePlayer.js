@@ -22,12 +22,14 @@ export const CreatePlayer = () => {
 		});
 
 		const res2 = await res1.json();
+		// console.log(res2);
 		if (typeof res2.response === "object") {
 			setPlayerData({
 				loggedIn: true,
 				lastOnline: res2.response.date,
 				name: res2.response.name,
 				key: res2.response.key,
+				color: res2.response.color,
 			});
 			setError("Pomyślnie zarejestrowano");
 			localStorage.setItem("player", JSON.stringify(res2.response));

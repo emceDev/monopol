@@ -56,6 +56,8 @@ export const GameData = () => {
 
 	useEffect(() => {
 		if ((gameData.name !== null) === true) {
+			observ(gameData.name);
+			setObserving(true);
 			// console.log("mainGameData");
 			// console.log(gameData);
 			setHintAtom("Aby ropocząć grę wciśnij start");

@@ -28,6 +28,7 @@ export const mainPlayerData = atom({
 		lastOnline:null,
 		key: null,
 		name: null,
+		color:null,
 	},
 });
 

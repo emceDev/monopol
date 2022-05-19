@@ -8,7 +8,7 @@ import {
 	cardsAtom,
 } from "../state/atom";
 import { Connection } from "./connection";
-import {FeedbackForm} from '../microComponents/FeedbackForm'
+import { FeedbackForm } from "../microComponents/FeedbackForm";
 export const SearchBar = () => {
 	const [name, setName] = useState("");
 	const [error, setError] = useState(null);
@@ -19,18 +19,18 @@ export const SearchBar = () => {
 	const [color, setColor] = useState("yellow");
 	const [cardsData, setCardsData] = useRecoilState(cardsAtom);
 	const [shown, setShown] = useState(true);
-
+	const [forRep, setForRep] = useState(true);
+	const [dowRep, setDowRep] = useState(true);
 	async function createGame() {
 		// console.log(playerData)
 		const res1 = await fetch("api/GameCreate", {
 			method: "POST",
-
 			body: JSON.stringify({
 				name: name,
 				creator: playerData.name,
 				key: playerData.key,
 				cards: gameData.cards,
-				color: color,
+				color: playerData.color,
 				queue: gameData.queue,
 			}),
 		});
@@ -86,79 +86,126 @@ export const SearchBar = () => {
 		const res2 = await res1.json();
 		console.log("leaveGame:>> ", res2.response);
 	}
+	async function downloadReport(e) {
+		e.target.textContent = "Jeszcze niedostępne";
+		dowRep
+			? (async () => {
+					await fetch("api/DownloadReport", {
+						method: "POST",
+						body: JSON.stringify({}),
+					});
+					setDowRep(false);
+			  })()
+			: null;
+	}
+	async function forumReport(e) {
+		e.target.textContent = "Jeszcze niedostępne";
+		// e.target.onclick=null
+		forRep
+			? (async () => {
+					await fetch("api/ForumReport", {
+						method: "POST",
+						body: JSON.stringify({}),
+					});
+					setForRep(false);
+			  })()
+			: null;
+	}
 	return (
 		<div className="SearchBar">
-		
 			{/* <><Tips/></> */}
 			<>
-			<div
-				style={{
-					display: shown ? "flex" : "none",
-					flexDirection: "column",
-				}}
-			>
-				<p className="error"
-				id="ErrorField" style={{color:'white', fontWeight:'bolder'}}>{error}</p>
-				<input
-					onChange={(e) => {
-						setName(e.target.value);
+				<div
+					style={{
+						display: shown ? "flex" : "none",
+						flexDirection: "column",
 					}}
-					id="GameNameInput"
-					style={{textAlign:'center'}}
-					placeholder="Wpisz tutaj nazwę swojej gry"
-				></input>
-				<button
-					onClick={() => {
-						findGame();
-					}}
-					id="FindGameButton"
 				>
-					Dołącz do gry
-				</button>
+					<p
+						className="error"
+						id="ErrorField"
+						style={{ color: "white", fontWeight: "bolder" }}
+					>
+						{error}
+					</p>
+					<input
+						onChange={(e) => {
+							setName(e.target.value);
+						}}
+						id="GameNameInput"
+						style={{ textAlign: "center" }}
+						placeholder="Wpisz tutaj nazwę swojej gry"
+					></input>
+					<button
+						onClick={() => {
+							findGame();
+						}}
+						id="FindGameButton"
+					>
+						Dołącz do gry
+					</button>
+					<button
+						style={{ display: "none" }}
+						onClick={() => {
+							leaveGame();
+						}}
+						id="LeaveGameButton"
+					>
+						Wyjdź z gry
+					</button>
+					<button
+						onClick={() => {
+							createGame();
+						}}
+						id="CreateGameButton"
+					>
+						Stwórz grę
+					</button>
+					<input
+						style={{ display: "none" }}
+						placeholder="Kolor twojego pionka po angielsku"
+						onChange={(e) => {
+							setColor(e.target.value);
+						}}
+						id="ColorInput"
+					></input>
+					<FeedbackForm />
+					<div style={{ display: "flex", justifyContent: "space-evenly" }}>
+						<button
+							onClick={(e) => {
+								forumReport(e);
+							}}
+						>
+							Sprawdź forum
+						</button>
+						<button
+							onClick={(e) => {
+								downloadReport(e);
+							}}
+						>
+							Pobierz aplikacje
+						</button>
+					</div>
+				</div>
 				<button
-				style={{display:'none'}}
+					style={{ display: "none" }}
 					onClick={() => {
-						leaveGame();
+						setShown(!shown);
 					}}
-					id="LeaveGameButton"
+					className={shown ? "SearchBarToggleOn" : "SearchBarToggleOff"}
 				>
-					Wyjdź z gry
+					{shown ? "Zwiń menu" : "Rozwiń menu"}
 				</button>
-				<button
-					onClick={() => {
-						createGame();
-					}}
-					id="CreateGameButton"
-				>
-					Stwórz grę
-				</button>
-				<input
-				style={{display:'none'}}
-					placeholder="Kolor twojego pionka po angielsku"
-					onChange={(e) => {
-						setColor(e.target.value);
-					}}
-					id="ColorInput"
-				></input>
-				<FeedbackForm/>
-			</div>
-			<button
-			style={{display:'none'}}
-				onClick={() => {
-					setShown(!shown);
-				}}
-				className={shown ? "SearchBarToggleOn" : "SearchBarToggleOff"}
-			>
-				{shown ? "Zwiń menu" : "Rozwiń menu"}
-			</button>
 			</>
 		</div>
 	);
 };
 
-const Tips = ()=>{
-	return(<div >
-		Aby założyć gre wpisz poniżej jej nazwę i kliknij załóż,
-		lub jeśli chcesz dołączyć do gry wpisz jej nazwę i wpisz dołącz
-	</div>)
-}
+const Tips = () => {
+	return (
+		<div>
+			Aby założyć gre wpisz poniżej jej nazwę i kliknij załóż, lub jeśli chcesz
+			dołączyć do gry wpisz jej nazwę i wpisz dołącz
+		</div>
+	);
+};

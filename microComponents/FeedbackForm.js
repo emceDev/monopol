@@ -36,6 +36,7 @@ export const FeedbackForm = () => {
 		margin: "5% 0% 5% 0%",
 		wordBreak: "keep-all",
 		textAlign: "center",
+		color: "white",
 	};
 	const container = {
 		display: "flex",
@@ -49,18 +50,13 @@ export const FeedbackForm = () => {
 		</>
 	) : (
 		<div className="FeedbackForm">
-			<p style={paragraph}>{error}</p>
-			<p style={paragraph}>Podaj swoją opinię o produkcie</p>
-			<div onChange={(e) => setType(e.target.value)}>
-				<div style={radio}>
-					<input type="radio" id="bug" name="answer" value="bug" />
-					<label for="bug">Bug</label>
-					<input type="radio" id="feedback" name="answer" value="feedback" />
-					<label for="feedback" defaultChecked>
-						Just Feedback
-					</label>
-				</div>
-			</div>
+			{error ? (
+				<p style={paragraph}>{error}</p>
+			) : (
+				<p style={paragraph}>Podaj swoją opinię o produkcie</p>
+			)}
+
+			<div onChange={(e) => setType(e.target.value)}></div>
 			<div style={container}>
 				<input
 					id="GiveFeedbackInput"

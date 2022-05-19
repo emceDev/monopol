@@ -31,7 +31,7 @@ export const PremiumFeatures = (props) => {
 					setShown(false);
 				}}
 			>
-				Close
+				Zamknij
 			</button>
 		</div>
 	) : (
@@ -41,7 +41,7 @@ export const PremiumFeatures = (props) => {
 				setShown(true);
 			}}
 		>
-			Premium
+			Dodatkowe funkcje
 		</button>
 	);
 };
@@ -88,20 +88,20 @@ const PremiumFeature = (props) => {
 					id={props.t + "PFButtonLike"}
 					onClick={() => likeBuyComment("likes", props.t)}
 				>
-					Like it!
+					Podoba mi się!
 				</button>
 				<button
 					style={{ display: showBuy ? "box" : "none" }}
 					id={props.t + "PFButtonBuy"}
 					onClick={() => likeBuyComment("buys", props.t)}
 				>
-					Buy it!
+					Kupiłbym!
 				</button>
 				<button
 					id={props.t + "PFButtonComment"}
 					onClick={() => setCommentBoxShown(!commentBoxShown)}
 				>
-					Comment
+					Chcę skomentować.
 				</button>
 			</div>
 			<div
