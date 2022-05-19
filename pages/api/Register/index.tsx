@@ -38,7 +38,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 	}else if(numbers.test(password)===false){
 		res.json({response:'Podane hasło nie zawiera cyfry'})}
 		else{
-			console.log(data);
+			// console.log(data);
 	let userDevice = data.device
 	delete data.device
 	const registerDate = new Date().toString()

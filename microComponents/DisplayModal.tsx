@@ -24,7 +24,7 @@ export const DisplayModal = () => {
 
 	useEffect(() => {
 		console.log("cardDatawModal");
-		console.log(cardData);
+		// console.log(cardData);
 	}, [cardData]);
 	return (
 		<div className="DisplayModal">

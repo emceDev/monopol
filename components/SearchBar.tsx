@@ -56,8 +56,8 @@ export const SearchBar = () => {
 			}),
 		});
 		const res2 = await res1.json();
-		console.log("response");
-		console.log(res2);
+		// console.log("response");
+		// console.log(res2);
 		if (res2.response.code === "Pomyślnie dołączono") {
 			// console.log(res2);
 			setShown(false);

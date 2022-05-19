@@ -31,8 +31,8 @@ export default (req, res) => {
 	return x.then((x) => {
 		x !== undefined
 			? (() => {
-					console.log("not undefined");
-					console.log(x);
+					// console.log("not undefined");
+					// console.log(x);
 					delete x.password;
 					loginHistory(x.key, date);
 					sendUserDevice(x.key, data.device);
