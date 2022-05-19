@@ -28,7 +28,19 @@ function handleMetrics(age,key,device) {
 export default (req: NextApiRequest, res: NextApiResponse) => {
 	const data = JSON.parse(req.body).data;
 	const reference = "Players/";
-	console.log(data);
+	console.log(data)
+	let password = data.password;
+	let upperCaseLetters = /[A-Z]/g;
+	let numbers = /[0-9]/g;
+
+	if (password.length<6) {
+		res.json({response:'lenght'})
+	}else if(upperCaseLetters.test(password)===false){
+		res.json({response:'no uppercase'})
+	}else if(numbers.test(password)===false){
+		res.json({response:'no numbers'})}
+		else{
+			console.log(data);
 	let userDevice = data.device
 	delete data.device
 	const registerDate = new Date().toString()
@@ -45,6 +57,5 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 						key: key.key,
 					})
 					.then(()=>res.json({ response: { key: key.key, name: data.name } })).then(()=>handleMetrics(data.age,key.key,userDevice))	);
-		}
-	});
+		}})}
 };
