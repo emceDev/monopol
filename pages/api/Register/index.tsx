@@ -32,11 +32,11 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 	let numbers = /[0-9]/g;
 
 	if (password.length<6) {
-		res.json({response:'lenght'})
+		res.json({response:'Podane hasło jest krótsze niż sześć znaków'})
 	}else if(upperCaseLetters.test(password)===false){
-		res.json({response:'no uppercase'})
+		res.json({response:'Podane hasło nie zawiera Wielkiej litery'})
 	}else if(numbers.test(password)===false){
-		res.json({response:'no numbers'})}
+		res.json({response:'Podane hasło nie zawiera cyfry'})}
 		else{
 			console.log(data);
 	let userDevice = data.device
@@ -45,7 +45,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 	let response = checkForDuplicate(reference, data.name);
 	response.then((x: any) => {
 		if (x.includes(true)) {
-			res.json({ response: "user exists" });
+			res.json({ response: "Użytkownik o podanej nazwie już istnieje" });
 		} else {
 			getKey(reference).then((key: any) =>
 				key
