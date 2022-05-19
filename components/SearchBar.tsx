@@ -88,7 +88,9 @@ export const SearchBar = () => {
 	}
 	return (
 		<div className="SearchBar">
-
+		
+			{/* <><Tips/></> */}
+			<>
 			<div
 				style={{
 					display: shown ? "flex" : "none",
@@ -96,13 +98,14 @@ export const SearchBar = () => {
 				}}
 			>
 				<p className="error"
-				id="ErrorField">{error}</p>
+				id="ErrorField" style={{color:'white', fontWeight:'bolder'}}>{error}</p>
 				<input
 					onChange={(e) => {
 						setName(e.target.value);
 					}}
 					id="GameNameInput"
-					placeholder="Wpisz tutaj nazwę gry do której chcesz dołączyć"
+					style={{textAlign:'center'}}
+					placeholder="Wpisz tutaj nazwę swojej gry"
 				></input>
 				<button
 					onClick={() => {
@@ -148,7 +151,14 @@ export const SearchBar = () => {
 			>
 				{shown ? "Zwiń menu" : "Rozwiń menu"}
 			</button>
-			
+			</>
 		</div>
 	);
 };
+
+const Tips = ()=>{
+	return(<div >
+		Aby założyć gre wpisz poniżej jej nazwę i kliknij załóż,
+		lub jeśli chcesz dołączyć do gry wpisz jej nazwę i wpisz dołącz
+	</div>)
+}
