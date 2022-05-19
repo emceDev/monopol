@@ -98,11 +98,17 @@ export async function onChangedField(data, cardD) {
 				data: card,
 			};
 		} else if (card.id === 31) {
-			placeInJail(gameName, playerName);
+			// placeInJail(gameName, playerName);
+			// return {
+			// 	newsFeed:
+			// 		"Gracz " + playerName + " spędza trzy kolejki ze znajomymi w barze",
+			// 	code: "Idziesz Do Baru",
+			// 	data: card,
+			// };
 			return {
 				newsFeed:
-					"Gracz " + playerName + " spędza trzy kolejki ze znajomymi w barze",
-				code: "Idziesz Do Baru",
+					"Gracz " + playerName + " Ma farta że ta funkcja jest pobugowana, więc została wyłączona. W innym wypadku spędził by trzy kolejki w barze :(",
+				code: "Przechodzisz obok baru",
 				data: card,
 			};
 		} else if (card.tax !== undefined) {

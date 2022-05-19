@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { app } from "../config/firebase";
-import { logRegister } from '../FirebaseAnalytics'
 import {sendUserDevice} from '../SendDevice/index'
 async function getKey(reference) {
 	return await app.database().ref(reference).push();
@@ -22,7 +21,6 @@ async function checkForDuplicate(ref, data) {
 		});
 }
 function handleMetrics(age,key,device) {
-	logRegister(age)
 	sendUserDevice(key,device)
 }
 export default (req: NextApiRequest, res: NextApiResponse) => {
