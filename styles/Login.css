@@ -20,16 +20,16 @@
 .Login {
 	width: 25vw;
 	/* width: auto; */
-	transition: width 1s ease-in-out;
+	/* transition: width 1s ease-in-out; */
 	background-color: forestgreen;
 }
 .Register {
 	flex: auto;
 	background-color: indigo;
 }
-.Login:hover {
+/* .Login:hover {
 	width: 55vw;
-}
+} */
 .LoginPanel {
 	display: flex;
 	justify-content: flex-start;
@@ -74,8 +74,7 @@
 	.Register input {
 		width: 90%;
 	}
-	.Login:hover {
-		/* width: 65vw; */
+	/* .Login:hover {
 		width: 80vw;
-	}
+	} */
 }

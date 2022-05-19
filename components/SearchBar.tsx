@@ -88,6 +88,7 @@ export const SearchBar = () => {
 	}
 	return (
 		<div className="SearchBar">
+
 			<div
 				style={{
 					display: shown ? "flex" : "none",
@@ -96,12 +97,12 @@ export const SearchBar = () => {
 			>
 				<p className="error"
 				id="ErrorField">{error}</p>
-
 				<input
 					onChange={(e) => {
 						setName(e.target.value);
 					}}
 					id="GameNameInput"
+					placeholder="Wpisz tutaj nazwę gry do której chcesz dołączyć"
 				></input>
 				<button
 					onClick={() => {
@@ -112,6 +113,7 @@ export const SearchBar = () => {
 					Dołącz do gry
 				</button>
 				<button
+				style={{display:'none'}}
 					onClick={() => {
 						leaveGame();
 					}}
@@ -128,6 +130,7 @@ export const SearchBar = () => {
 					Stwórz grę
 				</button>
 				<input
+				style={{display:'none'}}
 					placeholder="Kolor twojego pionka po angielsku"
 					onChange={(e) => {
 						setColor(e.target.value);
@@ -137,6 +140,7 @@ export const SearchBar = () => {
 				<FeedbackForm/>
 			</div>
 			<button
+			style={{display:'none'}}
 				onClick={() => {
 					setShown(!shown);
 				}}

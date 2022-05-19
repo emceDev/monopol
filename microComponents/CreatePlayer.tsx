@@ -62,8 +62,8 @@ export const CreatePlayer = () => {
 	}
 	return (
 		<div className="Register">
-			{error}
 			<label>Wypełnij aby się zarejestrować</label>
+			<div style={{color:'white'}}>{error}</div>
 			<input
 				placeholder="Login"
 				id="RegisterLogin"
