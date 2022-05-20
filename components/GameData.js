@@ -51,19 +51,22 @@ export const GameData = () => {
 			setAuction(response.data.auction);
 			// console.log("mainGameData");
 			// console.log(gameData);
-		}, 2000);
+		}, 5000);
 	}
 
 	useEffect(() => {
-		if ((gameData.name !== null) === true) {
-			observ(gameData.name);
-			setObserving(true);
-			// console.log("mainGameData");
-			// console.log(gameData);
-			setHintAtom("Aby ropocząć grę wciśnij start");
-		}
-		return;
-	}, [gameData]);
+		return setTimeout(() => {
+			if ((gameData.name !== null) === true) {
+				observ(gameData.name);
+				setObserving(true);
+				console.log("OBserving game");
+				// console.log("mainGameData");
+				// console.log(gameData);
+				// setHintAtom("Aby ropocząć grę wciśnij start");
+			}
+			return;
+		}, 5000);
+	}, []);
 	const getDeviceType = () => {
 		const ua = navigator.userAgent;
 		if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
@@ -119,7 +122,7 @@ export const GameData = () => {
 				<div>
 					<p>GameName:{gameData.name}</p>
 					<div className="UI">
-						{!observing ? (
+						{/* {!observing ? (
 							<button
 								id="GameStartButton"
 								className="StartButton"
@@ -128,7 +131,7 @@ export const GameData = () => {
 							>
 								Start
 							</button>
-						) : null}
+						) : null} */}
 						<PlayerCard />
 						<NewsFeed news={newsFeedData} />
 						{auction === undefined || auction === null ? null : (

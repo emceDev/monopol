@@ -132,12 +132,25 @@ const ColorPicker = (props) => {
 		display: "flex",
 		flexDirection: "column",
 	};
+	const colors = [
+		"orange",
+		"pink",
+		"blue",
+		"green",
+		"yellow",
+		"gray",
+		"black",
+		"lightblue",
+		"red",
+	];
 	return (
 		<div style={styl}>
 			<p style={{ color: "white" }}>Wybierz kolor swojego pionka w grze</p>
+
 			<div
 				style={{
 					paddingLeft: "5%",
+					paddingBottom: "1%",
 					display: "flex",
 					flexWrap: "wrap",
 					justifyContent: "space-evenly",
@@ -145,86 +158,19 @@ const ColorPicker = (props) => {
 					height: "10vh",
 				}}
 			>
-				<div
-					style={{
-						width: "10%",
-						minHeight: "100%",
-						backgroundColor: "red",
-					}}
-					onClick={(e) => props.setColor(e.target.style.backgroundColor)}
-				></div>
-				<div
-					style={{
-						width: "10%",
-						height: "100%",
-						backgroundColor: "blue",
-					}}
-					onClick={(e) => props.setColor(e.target.style.backgroundColor)}
-				></div>
-				<div
-					style={{
-						minWidth: "10%",
-						minHeight: "100%",
-						backgroundColor: "green",
-					}}
-					onClick={(e) => props.setColor(e.target.style.backgroundColor)}
-				></div>
-				<div
-					style={{
-						minWidth: "10%",
-						minHeight: "100%",
-						backgroundColor: "yellow",
-					}}
-					onClick={(e) => props.setColor(e.target.style.backgroundColor)}
-				></div>
-				<div
-					style={{
-						minWidth: "10%",
-						minHeight: "100%",
-						backgroundColor: "gray",
-					}}
-					onClick={(e) => props.setColor(e.target.style.backgroundColor)}
-				></div>
-				<div
-					style={{
-						minWidth: "10%",
-						minHeight: "100%",
-						backgroundColor: "orange",
-					}}
-					onClick={(e) => props.setColor(e.target.style.backgroundColor)}
-				></div>
-				<div
-					style={{
-						minWidth: "10%",
-						minHeight: "100%",
-						backgroundColor: "brown",
-					}}
-					onClick={(e) => props.setColor(e.target.style.backgroundColor)}
-				></div>
-				<div
-					style={{
-						minWidth: "10%",
-						minHeight: "100%",
-						backgroundColor: "pink",
-					}}
-					onClick={(e) => props.setColor(e.target.style.backgroundColor)}
-				></div>
-				<div
-					style={{
-						minWidth: "10%",
-						minHeight: "100%",
-						backgroundColor: "lightBlue",
-					}}
-					onClick={(e) => props.setColor(e.target.style.backgroundColor)}
-				></div>
-				<div
-					style={{
-						minWidth: "10%",
-						minHeight: "100%",
-						backgroundColor: "lighGray",
-					}}
-					onClick={(e) => props.setColor(e.target.style.backgroundColor)}
-				></div>
+				{colors.map((color) => {
+					return (
+						<div
+							id={`colorPicker${color}`}
+							style={{
+								width: "10%",
+								minHeight: "100%",
+								backgroundColor: color,
+							}}
+							onClick={(e) => props.setColor(e.target.style.backgroundColor)}
+						></div>
+					);
+				})}
 			</div>
 		</div>
 	);

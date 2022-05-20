@@ -40,6 +40,7 @@ export const PlayerCard = () => {
 		setCardData(res2?.data);
 	}
 	function roll() {
+		console.log(playerData.name, " rolled");
 		// console.log(gameData.queue);
 		// console.log(=== playerData.name)
 		let rolled = Math.floor(Math.random() * (12 - 2 + 1)) + 2;
@@ -68,17 +69,29 @@ export const PlayerCard = () => {
 							{/* <div className="RollButton_active" onClick={roll}>
 								Rzut kostką!
 							</div> */}
-							{gameData?.queue.players !== null &&
+							{/* {gameData?.queue.players !== null &&
 							gameData?.queue?.players[gameData.queue.current] ===
 								playerData.name ? (
-								<div id="RollDiceButton"className="RollButton_active" onClick={roll}>
+								<div id="RollDiceButton"className="RollButton_active" onClick={()=>roll()}>
 									Rzut kostką!
 								</div>
 							) : (
 								<div id="TurnIndicator"className="RollButton_inactive">
 									Poczekaj na swoją kolejkę
 								</div>
-							)}
+							)} */}
+
+							<div
+								id="RollDiceButton"
+								className="RollButton_active"
+								onClick={roll}
+							>
+								{gameData?.queue.players !== null &&
+								gameData?.queue?.players[gameData.queue.current] ===
+									playerData.name
+									? "rzucaj"
+									: "Poczekaj na swoją kolej"}
+							</div>
 						</div>
 						<div className="PlayerDisplayModal">
 							<DisplayModal />
@@ -94,7 +107,7 @@ export const PlayerCard = () => {
 									height: cardListHoover ? "fit-content" : "5vh",
 								}}
 							>
-								{ownedFields?.map((field: any) => (
+								{ownedFields?.map((field) => (
 									<DisplayModalCard cardData={field} />
 								))}
 							</div>
