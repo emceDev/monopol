@@ -32,8 +32,10 @@ export const GameData = () => {
 	const [hint, setHintAtom] = useRecoilState(hintAtom);
 	const [viewport, setViewport] = useState(null);
 	async function observ(x) {
+		console.log("Observing began");
 		setObserving(true);
 		setInterval(async () => {
+			console.log("ObservingInterval");
 			const observer = await fetch("api/GameObserver", {
 				method: "POST",
 				body: JSON.stringify({
@@ -55,18 +57,31 @@ export const GameData = () => {
 	}
 
 	useEffect(() => {
-		return setTimeout(() => {
-			if ((gameData.name !== null) === true) {
-				observ(gameData.name);
-				setObserving(true);
-				console.log("OBserving game");
-				// console.log("mainGameData");
-				// console.log(gameData);
-				// setHintAtom("Aby ropocząć grę wciśnij start");
+		// console.log("======");
+		// console.log(gameData);
+		// console.log("======");
+		window.addEventListener("keydown", function (e) {
+			// console.log(e.target.type);
+			if (e.target.type === "number" || e.target.type === "text") {
+				return;
+			} else {
+				if (e.key === "s") {
+					window.scrollBy(0, 250);
+				}
+				if (e.key === "w") {
+					window.scrollBy(0, -250);
+				}
+				if (e.key === "d") {
+					window.scrollBy(250, 0);
+				}
+				if (e.key === "a") {
+					window.scrollBy(-250, 0);
+				}
 			}
-			return;
-		}, 5000);
+		});
+		return;
 	}, []);
+
 	const getDeviceType = () => {
 		const ua = navigator.userAgent;
 		if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
@@ -93,28 +108,6 @@ export const GameData = () => {
 			}),
 		});
 	}
-	useEffect(() => {
-		window.addEventListener("keydown", function (e) {
-			// console.log(e.target.type);
-			if (e.target.type === "number" || e.target.type === "text") {
-				return;
-			} else {
-				if (e.key === "s") {
-					window.scrollBy(0, 250);
-				}
-				if (e.key === "w") {
-					window.scrollBy(0, -250);
-				}
-				if (e.key === "d") {
-					window.scrollBy(250, 0);
-				}
-				if (e.key === "a") {
-					window.scrollBy(-250, 0);
-				}
-			}
-		});
-		return;
-	}, []);
 
 	return (
 		<div className="GameData">
@@ -122,7 +115,7 @@ export const GameData = () => {
 				<div>
 					<p>GameName:{gameData.name}</p>
 					<div className="UI">
-						{/* {!observing ? (
+						{!observing ? (
 							<button
 								id="GameStartButton"
 								className="StartButton"
@@ -131,7 +124,7 @@ export const GameData = () => {
 							>
 								Start
 							</button>
-						) : null} */}
+						) : null}
 						<PlayerCard />
 						<NewsFeed news={newsFeedData} />
 						{auction === undefined || auction === null ? null : (

@@ -7,7 +7,7 @@ import {
 	playersAtom,
 	cardsAtom,
 } from "../state/atom";
-import { Connection } from "./connection";
+import { AwaitingGames } from "../microComponents/AwaitingGames";
 import { FeedbackForm } from "../microComponents/FeedbackForm";
 export const SearchBar = () => {
 	const [name, setName] = useState("");
@@ -35,7 +35,7 @@ export const SearchBar = () => {
 			}),
 		});
 		const res2 = await res1.json();
-		if (res2.code === "Game set succesfully") {
+		if (res2.code === "Pomyślnie założono grę") {
 			setShown(false);
 			setGameName(res2.name);
 			setCardsData(res2.cards);
@@ -44,11 +44,11 @@ export const SearchBar = () => {
 			setError(res2.error);
 		}
 	}
-	async function findGame() {
+	async function findGame(gameName = name) {
 		const res1 = await fetch("api/GameFind", {
 			method: "POST",
 			body: JSON.stringify({
-				game: name,
+				game: gameName,
 				player: playerData.name,
 				key: playerData.key,
 				currentField: 1,
@@ -110,6 +110,10 @@ export const SearchBar = () => {
 					setForRep(false);
 			  })()
 			: null;
+	}
+	function joinGame(name) {
+		// console.log(name);
+		setName(name, findGame(name));
 	}
 	return (
 		<div className="SearchBar">
@@ -187,6 +191,7 @@ export const SearchBar = () => {
 						</button>
 					</div>
 				</div>
+				<AwaitingGames joinGame={(name) => joinGame(name)} />
 				<button
 					style={{ display: "none" }}
 					onClick={() => {

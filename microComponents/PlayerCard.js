@@ -69,29 +69,56 @@ export const PlayerCard = () => {
 							{/* <div className="RollButton_active" onClick={roll}>
 								Rzut kostką!
 							</div> */}
-							{/* {gameData?.queue.players !== null &&
+
+							{/* <div
+								style={{
+									display:
+										gameData?.queue.players !== null &&
+										gameData?.queue?.players[gameData.queue.current] ===
+											playerData.name &&
+										cooldown !== true
+											? "block"
+											: "none",
+								}}
+								id="RollDiceButton"
+								className="RollButton_active"
+								onClick={() => roll()}
+							>
+								Rzut kostką!
+							</div>
+
+							<div
+								id="TurnIndicator"
+								className="RollButton_inactive"
+								style={{
+									display:
+										gameData?.queue.players !== null &&
+										gameData?.queue?.players[gameData.queue.current] ===
+											playerData.name &&
+										cooldown !== true
+											? "none"
+											: "block",
+								}}
+							>
+								Poczekaj na swoją kolejkę
+							</div> */}
+
+							{gameData?.queue.players !== null &&
 							gameData?.queue?.players[gameData.queue.current] ===
-								playerData.name ? (
-								<div id="RollDiceButton"className="RollButton_active" onClick={()=>roll()}>
+								playerData.name &&
+							cooldown !== true ? (
+								<div
+									id="RollDiceButton"
+									className="RollButton_active"
+									onClick={() => roll()}
+								>
 									Rzut kostką!
 								</div>
 							) : (
-								<div id="TurnIndicator"className="RollButton_inactive">
+								<div id="TurnIndicator" className="RollButton_inactive">
 									Poczekaj na swoją kolejkę
 								</div>
-							)} */}
-
-							<div
-								id="RollDiceButton"
-								className="RollButton_active"
-								onClick={roll}
-							>
-								{gameData?.queue.players !== null &&
-								gameData?.queue?.players[gameData.queue.current] ===
-									playerData.name
-									? "rzucaj"
-									: "Poczekaj na swoją kolej"}
-							</div>
+							)}
 						</div>
 						<div className="PlayerDisplayModal">
 							<DisplayModal />

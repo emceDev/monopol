@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { app } from "../config/firebase";
 import { cardsAtom } from "../../../state/atom";
-
+import { addToAwaitingGames } from "../AwaitingGames/index";
 async function checkForDuplicate(ref, data) {
 	return await app
 		.database()
@@ -12,23 +12,20 @@ async function checkForDuplicate(ref, data) {
 			return x === null ? false : true;
 		});
 }
-export async function setParticipated(playerKey,gameName) {
+export async function setParticipated(playerKey, gameName) {
 	return await app
-	.database()
-	.ref("Players/"+playerKey+'/participatedGames/')
-	.push(gameName)
-	.then((x) => console.log(x));
+		.database()
+		.ref("Players/" + playerKey + "/participatedGames/")
+		.push(gameName)
+		.then((x) => console.log(x));
 }
-export default (req: NextApiRequest, res: NextApiResponse) => {
+
+export default (req, res) => {
 	const data = JSON.parse(req.body);
-	// game model quadra quotes problem
-	// console.log('=======Game CREATE DATA')
-	// console.log(data)
-	// console.log('=======')
 	const reference = "Games/";
 	const gameModel = {
 		name: data.name,
-		date:JSON.stringify(new Date()),
+		date: `${new Date()}`,
 		players: {
 			bank: {
 				name: "bank",
@@ -92,27 +89,27 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 	};
 	gameModel.queue.players = [data.creator];
 	gameModel.cards.city1.whoIsOn = [data.creator];
-	// console.log(data)
+
 	let duplicate = checkForDuplicate(reference, data);
 	return duplicate.then((isDuplicate) => {
 		if (isDuplicate === true) {
-			res.status(409).json({ response: "game exists" });
+			res.status(409).json({ response: "gra już istnieje" });
 		} else {
 			const game = app.database().ref("Games/" + data.name);
 			return game.set(gameModel, async (error) => {
 				if (error) {
 					res.json(error);
 				} else {
-					await setParticipated(data.key,data.name)
+					await setParticipated(data.key, data.name);
+					await addToAwaitingGames(data.name, gameModel.date, data.creator);
 					return res.json({
 						players: gameModel.players,
 						cards: gameModel.cards,
 						name: data.name,
-						code: "Game set succesfully",
+						code: "Pomyślnie założono grę",
 					});
 				}
 			});
 		}
-		
 	});
 };
