@@ -90,13 +90,13 @@ const PremiumFeature = (props) => {
 				>
 					Podoba mi się!
 				</button>
-				<button
+				{/* <button
 					style={{ display: showBuy ? "box" : "none" }}
 					id={props.t + "PFButtonBuy"}
 					onClick={() => likeBuyComment("buys", props.t)}
 				>
 					Kupiłbym!
-				</button>
+				</button> */}
 				<button
 					id={props.t + "PFButtonComment"}
 					onClick={() => setCommentBoxShown(!commentBoxShown)}
