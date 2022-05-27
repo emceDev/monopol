@@ -11,26 +11,93 @@ export default function RegLog() {
 	const [mainPlayer, setMainPlayer] = useRecoilState(mainPlayerData);
 	const [player, setPlayer] = useState(null);
 	const [choice, setChoice] = useState(false);
+	const [playerData, setPlayerData] = useRecoilState(mainPlayerData);
 	const router = useRouter();
 	useEffect(() => {
+		console.log("===got player");
 		// setPlayer(JSON.parse(localStorage.getItem("player")));
-		// console.log(player);
+		console.log(JSON.parse(localStorage.getItem("player")));
+		console.log();
+		redirect(JSON.parse(localStorage.getItem("player")));
 	}, []);
-	useEffect(() => {
+	async function register(data) {
+		const res1 = await fetch("api/Register", {
+			method: "POST",
+			body: JSON.stringify({ data: data }),
+		});
+
+		const res2 = await res1.json();
+		// console.log(res2);
+		if (typeof res2.response === "object") {
+			setPlayerData({
+				loggedIn: true,
+				lastOnline: res2.response.date,
+				name: res2.response.name,
+				key: res2.response.key,
+				color: res2.response.color,
+			});
+			console.log("Pomyślnie zarejestrowano");
+			localStorage.setItem("player", JSON.stringify(res2.response));
+			router.push("/Home");
+		} else {
+			console.log(res2.response);
+		}
+	}
+	function generateUniqueString() {
+		var ts = String(new Date().getTime()),
+			i = 0,
+			out = "";
+
+		for (i = 0; i < ts.length; i += 2) {
+			out += Number(ts.substr(i, 2)).toString(36);
+		}
+
+		return "prefix" + out;
+	}
+	function deviceType() {
+		const ua = navigator.userAgent;
+		if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
+			return "tablet";
+		}
+		if (
+			/Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
+				ua
+			)
+		) {
+			return "mobile";
+		}
+		return "desktop";
+	}
+	function redirect(player) {
+		console.log("Player effect");
+		console.log(player);
 		if (player !== null) {
 			setMainPlayer(player);
 			router.push("/Home");
 		} else {
-			console.log("asdasd");
+			console.log("TEMP REGISTER");
+			let name = generateUniqueString();
+			let data = {
+				name: name,
+				password: null,
+				color: "yellow",
+				age: 99,
+				device: deviceType(),
+				temp: true,
+			};
+			console.log("regsiterdate");
+			console.log(data);
+			register(data);
 		}
-	}, [player]);
+	}
 
 	return (
 		<div className={styles.container}>
 			{player === null ? (
 				<>
 					<div className="LoginPanel">
-						<Login /> <CreatePlayer />
+						<p>Automatyczne przekierowanie</p>
+						{/* <Login /> <CreatePlayer /> */}
 					</div>
 				</>
 			) : (

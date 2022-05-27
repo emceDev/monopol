@@ -22,7 +22,8 @@ export const SearchBar = () => {
 	const [forRep, setForRep] = useState(true);
 	const [dowRep, setDowRep] = useState(true);
 	async function createGame() {
-		// console.log(playerData)
+		console.log("create game playerData");
+		console.log(playerData);
 		const res1 = await fetch("api/GameCreate", {
 			method: "POST",
 			body: JSON.stringify({
@@ -34,6 +35,7 @@ export const SearchBar = () => {
 				queue: gameData.queue,
 			}),
 		});
+		console.log();
 		const res2 = await res1.json();
 		if (res2.code === "Pomyślnie założono grę") {
 			setShown(false);

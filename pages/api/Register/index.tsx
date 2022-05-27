@@ -26,10 +26,18 @@ function handleMetrics(age,key,device) {
 export default (req: NextApiRequest, res: NextApiResponse) => {
 	const data = JSON.parse(req.body).data;
 	const reference = "Players/";
+	console.log('====BAckend User data ONE')
 	console.log(data)
-	let password = data.password;
+	// sets password for temporary user... Needs for fix
+	data.password===null?data.password='Temporary1':null
+
+	let password = data.password
 	let upperCaseLetters = /[A-Z]/g;
 	let numbers = /[0-9]/g;
+	let userDevice = data.device
+	
+	console.log('====BAckend User data TWOs')
+	console.log(data)
 
 	if (password.length<6) {
 		res.json({response:'Podane hasło jest krótsze niż sześć znaków'})
@@ -39,21 +47,22 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 		res.json({response:'Podane hasło nie zawiera cyfry'})}
 		else{
 			// console.log(data);
-	let userDevice = data.device
+
+	
 	delete data.device
 	const registerDate = new Date().toString()
 	let response = checkForDuplicate(reference, data.name);
 	response.then((x: any) => {
 		if (x.includes(true)) {
-			res.json({ response: "Użytkownik o podanej nazwie już istnieje" });
+			return res.json({ response: "Użytkownik o podanej nazwie już istnieje" });
 		} else {
-			getKey(reference).then((key: any) =>
+			return getKey(reference).then((key: any) =>
 				key
 					.set({
 						...data,
 						registerDate,
 						key: key.key,
 					})
-					.then(()=>res.json({ response: { key: key.key, name: data.name } })).then(()=>handleMetrics(data.age,key.key,userDevice))	);
+					.then(()=>res.json({ response: { key: key.key, name: data.name,lastOnline:registerDate,color:data.color } })).then(()=>handleMetrics(data.age,key.key,userDevice))	);
 		}})}
 };

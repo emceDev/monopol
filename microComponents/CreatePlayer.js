@@ -24,6 +24,8 @@ export const CreatePlayer = () => {
 		const res2 = await res1.json();
 		// console.log(res2);
 		if (typeof res2.response === "object") {
+			console.log("createPlayerResponse");
+			console.log(res2.response);
 			setPlayerData({
 				loggedIn: true,
 				lastOnline: res2.response.date,
