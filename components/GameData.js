@@ -18,6 +18,8 @@ import { PlayersList } from "../microComponents/PlayersList";
 import { Trade } from "../nanoComponents/Trade";
 import { Auction } from "../microComponents/Auction";
 
+const hintText = `Po założeniu gry, należy rozpocząć odświeżanie gry klikając start i oczekiwać na innych graczy`;
+
 export const GameData = () => {
 	const gameData = useRecoilValue(mainGameData);
 	const [cardsData, setCardsData] = useRecoilState(cardsAtom);
@@ -57,9 +59,7 @@ export const GameData = () => {
 	}
 
 	useEffect(() => {
-		// console.log("======");
-		// console.log(gameData);
-		// console.log("======");
+		setHintAtom(hintText);
 		window.addEventListener("keydown", function (e) {
 			// console.log(e.target.type);
 			if (e.target.type === "number" || e.target.type === "text") {

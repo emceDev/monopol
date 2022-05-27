@@ -6,9 +6,16 @@ import {
 	gameNameAtom,
 	playersAtom,
 	cardsAtom,
+	hintAtom,
 } from "../state/atom";
 import { AwaitingGames } from "../microComponents/AwaitingGames";
 import { FeedbackForm } from "../microComponents/FeedbackForm";
+const hintText = `Dołączanie do gry: Aby założyć gre wpisz poniżej jej nazwę i kliknij
+załóż, lub jeśli chcesz dołączyć do konkretnej gry wpisz jej nazwę i
+kliknij dołącz. Jeśli zaś chcesz dołączyć do gry otwartej w ostatnich
+pięciu minutach wybierz przycisk "Sprawdź dostępne gry" i kliknij dołącz
+przy wybranej grze./n Logowanie Rejestracja: Aby uzyskać własne hasło, login
+oraz kolor piona, wybierz opcje loguj.`;
 export const SearchBar = () => {
 	const [name, setName] = useState("");
 	const [error, setError] = useState(null);
@@ -18,6 +25,7 @@ export const SearchBar = () => {
 	const [players, setPlayers] = useRecoilState(playersAtom);
 	const [color, setColor] = useState("yellow");
 	const [cardsData, setCardsData] = useRecoilState(cardsAtom);
+	const [hint, setHintAtom] = useRecoilState(hintAtom);
 	const [shown, setShown] = useState(true);
 	const [forRep, setForRep] = useState(true);
 	const [dowRep, setDowRep] = useState(true);
@@ -117,6 +125,9 @@ export const SearchBar = () => {
 		// console.log(name);
 		setName(name, findGame(name));
 	}
+	useEffect(() => {
+		setHintAtom(hintText);
+	}, []);
 	return (
 		<div className="SearchBar">
 			{/* <><Tips/></> */}
@@ -192,8 +203,9 @@ export const SearchBar = () => {
 							Pobierz aplikacje
 						</button>
 					</div>
+					<AwaitingGames joinGame={(name) => joinGame(name)} />
 				</div>
-				<AwaitingGames joinGame={(name) => joinGame(name)} />
+
 				<button
 					style={{ display: "none" }}
 					onClick={() => {
@@ -204,15 +216,6 @@ export const SearchBar = () => {
 					{shown ? "Zwiń menu" : "Rozwiń menu"}
 				</button>
 			</>
-		</div>
-	);
-};
-
-const Tips = () => {
-	return (
-		<div>
-			Aby założyć gre wpisz poniżej jej nazwę i kliknij załóż, lub jeśli chcesz
-			dołączyć do gry wpisz jej nazwę i wpisz dołącz
 		</div>
 	);
 };
