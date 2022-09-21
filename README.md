@@ -14,33 +14,33 @@ yarn dev
 
 This application is a clone of real life game called monopoly.
 It is MVP (Minimum Viable Product) made to learn Next. And it was great fun to develop it with LEAN and AGILE in mind,
-continoues feedback pushed me further with knowledge that what I do is what users want.
+continous feedback pushed me further with knowledge that what I do is what users want.
 Application is playable, but there is no traffic since I stopped my diploma paper experiment.
 This app is only to gather information, but has/will have many functionalities that early adopters may like.
 Gameplay over graphics :)
 
-# structure
+# Structure
 
-Hosted: vercel
-Backend: vercel/node
-Front: React
-Database: Firebase Real Time Database
-State mgmt: Recoil
+Hosted: vercel,
+Backend: vercel/node,
+Front: React,
+Database: Firebase Real Time Database,
+State mgmt: Recoil,
 
-# user story (simplified)
+# User story (simplified)
 
-I want to play cardboard game, but I cannot since friends are far away.
+I want to play cardboard game, but I cannot since friends are far away.,
 I open website, create game, wait for players and play...
 
 # Folder structure
 
-/Pages/api - api side of next all the logic, db queries.
-/Pages/Home.tsx - good entry point to the project
-/components/GameData.js - Component rendering game board and inGame UI
-/state - recoil state atoms
-/styles - styles divied by sections
+/Pages/api - api side of next all the logic, db queries,
+/Pages/Home.tsx - good entry point to the project,
+/components/GameData.js - Component rendering game board and inGame UI,
+/state - recoil state atoms,
+/styles - styles divied by sections,
 
-# notes
+# Notes
 
 There is automatic loggin mechanism implemented now, as to give user immediate ability to test the app.
 Gameboard update mechanism is relying on pooling, it should be changed.
