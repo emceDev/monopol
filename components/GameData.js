@@ -19,21 +19,21 @@ import { Trade } from "../nanoComponents/Trade";
 import { Auction } from "../microComponents/Auction";
 
 const hintText = `Po założeniu gry, należy rozpocząć odświeżanie gry klikając start i oczekiwać na innych graczy`;
-
+const hintText2 = `Odświeżanie się rozpoczęło, `;
 export const GameData = () => {
 	const gameData = useRecoilValue(mainGameData);
 	const [cardsData, setCardsData] = useRecoilState(cardsAtom);
 	const [playersData, setPlayersData] = useRecoilState(playersAtom);
 	const [newsFeedData, setNewsFeedData] = useRecoilState(newsFeedAtom);
-	const [gameName, setGameName] = useRecoilState(gameNameAtom);
 	const [player, setmainplayer] = useRecoilState(mainPlayerData);
 	const [trade, setTrade] = useRecoilState(tradeAtom);
 	const [observing, setObserving] = useState(false);
 	const [queue, setQueue] = useRecoilState(queueAtom);
 	const [auction, setAuction] = useState(null);
 	const [hint, setHintAtom] = useRecoilState(hintAtom);
-	const [viewport, setViewport] = useState(null);
+
 	async function observ(x) {
+		setHintAtom(hintText2);
 		console.log("Observing began");
 		setObserving(true);
 		setInterval(async () => {
@@ -45,16 +45,13 @@ export const GameData = () => {
 				}),
 			});
 			let response = await observer.json();
-			// console.log("response :>> ");
-			// console.log(response);
+
 			setCardsData(response.data.cards);
 			setPlayersData(response.data.players);
 			setNewsFeedData(response.data.newsFeed);
 			setTrade(response.data.offers);
 			setQueue(response.data.queue);
 			setAuction(response.data.auction);
-			// console.log("mainGameData");
-			// console.log(gameData);
 		}, 5000);
 	}
 

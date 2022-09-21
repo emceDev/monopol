@@ -1,18 +1,15 @@
-import { CreatePlayer } from "../microComponents/CreatePlayer";
-import { Login } from "../microComponents/Login";
 import styles from "../styles/Home.module.css";
-import { SearchBar } from "../components/SearchBar";
-import { GameData } from "../components/GameData";
 import { useRecoilState } from "recoil";
 import { mainPlayerData } from "../state/atom";
-import Router, { useRouter } from "next/router";
-import { Children, useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+
 export default function RegLog() {
 	const [mainPlayer, setMainPlayer] = useRecoilState(mainPlayerData);
 	const [player, setPlayer] = useState(null);
-	const [choice, setChoice] = useState(false);
 	const [playerData, setPlayerData] = useRecoilState(mainPlayerData);
 	const router = useRouter();
+
 	useEffect(() => {
 		console.log("===got player");
 		// setPlayer(JSON.parse(localStorage.getItem("player")));

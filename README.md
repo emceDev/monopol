@@ -10,25 +10,40 @@ npm run dev
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Description
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+This application is a clone of real life game called monopoly.
+It is MVP (Minimum Viable Product) made to learn Next. And it was great fun to develop it with LEAN and AGILE in mind,
+continoues feedback pushed me further with knowledge that what I do is what users want.
+Application is playable, but there is no traffic since I stopped my diploma paper experiment.
+This app is only to gather information, but has/will have many functionalities that early adopters may like.
+Gameplay over graphics :)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+# structure
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Hosted: vercel
+Backend: vercel/node
+Front: React
+Database: Firebase Real Time Database
+State mgmt: Recoil
 
-## Learn More
+# user story (simplified)
 
-To learn more about Next.js, take a look at the following resources:
+I want to play cardboard game, but I cannot since friends are far away.
+I open website, create game, wait for players and play...
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Folder structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+/Pages/api - api side of next all the logic, db queries.
+/Pages/Home.tsx - good entry point to the project
+/components/GameData.js - Component rendering game board and inGame UI
+/state - recoil state atoms
+/styles - styles divied by sections
 
-## Deploy on Vercel
+# notes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+There is automatic loggin mechanism implemented now, as to give user immediate ability to test the app.
+Gameboard update mechanism is relying on pooling, it should be changed.
+Very few of next capabilities were used in this project.
+There are still console.logs to help with development, there is no distinction between production or development.
+It is best to follow with ctrl + LMB as some files are big, but functions are mostly self explanatory.

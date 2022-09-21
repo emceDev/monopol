@@ -1,16 +1,15 @@
 import Head from "next/head";
 import { SearchBar } from "../components/SearchBar";
-import { PlayerCard } from "../microComponents/PlayerCard";
 import { GameData } from "../components/GameData";
 import { useRecoilState,useRecoilValue } from "recoil";
 import { mainPlayerData, hintAtom,mainGameData } from "../state/atom";
-import Router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import {PremiumFeatures} from '../components/PremiumFeatures'
-import useSWR from "swr";
 import { Login } from "../microComponents/Login";
 import { CreatePlayer } from "../microComponents/CreatePlayer";
 import {Tips} from '../microComponents/Tips'
+
 const Home = () => {
 	const [mainPlayer, setMainPlayer] = useRecoilState(mainPlayerData);
 	const gameData = useRecoilValue(mainGameData);
@@ -18,6 +17,7 @@ const Home = () => {
 	const [hint, setHintAtom] = useRecoilState(hintAtom);
 	const [logRegModal, setLogRegModal] = useState(false);
 	const router = useRouter();
+	
 	useEffect(() => {
 		setHintAtom('Zostajesz przekierowany do głównego menu, aby się zarejestrować wybierz przycisk loguj w lewym górnym rogu ekranu')
 		if (mainPlayer.name === (undefined || null)) {
